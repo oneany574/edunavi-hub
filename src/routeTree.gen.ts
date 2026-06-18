@@ -9,38 +9,267 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ScholarshipsRouteImport } from './routes/scholarships'
+import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as QuestionsRouteImport } from './routes/questions'
+import { Route as ExamsRouteImport } from './routes/exams'
+import { Route as CoursesRouteImport } from './routes/courses'
+import { Route as CompareRouteImport } from './routes/compare'
+import { Route as CollegesRouteImport } from './routes/colleges'
+import { Route as CollegePredictorRouteImport } from './routes/college-predictor'
+import { Route as ArticlesRouteImport } from './routes/articles'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as DashboardCollegeRouteImport } from './routes/dashboard.college'
+import { Route as CollegesSlugRouteImport } from './routes/colleges.$slug'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScholarshipsRoute = ScholarshipsRouteImport.update({
+  id: '/scholarships',
+  path: '/scholarships',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuestionsRoute = QuestionsRouteImport.update({
+  id: '/questions',
+  path: '/questions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExamsRoute = ExamsRouteImport.update({
+  id: '/exams',
+  path: '/exams',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoursesRoute = CoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareRoute = CompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollegesRoute = CollegesRouteImport.update({
+  id: '/colleges',
+  path: '/colleges',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollegePredictorRoute = CollegePredictorRouteImport.update({
+  id: '/college-predictor',
+  path: '/college-predictor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ArticlesRoute = ArticlesRouteImport.update({
+  id: '/articles',
+  path: '/articles',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DashboardCollegeRoute = DashboardCollegeRouteImport.update({
+  id: '/dashboard/college',
+  path: '/dashboard/college',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollegesSlugRoute = CollegesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => CollegesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/articles': typeof ArticlesRoute
+  '/college-predictor': typeof CollegePredictorRoute
+  '/colleges': typeof CollegesRouteWithChildren
+  '/compare': typeof CompareRoute
+  '/courses': typeof CoursesRoute
+  '/exams': typeof ExamsRoute
+  '/questions': typeof QuestionsRoute
+  '/reviews': typeof ReviewsRoute
+  '/scholarships': typeof ScholarshipsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/colleges/$slug': typeof CollegesSlugRoute
+  '/dashboard/college': typeof DashboardCollegeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/articles': typeof ArticlesRoute
+  '/college-predictor': typeof CollegePredictorRoute
+  '/colleges': typeof CollegesRouteWithChildren
+  '/compare': typeof CompareRoute
+  '/courses': typeof CoursesRoute
+  '/exams': typeof ExamsRoute
+  '/questions': typeof QuestionsRoute
+  '/reviews': typeof ReviewsRoute
+  '/scholarships': typeof ScholarshipsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/colleges/$slug': typeof CollegesSlugRoute
+  '/dashboard/college': typeof DashboardCollegeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/articles': typeof ArticlesRoute
+  '/college-predictor': typeof CollegePredictorRoute
+  '/colleges': typeof CollegesRouteWithChildren
+  '/compare': typeof CompareRoute
+  '/courses': typeof CoursesRoute
+  '/exams': typeof ExamsRoute
+  '/questions': typeof QuestionsRoute
+  '/reviews': typeof ReviewsRoute
+  '/scholarships': typeof ScholarshipsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/colleges/$slug': typeof CollegesSlugRoute
+  '/dashboard/college': typeof DashboardCollegeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/articles'
+    | '/college-predictor'
+    | '/colleges'
+    | '/compare'
+    | '/courses'
+    | '/exams'
+    | '/questions'
+    | '/reviews'
+    | '/scholarships'
+    | '/sitemap.xml'
+    | '/colleges/$slug'
+    | '/dashboard/college'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/articles'
+    | '/college-predictor'
+    | '/colleges'
+    | '/compare'
+    | '/courses'
+    | '/exams'
+    | '/questions'
+    | '/reviews'
+    | '/scholarships'
+    | '/sitemap.xml'
+    | '/colleges/$slug'
+    | '/dashboard/college'
+  id:
+    | '__root__'
+    | '/'
+    | '/articles'
+    | '/college-predictor'
+    | '/colleges'
+    | '/compare'
+    | '/courses'
+    | '/exams'
+    | '/questions'
+    | '/reviews'
+    | '/scholarships'
+    | '/sitemap.xml'
+    | '/colleges/$slug'
+    | '/dashboard/college'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ArticlesRoute: typeof ArticlesRoute
+  CollegePredictorRoute: typeof CollegePredictorRoute
+  CollegesRoute: typeof CollegesRouteWithChildren
+  CompareRoute: typeof CompareRoute
+  CoursesRoute: typeof CoursesRoute
+  ExamsRoute: typeof ExamsRoute
+  QuestionsRoute: typeof QuestionsRoute
+  ReviewsRoute: typeof ReviewsRoute
+  ScholarshipsRoute: typeof ScholarshipsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  DashboardCollegeRoute: typeof DashboardCollegeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scholarships': {
+      id: '/scholarships'
+      path: '/scholarships'
+      fullPath: '/scholarships'
+      preLoaderRoute: typeof ScholarshipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/questions': {
+      id: '/questions'
+      path: '/questions'
+      fullPath: '/questions'
+      preLoaderRoute: typeof QuestionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exams': {
+      id: '/exams'
+      path: '/exams'
+      fullPath: '/exams'
+      preLoaderRoute: typeof ExamsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/courses': {
+      id: '/courses'
+      path: '/courses'
+      fullPath: '/courses'
+      preLoaderRoute: typeof CoursesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare': {
+      id: '/compare'
+      path: '/compare'
+      fullPath: '/compare'
+      preLoaderRoute: typeof CompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/colleges': {
+      id: '/colleges'
+      path: '/colleges'
+      fullPath: '/colleges'
+      preLoaderRoute: typeof CollegesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/college-predictor': {
+      id: '/college-predictor'
+      path: '/college-predictor'
+      fullPath: '/college-predictor'
+      preLoaderRoute: typeof CollegePredictorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/articles': {
+      id: '/articles'
+      path: '/articles'
+      fullPath: '/articles'
+      preLoaderRoute: typeof ArticlesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +277,49 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dashboard/college': {
+      id: '/dashboard/college'
+      path: '/dashboard/college'
+      fullPath: '/dashboard/college'
+      preLoaderRoute: typeof DashboardCollegeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/colleges/$slug': {
+      id: '/colleges/$slug'
+      path: '/$slug'
+      fullPath: '/colleges/$slug'
+      preLoaderRoute: typeof CollegesSlugRouteImport
+      parentRoute: typeof CollegesRoute
+    }
   }
 }
 
+interface CollegesRouteChildren {
+  CollegesSlugRoute: typeof CollegesSlugRoute
+}
+
+const CollegesRouteChildren: CollegesRouteChildren = {
+  CollegesSlugRoute: CollegesSlugRoute,
+}
+
+const CollegesRouteWithChildren = CollegesRoute._addFileChildren(
+  CollegesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ArticlesRoute: ArticlesRoute,
+  CollegePredictorRoute: CollegePredictorRoute,
+  CollegesRoute: CollegesRouteWithChildren,
+  CompareRoute: CompareRoute,
+  CoursesRoute: CoursesRoute,
+  ExamsRoute: ExamsRoute,
+  QuestionsRoute: QuestionsRoute,
+  ReviewsRoute: ReviewsRoute,
+  ScholarshipsRoute: ScholarshipsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  DashboardCollegeRoute: DashboardCollegeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
