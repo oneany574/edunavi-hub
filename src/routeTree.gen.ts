@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as QuestionsRouteImport } from './routes/questions'
@@ -22,6 +23,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as DashboardCollegeRouteImport } from './routes/dashboard.college'
 import { Route as CollegesSlugRouteImport } from './routes/colleges.$slug'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ScholarshipsRoute = ScholarshipsRouteImport.update({
   id: '/scholarships',
   path: '/scholarships',
@@ -94,6 +100,7 @@ export interface FileRoutesByFullPath {
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
   '/scholarships': typeof ScholarshipsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/dashboard/college': typeof DashboardCollegeRoute
 }
@@ -108,6 +115,7 @@ export interface FileRoutesByTo {
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
   '/scholarships': typeof ScholarshipsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/dashboard/college': typeof DashboardCollegeRoute
 }
@@ -123,6 +131,7 @@ export interface FileRoutesById {
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
   '/scholarships': typeof ScholarshipsRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/dashboard/college': typeof DashboardCollegeRoute
 }
@@ -139,6 +148,7 @@ export interface FileRouteTypes {
     | '/questions'
     | '/reviews'
     | '/scholarships'
+    | '/sitemap.xml'
     | '/colleges/$slug'
     | '/dashboard/college'
   fileRoutesByTo: FileRoutesByTo
@@ -153,6 +163,7 @@ export interface FileRouteTypes {
     | '/questions'
     | '/reviews'
     | '/scholarships'
+    | '/sitemap.xml'
     | '/colleges/$slug'
     | '/dashboard/college'
   id:
@@ -167,6 +178,7 @@ export interface FileRouteTypes {
     | '/questions'
     | '/reviews'
     | '/scholarships'
+    | '/sitemap.xml'
     | '/colleges/$slug'
     | '/dashboard/college'
   fileRoutesById: FileRoutesById
@@ -182,11 +194,19 @@ export interface RootRouteChildren {
   QuestionsRoute: typeof QuestionsRoute
   ReviewsRoute: typeof ReviewsRoute
   ScholarshipsRoute: typeof ScholarshipsRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   DashboardCollegeRoute: typeof DashboardCollegeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/scholarships': {
       id: '/scholarships'
       path: '/scholarships'
@@ -297,6 +317,7 @@ const rootRouteChildren: RootRouteChildren = {
   QuestionsRoute: QuestionsRoute,
   ReviewsRoute: ReviewsRoute,
   ScholarshipsRoute: ScholarshipsRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   DashboardCollegeRoute: DashboardCollegeRoute,
 }
 export const routeTree = rootRouteImport
