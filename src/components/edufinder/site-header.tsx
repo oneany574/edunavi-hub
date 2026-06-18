@@ -78,7 +78,6 @@ export function SiteHeader() {
                           <Link
                             key={s.slug}
                             to="/colleges"
-                            search={{ stream: s.slug }}
                             className="group flex items-start gap-3 rounded-2xl p-3 transition-colors hover:bg-secondary"
                           >
                             <div className="mt-0.5 size-2 rounded-full bg-academic group-hover:bg-gold" />
