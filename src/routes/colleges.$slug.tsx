@@ -80,10 +80,10 @@ const sections = [
 ] as const;
 
 function CollegeDetailPage() {
-  const college = Route.useLoaderData();
+  const college = Route.useLoaderData() as NonNullable<ReturnType<typeof getCollege>>;
   const reviews = allReviews.filter((r) => r.collegeSlug === college.slug);
   const similar = college.similar
-    .map((s) => colleges.find((c) => c.slug === s))
+    .map((s: string) => colleges.find((c) => c.slug === s))
     .filter(Boolean) as typeof colleges;
   const maxPackage = Math.max(...college.placementTrend.map((p) => p.package));
   const totalFees = college.feeBreakdown.reduce((a, b) => a + b.amount, 0);
