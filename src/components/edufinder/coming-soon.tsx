@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { Link } from "@tanstack/react-router";
 import { ArrowLeft, Sparkles } from "lucide-react";
 import { SiteHeader } from "@/components/edufinder/site-header";
 import { SiteFooter } from "@/components/edufinder/site-footer";
@@ -43,6 +43,3 @@ export function ComingSoon({
     </div>
   );
 }
-
-// Re-export a route stub for direct use
-export const Route = createFileRoute("/_coming-soon-shared" as any).update({});
