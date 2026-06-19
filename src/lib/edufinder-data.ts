@@ -45,14 +45,32 @@ export type College = {
 export type Course = {
   slug: string;
   name: string;
+  shortName: string;
   level: "UG" | "PG" | "Diploma" | "Doctorate";
   durationMonths: number;
   stream: string;
   mode: "Full-time" | "Online" | "Hybrid";
   feesRange: string;
+  feesMin: number;
+  feesMax: number;
+  feesCurrency: "USD" | "INR" | "GBP";
   description: string;
+  longDescription: string;
   collegesOffering: number;
   relatedExams: string[];
+  heroAccent: string;
+  rating: number;
+  ratingCount: number;
+  studentsEnrolled: string;
+  eligibility: string[];
+  careerPaths: { role: string; salary: string }[];
+  curriculum: { term: string; topics: string[] }[];
+  avgSalary: string;
+  highestSalary: string;
+  topRecruiters: string[];
+  topColleges: string[];
+  skills: string[];
+  whyChoose: string[];
 };
 
 export type Exam = {
