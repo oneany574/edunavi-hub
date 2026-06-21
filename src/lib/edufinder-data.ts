@@ -86,6 +86,20 @@ export type Exam = {
   stream: string;
   registrationStatus: "Open" | "Closing soon" | "Closed" | "Upcoming";
   difficulty: "Moderate" | "High" | "Very High";
+  about?: string;
+  modeOfExam?: string;
+  durationMinutes?: number;
+  totalMarks?: number;
+  questionCount?: number;
+  registrationFee?: string;
+  attemptsPerYear?: number;
+  syllabus?: { subject: string; topics: string[] }[];
+  pattern?: { section: string; questions: number; marks: number; duration: string }[];
+  eligibility?: string[];
+  importantDates?: { label: string; date: string }[];
+  participatingColleges?: string[];
+  prepTips?: string[];
+  heroAccent?: string;
 };
 
 export type Article = {
@@ -108,6 +122,36 @@ export type Review = {
   title: string;
   body: string;
   verified: boolean;
+};
+
+export type CourseReview = {
+  id: string;
+  courseSlug: string;
+  author: string;
+  authorEmail?: string;
+  collegeSlug?: string;
+  graduationYear: number;
+  rating: number;
+  ratings: {
+    teaching: number;
+    curriculum: number;
+    careerOutcomes: number;
+    valueForMoney: number;
+  };
+  title: string;
+  body: string;
+  pros?: string;
+  cons?: string;
+  recommend: boolean;
+  helpfulCount: number;
+  reportedCount: number;
+  verified: boolean;
+  language: string;
+  submittedAt: string;
+  status: "pending" | "approved" | "rejected" | "flagged";
+  moderationNotes?: string;
+  moderatedBy?: string;
+  moderatedAt?: string;
 };
 
 export const streams: Stream[] = [
