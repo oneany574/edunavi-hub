@@ -18,7 +18,8 @@ import {
 import { SiteHeader } from "@/components/edufinder/site-header";
 import { SiteFooter } from "@/components/edufinder/site-footer";
 import { CollegeCard } from "@/components/edufinder/college-card";
-import { colleges, courses, getCourse, getStream } from "@/lib/edufinder-data";
+import { colleges, courses, getCourse, getCourseReviews, getStream } from "@/lib/edufinder-data";
+import { CourseReviews } from "@/components/edufinder/course-reviews";
 
 export const Route = createFileRoute("/courses/$slug")({
   loader: ({ params }) => {
@@ -66,6 +67,7 @@ const sections = [
   { id: "curriculum", label: "Curriculum" },
   { id: "careers", label: "Careers" },
   { id: "colleges", label: "Top colleges" },
+  { id: "reviews", label: "Reviews" },
   { id: "eligibility", label: "Eligibility" },
   { id: "similar", label: "Similar" },
 ] as const;
@@ -296,6 +298,15 @@ function CourseDetailPage() {
               ) : (
                 <p className="mt-6 text-sm text-muted-foreground">College mapping coming soon.</p>
               )}
+            </section>
+
+            {/* Reviews */}
+            <section id="reviews" className="scroll-mt-32">
+              <CourseReviews
+                courseSlug={course.slug}
+                courseName={course.name}
+                initial={getCourseReviews(course.slug)}
+              />
             </section>
 
             {/* Eligibility */}
