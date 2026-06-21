@@ -463,7 +463,8 @@ function CollegeDetailPage() {
                     Claim the profile to manage info and respond to reviews.
                   </p>
                   <Link
-                    to="/dashboard/college"
+                    to="/claim-college"
+                    search={{ college: college.slug }}
                     className="mt-3 inline-block text-xs font-bold text-academic underline underline-offset-4"
                   >
                     Claim this college →

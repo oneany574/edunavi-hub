@@ -407,9 +407,12 @@ function CourseDetailPage() {
               <p className="mt-2 text-sm text-white/80">
                 15-minute call with an unbiased EduFinder advisor. Free for students.
               </p>
-              <button className="mt-4 w-full rounded-full bg-gold px-5 py-2.5 text-sm font-bold text-brand">
-                Book a slot
-              </button>
+              <Link
+                to="/counseling"
+                className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-bold text-brand"
+              >
+                Book a slot <ArrowRight className="size-4" />
+              </Link>
             </div>
           </aside>
         </div>
