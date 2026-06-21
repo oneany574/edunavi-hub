@@ -86,6 +86,20 @@ export type Exam = {
   stream: string;
   registrationStatus: "Open" | "Closing soon" | "Closed" | "Upcoming";
   difficulty: "Moderate" | "High" | "Very High";
+  about?: string;
+  modeOfExam?: string;
+  durationMinutes?: number;
+  totalMarks?: number;
+  questionCount?: number;
+  registrationFee?: string;
+  attemptsPerYear?: number;
+  syllabus?: { subject: string; topics: string[] }[];
+  pattern?: { section: string; questions: number; marks: number; duration: string }[];
+  eligibility?: string[];
+  importantDates?: { label: string; date: string }[];
+  participatingColleges?: string[];
+  prepTips?: string[];
+  heroAccent?: string;
 };
 
 export type Article = {
@@ -108,6 +122,36 @@ export type Review = {
   title: string;
   body: string;
   verified: boolean;
+};
+
+export type CourseReview = {
+  id: string;
+  courseSlug: string;
+  author: string;
+  authorEmail?: string;
+  collegeSlug?: string;
+  graduationYear: number;
+  rating: number;
+  ratings: {
+    teaching: number;
+    curriculum: number;
+    careerOutcomes: number;
+    valueForMoney: number;
+  };
+  title: string;
+  body: string;
+  pros?: string;
+  cons?: string;
+  recommend: boolean;
+  helpfulCount: number;
+  reportedCount: number;
+  verified: boolean;
+  language: string;
+  submittedAt: string;
+  status: "pending" | "approved" | "rejected" | "flagged";
+  moderationNotes?: string;
+  moderatedBy?: string;
+  moderatedAt?: string;
 };
 
 export const streams: Stream[] = [
@@ -1105,15 +1149,200 @@ export function getStream(slug: string): Stream | undefined {
 }
 
 export const exams: Exam[] = [
-  { slug: "sat", name: "SAT", fullName: "Scholastic Assessment Test", conductingBody: "College Board", level: "International", applicationOpens: "Jul 12, 2026", applicationCloses: "Aug 23, 2026", examDate: "Oct 04, 2026", resultDate: "Oct 25, 2026", stream: "All", registrationStatus: "Open", difficulty: "Moderate" },
-  { slug: "gre", name: "GRE", fullName: "Graduate Record Examination", conductingBody: "ETS", level: "International", applicationOpens: "Year-round", applicationCloses: "—", examDate: "Flexible", resultDate: "T+15 days", stream: "All", registrationStatus: "Open", difficulty: "High" },
-  { slug: "gmat", name: "GMAT", fullName: "Graduate Management Admission Test", conductingBody: "GMAC", level: "International", applicationOpens: "Year-round", applicationCloses: "—", examDate: "Flexible", resultDate: "T+20 days", stream: "Management", registrationStatus: "Open", difficulty: "High" },
-  { slug: "jee-main", name: "JEE Main", fullName: "Joint Entrance Examination — Main", conductingBody: "NTA", level: "National", applicationOpens: "Nov 01, 2026", applicationCloses: "Nov 30, 2026", examDate: "Jan 24, 2027", resultDate: "Feb 12, 2027", stream: "Engineering", registrationStatus: "Upcoming", difficulty: "Very High" },
-  { slug: "neet-ug", name: "NEET-UG", fullName: "National Eligibility cum Entrance Test", conductingBody: "NTA", level: "National", applicationOpens: "Feb 04, 2027", applicationCloses: "Mar 04, 2027", examDate: "May 02, 2027", resultDate: "Jun 14, 2027", stream: "Medical", registrationStatus: "Upcoming", difficulty: "Very High" },
-  { slug: "cuet", name: "CUET", fullName: "Common University Entrance Test", conductingBody: "NTA", level: "National", applicationOpens: "Feb 01, 2027", applicationCloses: "Mar 10, 2027", examDate: "May 15, 2027", resultDate: "Jun 30, 2027", stream: "All", registrationStatus: "Upcoming", difficulty: "Moderate" },
-  { slug: "lsat", name: "LSAT", fullName: "Law School Admission Test", conductingBody: "LSAC", level: "International", applicationOpens: "Year-round", applicationCloses: "—", examDate: "Multiple windows", resultDate: "T+21 days", stream: "Law", registrationStatus: "Open", difficulty: "High" },
-  { slug: "clat", name: "CLAT", fullName: "Common Law Admission Test", conductingBody: "Consortium of NLUs", level: "National", applicationOpens: "Aug 01, 2026", applicationCloses: "Oct 30, 2026", examDate: "Dec 06, 2026", resultDate: "Dec 22, 2026", stream: "Law", registrationStatus: "Closing soon", difficulty: "High" },
+  {
+    slug: "sat", name: "SAT", fullName: "Scholastic Assessment Test", conductingBody: "College Board",
+    level: "International", applicationOpens: "Jul 12, 2026", applicationCloses: "Aug 23, 2026",
+    examDate: "Oct 04, 2026", resultDate: "Oct 25, 2026", stream: "All",
+    registrationStatus: "Open", difficulty: "Moderate",
+    about: "A standardized digital admissions test accepted by 1,800+ universities worldwide. Adaptive, two-section format covering Reading & Writing and Math.",
+    modeOfExam: "Computer-based (Digital SAT)", durationMinutes: 134, totalMarks: 1600,
+    questionCount: 98, registrationFee: "$68", attemptsPerYear: 7,
+    heroAccent: "from-brand to-academic",
+    syllabus: [
+      { subject: "Reading & Writing", topics: ["Information & Ideas", "Craft & Structure", "Expression of Ideas", "Standard English Conventions"] },
+      { subject: "Math", topics: ["Algebra", "Advanced Math", "Problem Solving & Data Analysis", "Geometry & Trigonometry"] },
+    ],
+    pattern: [
+      { section: "Reading & Writing", questions: 54, marks: 800, duration: "64 min" },
+      { section: "Math", questions: 44, marks: 800, duration: "70 min" },
+    ],
+    eligibility: ["No minimum age", "No academic prerequisites", "International students welcome"],
+    importantDates: [
+      { label: "Registration opens", date: "Jul 12, 2026" },
+      { label: "Registration closes", date: "Aug 23, 2026" },
+      { label: "Exam date", date: "Oct 04, 2026" },
+      { label: "Result declaration", date: "Oct 25, 2026" },
+    ],
+    participatingColleges: ["northgate-institute-of-technology", "pacific-global-university", "ironwood-state-university"],
+    prepTips: ["Take 4+ full-length adaptive mocks", "Master a desmos-friendly calculator workflow", "Read long-form journalism daily for RW section"],
+  },
+  {
+    slug: "gre", name: "GRE", fullName: "Graduate Record Examination", conductingBody: "ETS",
+    level: "International", applicationOpens: "Year-round", applicationCloses: "—",
+    examDate: "Flexible", resultDate: "T+15 days", stream: "All",
+    registrationStatus: "Open", difficulty: "High",
+    about: "A graduate-level entrance test accepted by most master's and doctoral programs globally. Year-round computer-based testing.",
+    modeOfExam: "Computer-based", durationMinutes: 118, totalMarks: 340,
+    questionCount: 54, registrationFee: "$220", attemptsPerYear: 5,
+    heroAccent: "from-academic to-gold",
+    syllabus: [
+      { subject: "Verbal Reasoning", topics: ["Reading Comprehension", "Text Completion", "Sentence Equivalence"] },
+      { subject: "Quantitative Reasoning", topics: ["Arithmetic", "Algebra", "Geometry", "Data Analysis"] },
+      { subject: "Analytical Writing", topics: ["Analyze an Issue task"] },
+    ],
+    pattern: [
+      { section: "Analytical Writing", questions: 1, marks: 6, duration: "30 min" },
+      { section: "Verbal Reasoning", questions: 27, marks: 170, duration: "41 min" },
+      { section: "Quantitative Reasoning", questions: 27, marks: 170, duration: "47 min" },
+    ],
+    eligibility: ["Bachelor's degree or in final year", "No age restriction"],
+    importantDates: [
+      { label: "Window", date: "Year-round" },
+      { label: "Score validity", date: "5 years" },
+    ],
+    participatingColleges: ["northgate-institute-of-technology", "stellar-institute-of-sciences", "claremont-policy-school"],
+    prepTips: ["Build a 1,500-word vocab base", "Drill quant under timed conditions", "Use ETS PowerPrep for calibration"],
+  },
+  {
+    slug: "gmat", name: "GMAT", fullName: "Graduate Management Admission Test", conductingBody: "GMAC",
+    level: "International", applicationOpens: "Year-round", applicationCloses: "—",
+    examDate: "Flexible", resultDate: "T+20 days", stream: "Management",
+    registrationStatus: "Open", difficulty: "High",
+    about: "The flagship business-school entrance test. The Focus Edition is shorter and section-adaptive.",
+    modeOfExam: "Computer-adaptive", durationMinutes: 135, totalMarks: 805,
+    questionCount: 64, registrationFee: "$275", attemptsPerYear: 5,
+    heroAccent: "from-brand to-gold",
+    syllabus: [
+      { subject: "Quantitative Reasoning", topics: ["Algebra", "Arithmetic", "Word Problems"] },
+      { subject: "Verbal Reasoning", topics: ["Reading Comprehension", "Critical Reasoning"] },
+      { subject: "Data Insights", topics: ["Data Sufficiency", "Multi-source Reasoning", "Graphics Interpretation"] },
+    ],
+    pattern: [
+      { section: "Quantitative", questions: 21, marks: 90, duration: "45 min" },
+      { section: "Verbal", questions: 23, marks: 90, duration: "45 min" },
+      { section: "Data Insights", questions: 20, marks: 90, duration: "45 min" },
+    ],
+    eligibility: ["18+ years", "Bachelor's degree recommended"],
+    importantDates: [
+      { label: "Booking window", date: "Year-round" },
+      { label: "Score validity", date: "5 years" },
+    ],
+    participatingColleges: ["royal-westmere-business", "pacific-global-university", "claremont-policy-school"],
+    prepTips: ["Master Data Sufficiency logic early", "Time per question matters more than question count", "Use Official Guide problem sets"],
+  },
+  {
+    slug: "jee-main", name: "JEE Main", fullName: "Joint Entrance Examination — Main", conductingBody: "NTA",
+    level: "National", applicationOpens: "Nov 01, 2026", applicationCloses: "Nov 30, 2026",
+    examDate: "Jan 24, 2027", resultDate: "Feb 12, 2027", stream: "Engineering",
+    registrationStatus: "Upcoming", difficulty: "Very High",
+    about: "India's largest engineering entrance test. Gateway to NITs, IIITs, and JEE Advanced for IITs.",
+    modeOfExam: "Computer-based", durationMinutes: 180, totalMarks: 300,
+    questionCount: 75, registrationFee: "₹1,000", attemptsPerYear: 2,
+    heroAccent: "from-academic to-brand",
+    syllabus: [
+      { subject: "Physics", topics: ["Mechanics", "Electrodynamics", "Optics", "Modern Physics"] },
+      { subject: "Chemistry", topics: ["Physical", "Organic", "Inorganic"] },
+      { subject: "Mathematics", topics: ["Calculus", "Algebra", "Coordinate Geometry", "Vectors"] },
+    ],
+    pattern: [
+      { section: "Physics", questions: 25, marks: 100, duration: "60 min" },
+      { section: "Chemistry", questions: 25, marks: 100, duration: "60 min" },
+      { section: "Mathematics", questions: 25, marks: 100, duration: "60 min" },
+    ],
+    eligibility: ["10+2 with PCM", "75% in board exams (relaxation for reserved)", "No age limit (from 2024)"],
+    importantDates: [
+      { label: "Session 1 application", date: "Nov 01 – Nov 30, 2026" },
+      { label: "Session 1 exam", date: "Jan 24 – Feb 01, 2027" },
+      { label: "Session 2 exam", date: "Apr 03 – Apr 10, 2027" },
+      { label: "Result", date: "Feb 12 / Apr 25, 2027" },
+    ],
+    participatingColleges: ["varun-tech-university"],
+    prepTips: ["NCERT first, coaching material later", "Mock test every weekend for the last 4 months", "PYQs across 10 years are non-negotiable"],
+  },
+  {
+    slug: "neet-ug", name: "NEET-UG", fullName: "National Eligibility cum Entrance Test", conductingBody: "NTA",
+    level: "National", applicationOpens: "Feb 04, 2027", applicationCloses: "Mar 04, 2027",
+    examDate: "May 02, 2027", resultDate: "Jun 14, 2027", stream: "Medical",
+    registrationStatus: "Upcoming", difficulty: "Very High",
+    about: "Single entrance test for all MBBS, BDS, AYUSH and veterinary admissions in India.",
+    modeOfExam: "Pen & paper (OMR)", durationMinutes: 200, totalMarks: 720,
+    questionCount: 180, registrationFee: "₹1,700", attemptsPerYear: 1,
+    heroAccent: "from-brand to-academic",
+    syllabus: [
+      { subject: "Physics", topics: ["Mechanics", "Thermodynamics", "Optics", "Modern Physics"] },
+      { subject: "Chemistry", topics: ["Physical", "Organic", "Inorganic"] },
+      { subject: "Biology", topics: ["Botany", "Zoology", "Human Physiology", "Genetics & Evolution"] },
+    ],
+    pattern: [
+      { section: "Physics", questions: 45, marks: 180, duration: "50 min" },
+      { section: "Chemistry", questions: 45, marks: 180, duration: "50 min" },
+      { section: "Biology", questions: 90, marks: 360, duration: "100 min" },
+    ],
+    eligibility: ["10+2 with PCB, min 50%", "Minimum age 17", "Indian / OCI / NRI candidates"],
+    importantDates: [
+      { label: "Application opens", date: "Feb 04, 2027" },
+      { label: "Application closes", date: "Mar 04, 2027" },
+      { label: "Exam date", date: "May 02, 2027" },
+      { label: "Result", date: "Jun 14, 2027" },
+    ],
+    participatingColleges: ["marlowe-medical-college"],
+    prepTips: ["NCERT Biology cover-to-cover", "Daily 90 MCQs across all 3 subjects", "Revise rather than learn new in last 30 days"],
+  },
+  {
+    slug: "cuet", name: "CUET", fullName: "Common University Entrance Test", conductingBody: "NTA",
+    level: "National", applicationOpens: "Feb 01, 2027", applicationCloses: "Mar 10, 2027",
+    examDate: "May 15, 2027", resultDate: "Jun 30, 2027", stream: "All",
+    registrationStatus: "Upcoming", difficulty: "Moderate",
+    about: "Common admission test for central universities across UG programs in arts, science, and commerce.",
+    modeOfExam: "Computer-based", durationMinutes: 195, totalMarks: 800,
+    questionCount: 160, registrationFee: "₹1,000", attemptsPerYear: 1,
+    heroAccent: "from-gold to-academic",
+    eligibility: ["10+2 from a recognized board", "Subject-specific eligibility per program"],
+    importantDates: [
+      { label: "Application", date: "Feb 01 – Mar 10, 2027" },
+      { label: "Exam window", date: "May 15 – Jun 03, 2027" },
+      { label: "Result", date: "Jun 30, 2027" },
+    ],
+    participatingColleges: [],
+    prepTips: ["Pick 3-4 strong subject papers", "Don't ignore the language section", "Past CUET sample sets are the best reference"],
+  },
+  {
+    slug: "lsat", name: "LSAT", fullName: "Law School Admission Test", conductingBody: "LSAC",
+    level: "International", applicationOpens: "Year-round", applicationCloses: "—",
+    examDate: "Multiple windows", resultDate: "T+21 days", stream: "Law",
+    registrationStatus: "Open", difficulty: "High",
+    about: "The standardized admissions test for JD programs across the US, Canada, and a growing list of global law schools.",
+    modeOfExam: "Computer-based / Online proctored", durationMinutes: 175, totalMarks: 180,
+    questionCount: 76, registrationFee: "$238", attemptsPerYear: 5,
+    heroAccent: "from-academic to-gold",
+    eligibility: ["No formal eligibility", "Recommended for prospective JD applicants"],
+    importantDates: [{ label: "Test windows", date: "Aug, Oct, Nov, Jan, Feb, Apr, Jun" }],
+    participatingColleges: ["midhurst-school-of-law"],
+    prepTips: ["Drill logic games daily", "Diagram reading-comprehension passages", "Use PrepTests 70+ for highest fidelity"],
+  },
+  {
+    slug: "clat", name: "CLAT", fullName: "Common Law Admission Test", conductingBody: "Consortium of NLUs",
+    level: "National", applicationOpens: "Aug 01, 2026", applicationCloses: "Oct 30, 2026",
+    examDate: "Dec 06, 2026", resultDate: "Dec 22, 2026", stream: "Law",
+    registrationStatus: "Closing soon", difficulty: "High",
+    about: "The entrance test for India's National Law Universities at both UG and PG levels.",
+    modeOfExam: "Pen & paper", durationMinutes: 120, totalMarks: 120,
+    questionCount: 120, registrationFee: "₹4,000", attemptsPerYear: 1,
+    heroAccent: "from-brand to-gold",
+    eligibility: ["10+2 with min 45%", "No age limit"],
+    importantDates: [
+      { label: "Registration", date: "Aug 01 – Oct 30, 2026" },
+      { label: "Exam", date: "Dec 06, 2026" },
+      { label: "Result", date: "Dec 22, 2026" },
+    ],
+    participatingColleges: ["midhurst-school-of-law"],
+    prepTips: ["Daily editorial reading (The Hindu)", "Master legal reasoning principles", "Sectional speed > overall speed"],
+  },
 ];
+
+export function getExam(slug: string): Exam | undefined {
+  return exams.find((e) => e.slug === slug);
+}
 
 export const articles: Article[] = [
   { slug: "best-bca-colleges-2026", title: "The 25 best undergraduate computing programs of 2026", excerpt: "Where rigor, placements, and student culture genuinely overlap — based on five years of placement data.", category: "Rankings", readMinutes: 8, publishedAt: "2026-04-12", author: "Editorial Team" },
@@ -1129,6 +1358,58 @@ export const reviews: Review[] = [
   { id: "r4", collegeSlug: "royal-westmere-business", author: "James W.", course: "Executive MBA", year: 2024, rating: 5, title: "Tight cohort, lifelong network", body: "The cohort size is tiny on purpose. You leave with 60 people who genuinely show up for you for the rest of your career.", verified: true },
   { id: "r5", collegeSlug: "alban-college-of-design", author: "Sofia G.", course: "MDes, Product", year: 2025, rating: 4, title: "Atelier model done right", body: "Studios are intense and you learn directly from working Milanese designers. Expect to spend a lot of personal money on materials.", verified: true },
 ];
+
+export const courseReviews: CourseReview[] = [
+  {
+    id: "cr1", courseSlug: "btech-computer-science", author: "Priya S.", collegeSlug: "northgate-institute-of-technology",
+    graduationYear: 2025, rating: 5,
+    ratings: { teaching: 5, curriculum: 5, careerOutcomes: 5, valueForMoney: 4 },
+    title: "Best decision I've made", body: "The curriculum has aged remarkably well. By the time I finished, I had shipped real distributed systems and contributed to two research papers.",
+    pros: "Faculty access, lab culture, recruiter pipeline", cons: "Tuition is steep without aid",
+    recommend: true, helpfulCount: 142, reportedCount: 0, verified: true, language: "en",
+    submittedAt: "2025-08-14T09:22:00Z", status: "approved", moderatedBy: "moderator-12", moderatedAt: "2025-08-14T11:00:00Z",
+  },
+  {
+    id: "cr2", courseSlug: "btech-computer-science", author: "Aarav M.", collegeSlug: "varun-tech-university",
+    graduationYear: 2024, rating: 4,
+    ratings: { teaching: 4, curriculum: 4, careerOutcomes: 5, valueForMoney: 5 },
+    title: "Outstanding ROI", body: "Came in with average JEE rank, left with a top-tier offer. The placement cell pushes you hard and the AI/ML electives are world-class.",
+    pros: "Placements, modern electives", cons: "Older labs need an upgrade",
+    recommend: true, helpfulCount: 89, reportedCount: 0, verified: true, language: "en",
+    submittedAt: "2024-12-02T15:10:00Z", status: "approved",
+  },
+  {
+    id: "cr3", courseSlug: "mba-general", author: "Mei L.", collegeSlug: "pacific-global-university",
+    graduationYear: 2025, rating: 5,
+    ratings: { teaching: 5, curriculum: 4, careerOutcomes: 5, valueForMoney: 4 },
+    title: "Network is the curriculum", body: "Two years that compressed a decade of learning. The cohort and alumni network alone justify the sticker price.",
+    pros: "Cohort quality, global immersion", cons: "Heavy reading load",
+    recommend: true, helpfulCount: 64, reportedCount: 0, verified: true, language: "en",
+    submittedAt: "2025-06-30T10:00:00Z", status: "approved",
+  },
+  {
+    id: "cr4", courseSlug: "mbbs", author: "Dr. R. Pillai", collegeSlug: "marlowe-medical-college",
+    graduationYear: 2023, rating: 5,
+    ratings: { teaching: 5, curriculum: 5, careerOutcomes: 5, valueForMoney: 4 },
+    title: "Clinical exposure from day one", body: "The attached teaching hospital means you see real patients early. Workload is brutal but the residency pipeline is unmatched.",
+    pros: "Clinical depth, residency placement", cons: "Brutal hours",
+    recommend: true, helpfulCount: 51, reportedCount: 0, verified: true, language: "en",
+    submittedAt: "2023-09-12T08:00:00Z", status: "approved",
+  },
+  {
+    id: "cr5", courseSlug: "msc-data-science", author: "Anonymous", graduationYear: 2025, rating: 4,
+    ratings: { teaching: 4, curriculum: 5, careerOutcomes: 4, valueForMoney: 4 },
+    title: "Strong technical, weaker industry bridge", body: "Curriculum is rigorous and modern, but the career services lag the technical strength. Self-driven students do extremely well.",
+    pros: "Modern ML stack, research-grade rigor", cons: "Career office needs more recruiters",
+    recommend: true, helpfulCount: 38, reportedCount: 1, verified: false, language: "en",
+    submittedAt: "2025-07-19T13:45:00Z", status: "approved",
+  },
+];
+
+export function getCourseReviews(courseSlug: string): CourseReview[] {
+  return courseReviews.filter((r) => r.courseSlug === courseSlug && r.status === "approved");
+}
+
 
 export type FAQ = { q: string; a: string };
 export const faqs: FAQ[] = [

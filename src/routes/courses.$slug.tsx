@@ -18,7 +18,8 @@ import {
 import { SiteHeader } from "@/components/edufinder/site-header";
 import { SiteFooter } from "@/components/edufinder/site-footer";
 import { CollegeCard } from "@/components/edufinder/college-card";
-import { colleges, courses, getCourse, getStream } from "@/lib/edufinder-data";
+import { colleges, courses, getCourse, getCourseReviews, getStream } from "@/lib/edufinder-data";
+import { CourseReviews } from "@/components/edufinder/course-reviews";
 
 export const Route = createFileRoute("/courses/$slug")({
   loader: ({ params }) => {
@@ -66,6 +67,7 @@ const sections = [
   { id: "curriculum", label: "Curriculum" },
   { id: "careers", label: "Careers" },
   { id: "colleges", label: "Top colleges" },
+  { id: "reviews", label: "Reviews" },
   { id: "eligibility", label: "Eligibility" },
   { id: "similar", label: "Similar" },
 ] as const;
@@ -298,6 +300,15 @@ function CourseDetailPage() {
               )}
             </section>
 
+            {/* Reviews */}
+            <section id="reviews" className="scroll-mt-32">
+              <CourseReviews
+                courseSlug={course.slug}
+                courseName={course.name}
+                initial={getCourseReviews(course.slug)}
+              />
+            </section>
+
             {/* Eligibility */}
             <section id="eligibility" className="scroll-mt-32">
               <SectionTitle eyebrow="Admissions" title="Eligibility & entrance exams" />
@@ -396,9 +407,12 @@ function CourseDetailPage() {
               <p className="mt-2 text-sm text-white/80">
                 15-minute call with an unbiased EduFinder advisor. Free for students.
               </p>
-              <button className="mt-4 w-full rounded-full bg-gold px-5 py-2.5 text-sm font-bold text-brand">
-                Book a slot
-              </button>
+              <Link
+                to="/counseling"
+                className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-gold px-5 py-2.5 text-sm font-bold text-brand"
+              >
+                Book a slot <ArrowRight className="size-4" />
+              </Link>
             </div>
           </aside>
         </div>
