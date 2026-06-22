@@ -102,6 +102,7 @@ export type Exam = {
   heroAccent?: string;
 };
 
+export type ArticleSection = { heading: string; body: string };
 export type Article = {
   slug: string;
   title: string;
@@ -110,6 +111,12 @@ export type Article = {
   readMinutes: number;
   publishedAt: string;
   author: string;
+  authorRole?: string;
+  heroAccent?: string;
+  tags?: string[];
+  tldr?: string[];
+  sections?: ArticleSection[];
+  relatedSlugs?: string[];
 };
 
 export type Review = {
@@ -1345,11 +1352,134 @@ export function getExam(slug: string): Exam | undefined {
 }
 
 export const articles: Article[] = [
-  { slug: "best-bca-colleges-2026", title: "The 25 best undergraduate computing programs of 2026", excerpt: "Where rigor, placements, and student culture genuinely overlap — based on five years of placement data.", category: "Rankings", readMinutes: 8, publishedAt: "2026-04-12", author: "Editorial Team" },
-  { slug: "how-to-pick-mba", title: "How to pick the right MBA when every brochure looks the same", excerpt: "A practical decision framework built around ROI, network access, and elective depth.", category: "Guides", readMinutes: 11, publishedAt: "2026-03-29", author: "Anika Roy" },
-  { slug: "scholarships-2026", title: "12 fully-funded scholarships worth applying to this fall", excerpt: "From Rhodes to lesser-known European endowments, here's where the real money lives.", category: "Scholarships", readMinutes: 7, publishedAt: "2026-04-02", author: "Marco Bellini" },
-  { slug: "neet-prep-changes", title: "What NEET aspirants need to know about the 2027 syllabus changes", excerpt: "The MCC restructured weightages. Here's how to recalibrate your prep plan.", category: "Exams", readMinutes: 6, publishedAt: "2026-04-09", author: "Dr. K. Iyer" },
+  {
+    slug: "best-bca-colleges-2026",
+    title: "The 25 best undergraduate computing programs of 2026",
+    excerpt: "Where rigor, placements, and student culture genuinely overlap — based on five years of placement data.",
+    category: "Rankings", readMinutes: 8, publishedAt: "2026-04-12",
+    author: "Editorial Team", authorRole: "EduFinder Research",
+    heroAccent: "from-brand via-academic to-gold",
+    tags: ["Engineering", "Rankings", "Placements"],
+    tldr: [
+      "We weighted placement consistency 2× higher than headline median package.",
+      "Three new entrants displaced legacy programs on research output.",
+      "Tuition-to-package ratio matters more than brand for ROI.",
+    ],
+    sections: [
+      { heading: "How we ranked", body: "We pulled five years of verified placement reports, faculty-to-student ratios, and research output across 180 undergraduate computing programs. Each program was scored on consistency — not just the peak year. Programs that posted a great 2024 but a weak 2022 were penalized; sustained quality compounds." },
+      { heading: "What changed this year", body: "Three programs that quietly invested in compute infrastructure and applied-ML labs leapfrogged a half-dozen legacy names. Industry partnerships now matter more than alumni nostalgia: the best programs publish recruiter rosters annually, with role-level breakdowns." },
+      { heading: "The ROI lens", body: "When you divide median package by total program cost, the picture inverts. Several mid-tier public universities deliver 2–3× the ROI of brand-name privates, especially for students who don't need elite-network access for their target roles." },
+      { heading: "What to ask on a campus visit", body: "Forget the brochure. Ask to see the lab utilization schedule, request the placement file for the previous batch (not the slide deck), and find two final-year students who'll talk to you without the admissions team in the room." },
+    ],
+    relatedSlugs: ["how-to-pick-mba", "scholarships-2026"],
+  },
+  {
+    slug: "how-to-pick-mba",
+    title: "How to pick the right MBA when every brochure looks the same",
+    excerpt: "A practical decision framework built around ROI, network access, and elective depth.",
+    category: "Guides", readMinutes: 11, publishedAt: "2026-03-29",
+    author: "Anika Roy", authorRole: "Ex-admissions, top-10 B-school",
+    heroAccent: "from-academic via-brand to-gold",
+    tags: ["MBA", "Decision Frameworks", "ROI"],
+    tldr: [
+      "Pick the school whose elective stack matches your post-MBA role.",
+      "Network access is real, but only at the school you actually attend.",
+      "Compare opportunity cost, not sticker price.",
+    ],
+    sections: [
+      { heading: "Start with the role, not the school", body: "Most applicants chase brand and back into the role. Reverse it: pick three target roles, list the firms that hire for them, and look up which schools they recruited from in the last 24 months. The brand premium is real — but only inside its actual recruiting footprint." },
+      { heading: "The elective stack matters more than core", body: "Core curricula across the top 50 schools converge. Differentiation lives in electives: a school with three deep PE/VC electives is a different product from one with three deep operations electives, even if their rankings are identical." },
+      { heading: "Network access is overrated until it isn't", body: "Network value is non-linear. Below a threshold, it's a polite alumni database. Above it, doors open before you ask. Talk to alumni 3–5 years out and ask one question: 'In the last year, did the network actually move something for you?'" },
+      { heading: "Run the opportunity-cost math", body: "Sticker price is the visible cost. The invisible cost is two years of foregone earnings and seniority. A 1-year program at 70% of the sticker can outperform a 2-year program at face value — if the recruiting access is comparable." },
+    ],
+    relatedSlugs: ["best-bca-colleges-2026", "scholarships-2026"],
+  },
+  {
+    slug: "scholarships-2026",
+    title: "12 fully-funded scholarships worth applying to this fall",
+    excerpt: "From Rhodes to lesser-known European endowments, here's where the real money lives.",
+    category: "Scholarships", readMinutes: 7, publishedAt: "2026-04-02",
+    author: "Marco Bellini", authorRole: "Scholarships Editor",
+    heroAccent: "from-gold via-brand to-academic",
+    tags: ["Scholarships", "Funding", "Applications"],
+    tldr: [
+      "Apply to 5–7 well-fit scholarships, not 30 random ones.",
+      "Lesser-known European endowments are dramatically less competitive.",
+      "Reuse one strong essay across three applications.",
+    ],
+    sections: [
+      { heading: "The 80/20 of scholarship applications", body: "Most applicants spread thin across 20+ programs and write generic essays. The students who actually win pick 5–7 programs they genuinely fit, then go deep: read the funder's published priorities, mirror their language, and align their pitch to the funder's mission." },
+      { heading: "Where the quiet money is", body: "Rhodes and Fulbright get the attention; smaller European endowments — Bocconi merit awards, the DAAD masters scholarship pool, several Nordic government schemes — fund similar amounts with a fraction of the applicant volume. Acceptance rates are often 5–10× higher." },
+      { heading: "Essay reuse without sounding recycled", body: "Write one strong personal narrative essay. For each application, rewrite only the opening paragraph and the final paragraph to mirror the funder's specific question. The middle 70% can be reused with minor edits — and committees won't notice." },
+    ],
+    relatedSlugs: ["how-to-pick-mba", "neet-prep-changes"],
+  },
+  {
+    slug: "neet-prep-changes",
+    title: "What NEET aspirants need to know about the 2027 syllabus changes",
+    excerpt: "The MCC restructured weightages. Here's how to recalibrate your prep plan.",
+    category: "Exams", readMinutes: 6, publishedAt: "2026-04-09",
+    author: "Dr. K. Iyer", authorRole: "Medical Education Researcher",
+    heroAccent: "from-brand via-gold to-academic",
+    tags: ["NEET", "Medical", "Exam Prep"],
+    tldr: [
+      "Biology weightage tilts further toward applied physiology.",
+      "Physics numerical share drops; conceptual MCQs rise.",
+      "Mock-test cadence should shift from weekly to bi-weekly with deeper review.",
+    ],
+    sections: [
+      { heading: "The headline changes", body: "The 2027 syllabus rebalances Biology toward applied physiology and human systems, trims rote botany, and reduces the share of pure-numerical Physics in favor of concept-application MCQs. The Chemistry split is largely unchanged but with stricter alignment to NCERT phrasing." },
+      { heading: "Recalibrating your prep plan", body: "If you were doing weekly full-length mocks, switch to bi-weekly mocks with deep multi-day review windows in between. The new pattern punishes shallow attempts and rewards diagnostic review. Treat every wrong answer as a 30-minute investigation, not a 30-second correction." },
+      { heading: "What to drop and what to double down on", body: "Drop pure-mnemonic botany sheets. Double down on applied physiology case scenarios — they map directly to the new Biology section. For Physics, replace formula drills with conceptual problem sets that force you to derive, not recall." },
+    ],
+    relatedSlugs: ["scholarships-2026", "best-bca-colleges-2026"],
+  },
+  {
+    slug: "study-abroad-budget-2027",
+    title: "The real cost of studying abroad in 2027 — and how to fund it",
+    excerpt: "Tuition is only 40% of your total bill. Here's the honest breakdown by destination.",
+    category: "Guides", readMinutes: 9, publishedAt: "2026-05-02",
+    author: "Sara Nakamura", authorRole: "International Admissions",
+    heroAccent: "from-academic via-gold to-brand",
+    tags: ["Study Abroad", "Budgeting", "Funding"],
+    tldr: [
+      "Living costs swing the total by 40–60% between cities.",
+      "Part-time work caps vary widely by visa class.",
+      "Education loans denominated in local currency reduce FX risk.",
+    ],
+    sections: [
+      { heading: "What the sticker price hides", body: "Tuition is the headline, but housing, health insurance, transit, and FX volatility usually add another 60–150%. A program that looks cheaper on paper can land more expensive once you price in the city it's in." },
+      { heading: "Destination-by-destination breakdown", body: "Toronto and Sydney have closed the affordability gap with London and New York. Continental Europe — especially Germany, the Netherlands, and parts of Scandinavia — still offers the strongest tuition-to-quality ratio for international students, if you can navigate the language requirements for non-English programs." },
+      { heading: "Funding stacks that actually work", body: "The most resilient funding plan combines a partial scholarship, an education loan in the destination currency, and a realistic part-time work expectation aligned with your visa. Avoid leverage built on optimistic post-grad salary assumptions in a currency you don't earn in." },
+    ],
+    relatedSlugs: ["scholarships-2026", "how-to-pick-mba"],
+  },
+  {
+    slug: "ai-skills-2027",
+    title: "Which AI skills employers will actually pay for in 2027",
+    excerpt: "Cut through the hype: a grounded view of the skills moving real hiring decisions.",
+    category: "Careers", readMinutes: 5, publishedAt: "2026-05-18",
+    author: "Editorial Team", authorRole: "EduFinder Careers Desk",
+    heroAccent: "from-brand via-academic to-gold",
+    tags: ["AI", "Careers", "Skills"],
+    tldr: [
+      "Applied ML beats theoretical depth for most non-research roles.",
+      "Evaluation and eval-driven development are the new senior skill.",
+      "Domain context (health, finance, legal) compounds AI skill value.",
+    ],
+    sections: [
+      { heading: "What recruiters actually filter for", body: "Job descriptions over-index on framework names. Recruiters under-index on them. What moves an offer is evidence you've shipped something — a deployed model, a working evaluation pipeline, a measurable business outcome. Github links beat certificate lists." },
+      { heading: "The new senior skill: evaluation", body: "Building a model is now table stakes. Designing and running evaluations — choosing the right metric, building a test set, catching regressions — is the skill that separates a junior from a senior. It also generalizes across model families, so it ages well." },
+      { heading: "Why domain context compounds", body: "A generic ML engineer is increasingly commoditized. An ML engineer who understands the regulatory and operational realities of healthcare, finance, or legal commands 30–60% premium and is harder to replace." },
+    ],
+    relatedSlugs: ["best-bca-colleges-2026", "how-to-pick-mba"],
+  },
 ];
+
+export function getArticle(slug: string): Article | undefined {
+  return articles.find((a) => a.slug === slug);
+}
+
 
 export const reviews: Review[] = [
   { id: "r1", collegeSlug: "northgate-institute-of-technology", author: "Priya S.", course: "BTech, CSE", year: 2025, rating: 5, title: "Worth every dollar of the tuition", body: "Faculty access is unreal, the research labs run round the clock, and recruiters actually fight over students. The dorms could be better.", verified: true },
