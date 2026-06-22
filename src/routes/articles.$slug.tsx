@@ -55,9 +55,9 @@ export const Route = createFileRoute("/articles/$slug")({
 });
 
 function ArticleDetail() {
-  const { article: a } = Route.useLoaderData();
+  const { article: a } = Route.useLoaderData() as { article: Article };
   const related = (a.relatedSlugs ?? [])
-    .map((s) => articles.find((x) => x.slug === s))
+    .map((s: string) => articles.find((x) => x.slug === s))
     .filter((x): x is Article => Boolean(x));
 
   return (
