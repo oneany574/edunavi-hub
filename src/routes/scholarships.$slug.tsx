@@ -14,7 +14,7 @@ import {
 } from "lucide-react";
 import { SiteHeader } from "@/components/edufinder/site-header";
 import { SiteFooter } from "@/components/edufinder/site-footer";
-import { getScholarship, scholarships } from "@/lib/edufinder-extras";
+import { getScholarship, scholarships, type Scholarship } from "@/lib/edufinder-extras";
 
 export const Route = createFileRoute("/scholarships/$slug")({
   loader: ({ params }) => {
@@ -39,7 +39,7 @@ export const Route = createFileRoute("/scholarships/$slug")({
 });
 
 function ScholarshipDetailPage() {
-  const s = Route.useLoaderData();
+  const s = Route.useLoaderData() as Scholarship;
   const daysLeft = Math.max(
     0,
     Math.ceil((new Date(s.deadline).getTime() - Date.now()) / (1000 * 60 * 60 * 24)),

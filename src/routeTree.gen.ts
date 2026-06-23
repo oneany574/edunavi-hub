@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as StudyAbroadRouteImport } from './routes/study-abroad'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ReviewsRouteImport } from './routes/reviews'
@@ -24,12 +25,18 @@ import { Route as CollegePredictorRouteImport } from './routes/college-predictor
 import { Route as ClaimCollegeRouteImport } from './routes/claim-college'
 import { Route as ArticlesRouteImport } from './routes/articles'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ScholarshipsSlugRouteImport } from './routes/scholarships.$slug'
 import { Route as ExamsSlugRouteImport } from './routes/exams.$slug'
 import { Route as DashboardCollegeRouteImport } from './routes/dashboard.college'
 import { Route as CoursesSlugRouteImport } from './routes/courses.$slug'
 import { Route as CollegesSlugRouteImport } from './routes/colleges.$slug'
 import { Route as ArticlesSlugRouteImport } from './routes/articles.$slug'
 
+const StudyAbroadRoute = StudyAbroadRouteImport.update({
+  id: '/study-abroad',
+  path: '/study-abroad',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   id: '/sitemap.xml',
   path: '/sitemap.xml',
@@ -105,6 +112,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ScholarshipsSlugRoute = ScholarshipsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ScholarshipsRoute,
+} as any)
 const ExamsSlugRoute = ExamsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -145,13 +157,15 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
-  '/scholarships': typeof ScholarshipsRoute
+  '/scholarships': typeof ScholarshipsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/study-abroad': typeof StudyAbroadRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
   '/dashboard/college': typeof DashboardCollegeRoute
   '/exams/$slug': typeof ExamsSlugRoute
+  '/scholarships/$slug': typeof ScholarshipsSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -167,13 +181,15 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
-  '/scholarships': typeof ScholarshipsRoute
+  '/scholarships': typeof ScholarshipsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/study-abroad': typeof StudyAbroadRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
   '/dashboard/college': typeof DashboardCollegeRoute
   '/exams/$slug': typeof ExamsSlugRoute
+  '/scholarships/$slug': typeof ScholarshipsSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -190,13 +206,15 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
-  '/scholarships': typeof ScholarshipsRoute
+  '/scholarships': typeof ScholarshipsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/study-abroad': typeof StudyAbroadRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
   '/dashboard/college': typeof DashboardCollegeRoute
   '/exams/$slug': typeof ExamsSlugRoute
+  '/scholarships/$slug': typeof ScholarshipsSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -216,11 +234,13 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/scholarships'
     | '/sitemap.xml'
+    | '/study-abroad'
     | '/articles/$slug'
     | '/colleges/$slug'
     | '/courses/$slug'
     | '/dashboard/college'
     | '/exams/$slug'
+    | '/scholarships/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -238,11 +258,13 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/scholarships'
     | '/sitemap.xml'
+    | '/study-abroad'
     | '/articles/$slug'
     | '/colleges/$slug'
     | '/courses/$slug'
     | '/dashboard/college'
     | '/exams/$slug'
+    | '/scholarships/$slug'
   id:
     | '__root__'
     | '/'
@@ -260,11 +282,13 @@ export interface FileRouteTypes {
     | '/reviews'
     | '/scholarships'
     | '/sitemap.xml'
+    | '/study-abroad'
     | '/articles/$slug'
     | '/colleges/$slug'
     | '/courses/$slug'
     | '/dashboard/college'
     | '/exams/$slug'
+    | '/scholarships/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -281,13 +305,21 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   QuestionsRoute: typeof QuestionsRoute
   ReviewsRoute: typeof ReviewsRoute
-  ScholarshipsRoute: typeof ScholarshipsRoute
+  ScholarshipsRoute: typeof ScholarshipsRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  StudyAbroadRoute: typeof StudyAbroadRoute
   DashboardCollegeRoute: typeof DashboardCollegeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/study-abroad': {
+      id: '/study-abroad'
+      path: '/study-abroad'
+      fullPath: '/study-abroad'
+      preLoaderRoute: typeof StudyAbroadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sitemap.xml': {
       id: '/sitemap.xml'
       path: '/sitemap.xml'
@@ -393,6 +425,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/scholarships/$slug': {
+      id: '/scholarships/$slug'
+      path: '/$slug'
+      fullPath: '/scholarships/$slug'
+      preLoaderRoute: typeof ScholarshipsSlugRouteImport
+      parentRoute: typeof ScholarshipsRoute
+    }
     '/exams/$slug': {
       id: '/exams/$slug'
       path: '/$slug'
@@ -476,6 +515,18 @@ const ExamsRouteChildren: ExamsRouteChildren = {
 
 const ExamsRouteWithChildren = ExamsRoute._addFileChildren(ExamsRouteChildren)
 
+interface ScholarshipsRouteChildren {
+  ScholarshipsSlugRoute: typeof ScholarshipsSlugRoute
+}
+
+const ScholarshipsRouteChildren: ScholarshipsRouteChildren = {
+  ScholarshipsSlugRoute: ScholarshipsSlugRoute,
+}
+
+const ScholarshipsRouteWithChildren = ScholarshipsRoute._addFileChildren(
+  ScholarshipsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ArticlesRoute: ArticlesRouteWithChildren,
@@ -490,8 +541,9 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   QuestionsRoute: QuestionsRoute,
   ReviewsRoute: ReviewsRoute,
-  ScholarshipsRoute: ScholarshipsRoute,
+  ScholarshipsRoute: ScholarshipsRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
+  StudyAbroadRoute: StudyAbroadRoute,
   DashboardCollegeRoute: DashboardCollegeRoute,
 }
 export const routeTree = rootRouteImport
