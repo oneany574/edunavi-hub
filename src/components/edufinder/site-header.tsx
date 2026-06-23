@@ -122,12 +122,18 @@ export function SiteHeader() {
           >
             <Search className="size-4" />
           </button>
-          <button className="hidden md:inline-flex items-center text-sm font-medium text-foreground/80 px-3 py-2 hover:text-foreground">
+          <Link
+            to="/login"
+            className="hidden md:inline-flex items-center text-sm font-medium text-foreground/80 px-3 py-2 hover:text-foreground"
+          >
             Log in
-          </button>
-          <button className="rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-brand-foreground transition-transform hover:-translate-y-px hover:bg-brand/90">
+          </Link>
+          <Link
+            to="/join"
+            className="rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-brand-foreground transition-transform hover:-translate-y-px hover:bg-brand/90"
+          >
             Join free
-          </button>
+          </Link>
           <button
             type="button"
             aria-label="Open menu"
