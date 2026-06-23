@@ -13,6 +13,8 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as QuestionsRouteImport } from './routes/questions'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as JoinRouteImport } from './routes/join'
 import { Route as ExamsRouteImport } from './routes/exams'
 import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as CounselingRouteImport } from './routes/counseling'
@@ -46,6 +48,16 @@ const ReviewsRoute = ReviewsRouteImport.update({
 const QuestionsRoute = QuestionsRouteImport.update({
   id: '/questions',
   path: '/questions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JoinRoute = JoinRouteImport.update({
+  id: '/join',
+  path: '/join',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ExamsRoute = ExamsRouteImport.update({
@@ -129,6 +141,8 @@ export interface FileRoutesByFullPath {
   '/counseling': typeof CounselingRoute
   '/courses': typeof CoursesRouteWithChildren
   '/exams': typeof ExamsRouteWithChildren
+  '/join': typeof JoinRoute
+  '/login': typeof LoginRoute
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
   '/scholarships': typeof ScholarshipsRoute
@@ -149,6 +163,8 @@ export interface FileRoutesByTo {
   '/counseling': typeof CounselingRoute
   '/courses': typeof CoursesRouteWithChildren
   '/exams': typeof ExamsRouteWithChildren
+  '/join': typeof JoinRoute
+  '/login': typeof LoginRoute
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
   '/scholarships': typeof ScholarshipsRoute
@@ -170,6 +186,8 @@ export interface FileRoutesById {
   '/counseling': typeof CounselingRoute
   '/courses': typeof CoursesRouteWithChildren
   '/exams': typeof ExamsRouteWithChildren
+  '/join': typeof JoinRoute
+  '/login': typeof LoginRoute
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
   '/scholarships': typeof ScholarshipsRoute
@@ -192,6 +210,8 @@ export interface FileRouteTypes {
     | '/counseling'
     | '/courses'
     | '/exams'
+    | '/join'
+    | '/login'
     | '/questions'
     | '/reviews'
     | '/scholarships'
@@ -212,6 +232,8 @@ export interface FileRouteTypes {
     | '/counseling'
     | '/courses'
     | '/exams'
+    | '/join'
+    | '/login'
     | '/questions'
     | '/reviews'
     | '/scholarships'
@@ -232,6 +254,8 @@ export interface FileRouteTypes {
     | '/counseling'
     | '/courses'
     | '/exams'
+    | '/join'
+    | '/login'
     | '/questions'
     | '/reviews'
     | '/scholarships'
@@ -253,6 +277,8 @@ export interface RootRouteChildren {
   CounselingRoute: typeof CounselingRoute
   CoursesRoute: typeof CoursesRouteWithChildren
   ExamsRoute: typeof ExamsRouteWithChildren
+  JoinRoute: typeof JoinRoute
+  LoginRoute: typeof LoginRoute
   QuestionsRoute: typeof QuestionsRoute
   ReviewsRoute: typeof ReviewsRoute
   ScholarshipsRoute: typeof ScholarshipsRoute
@@ -288,6 +314,20 @@ declare module '@tanstack/react-router' {
       path: '/questions'
       fullPath: '/questions'
       preLoaderRoute: typeof QuestionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/join': {
+      id: '/join'
+      path: '/join'
+      fullPath: '/join'
+      preLoaderRoute: typeof JoinRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/exams': {
@@ -446,6 +486,8 @@ const rootRouteChildren: RootRouteChildren = {
   CounselingRoute: CounselingRoute,
   CoursesRoute: CoursesRouteWithChildren,
   ExamsRoute: ExamsRouteWithChildren,
+  JoinRoute: JoinRoute,
+  LoginRoute: LoginRoute,
   QuestionsRoute: QuestionsRoute,
   ReviewsRoute: ReviewsRoute,
   ScholarshipsRoute: ScholarshipsRoute,
