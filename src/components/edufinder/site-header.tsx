@@ -14,9 +14,10 @@ const navItems = [
   { label: "Colleges", to: "/colleges", hasMega: true },
   { label: "Courses", to: "/courses", hasMega: false },
   { label: "Exams", to: "/exams", hasMega: false },
-  { label: "Compare", to: "/compare", hasMega: false },
+  { label: "Exam Prep", to: "/exam-prep", hasMega: false },
+  { label: "Study Abroad", to: "/study-abroad", hasMega: false },
+  { label: "News", to: "/news", hasMega: false },
   { label: "Predictor", to: "/college-predictor", hasMega: false },
-  { label: "Articles", to: "/articles", hasMega: false },
 ] as const;
 
 export function SiteHeader() {
