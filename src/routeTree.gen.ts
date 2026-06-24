@@ -14,9 +14,11 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as QuestionsRouteImport } from './routes/questions'
+import { Route as NewsRouteImport } from './routes/news'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as JoinRouteImport } from './routes/join'
 import { Route as ExamsRouteImport } from './routes/exams'
+import { Route as ExamPrepRouteImport } from './routes/exam-prep'
 import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as CounselingRouteImport } from './routes/counseling'
 import { Route as CompareRouteImport } from './routes/compare'
@@ -25,8 +27,11 @@ import { Route as CollegePredictorRouteImport } from './routes/college-predictor
 import { Route as ClaimCollegeRouteImport } from './routes/claim-college'
 import { Route as ArticlesRouteImport } from './routes/articles'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as StudyAbroadSlugRouteImport } from './routes/study-abroad.$slug'
 import { Route as ScholarshipsSlugRouteImport } from './routes/scholarships.$slug'
+import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as ExamsSlugRouteImport } from './routes/exams.$slug'
+import { Route as ExamPrepSlugRouteImport } from './routes/exam-prep.$slug'
 import { Route as DashboardCollegeRouteImport } from './routes/dashboard.college'
 import { Route as CoursesSlugRouteImport } from './routes/courses.$slug'
 import { Route as CollegesSlugRouteImport } from './routes/colleges.$slug'
@@ -57,6 +62,11 @@ const QuestionsRoute = QuestionsRouteImport.update({
   path: '/questions',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -70,6 +80,11 @@ const JoinRoute = JoinRouteImport.update({
 const ExamsRoute = ExamsRouteImport.update({
   id: '/exams',
   path: '/exams',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExamPrepRoute = ExamPrepRouteImport.update({
+  id: '/exam-prep',
+  path: '/exam-prep',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CoursesRoute = CoursesRouteImport.update({
@@ -112,15 +127,30 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StudyAbroadSlugRoute = StudyAbroadSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => StudyAbroadRoute,
+} as any)
 const ScholarshipsSlugRoute = ScholarshipsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => ScholarshipsRoute,
 } as any)
+const NewsSlugRoute = NewsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => NewsRoute,
+} as any)
 const ExamsSlugRoute = ExamsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => ExamsRoute,
+} as any)
+const ExamPrepSlugRoute = ExamPrepSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ExamPrepRoute,
 } as any)
 const DashboardCollegeRoute = DashboardCollegeRouteImport.update({
   id: '/dashboard/college',
@@ -152,20 +182,25 @@ export interface FileRoutesByFullPath {
   '/compare': typeof CompareRoute
   '/counseling': typeof CounselingRoute
   '/courses': typeof CoursesRouteWithChildren
+  '/exam-prep': typeof ExamPrepRouteWithChildren
   '/exams': typeof ExamsRouteWithChildren
   '/join': typeof JoinRoute
   '/login': typeof LoginRoute
+  '/news': typeof NewsRouteWithChildren
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
   '/scholarships': typeof ScholarshipsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/study-abroad': typeof StudyAbroadRoute
+  '/study-abroad': typeof StudyAbroadRouteWithChildren
   '/articles/$slug': typeof ArticlesSlugRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
   '/dashboard/college': typeof DashboardCollegeRoute
+  '/exam-prep/$slug': typeof ExamPrepSlugRoute
   '/exams/$slug': typeof ExamsSlugRoute
+  '/news/$slug': typeof NewsSlugRoute
   '/scholarships/$slug': typeof ScholarshipsSlugRoute
+  '/study-abroad/$slug': typeof StudyAbroadSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -176,20 +211,25 @@ export interface FileRoutesByTo {
   '/compare': typeof CompareRoute
   '/counseling': typeof CounselingRoute
   '/courses': typeof CoursesRouteWithChildren
+  '/exam-prep': typeof ExamPrepRouteWithChildren
   '/exams': typeof ExamsRouteWithChildren
   '/join': typeof JoinRoute
   '/login': typeof LoginRoute
+  '/news': typeof NewsRouteWithChildren
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
   '/scholarships': typeof ScholarshipsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/study-abroad': typeof StudyAbroadRoute
+  '/study-abroad': typeof StudyAbroadRouteWithChildren
   '/articles/$slug': typeof ArticlesSlugRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
   '/dashboard/college': typeof DashboardCollegeRoute
+  '/exam-prep/$slug': typeof ExamPrepSlugRoute
   '/exams/$slug': typeof ExamsSlugRoute
+  '/news/$slug': typeof NewsSlugRoute
   '/scholarships/$slug': typeof ScholarshipsSlugRoute
+  '/study-abroad/$slug': typeof StudyAbroadSlugRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -201,20 +241,25 @@ export interface FileRoutesById {
   '/compare': typeof CompareRoute
   '/counseling': typeof CounselingRoute
   '/courses': typeof CoursesRouteWithChildren
+  '/exam-prep': typeof ExamPrepRouteWithChildren
   '/exams': typeof ExamsRouteWithChildren
   '/join': typeof JoinRoute
   '/login': typeof LoginRoute
+  '/news': typeof NewsRouteWithChildren
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
   '/scholarships': typeof ScholarshipsRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/study-abroad': typeof StudyAbroadRoute
+  '/study-abroad': typeof StudyAbroadRouteWithChildren
   '/articles/$slug': typeof ArticlesSlugRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
   '/dashboard/college': typeof DashboardCollegeRoute
+  '/exam-prep/$slug': typeof ExamPrepSlugRoute
   '/exams/$slug': typeof ExamsSlugRoute
+  '/news/$slug': typeof NewsSlugRoute
   '/scholarships/$slug': typeof ScholarshipsSlugRoute
+  '/study-abroad/$slug': typeof StudyAbroadSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -227,9 +272,11 @@ export interface FileRouteTypes {
     | '/compare'
     | '/counseling'
     | '/courses'
+    | '/exam-prep'
     | '/exams'
     | '/join'
     | '/login'
+    | '/news'
     | '/questions'
     | '/reviews'
     | '/scholarships'
@@ -239,8 +286,11 @@ export interface FileRouteTypes {
     | '/colleges/$slug'
     | '/courses/$slug'
     | '/dashboard/college'
+    | '/exam-prep/$slug'
     | '/exams/$slug'
+    | '/news/$slug'
     | '/scholarships/$slug'
+    | '/study-abroad/$slug'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -251,9 +301,11 @@ export interface FileRouteTypes {
     | '/compare'
     | '/counseling'
     | '/courses'
+    | '/exam-prep'
     | '/exams'
     | '/join'
     | '/login'
+    | '/news'
     | '/questions'
     | '/reviews'
     | '/scholarships'
@@ -263,8 +315,11 @@ export interface FileRouteTypes {
     | '/colleges/$slug'
     | '/courses/$slug'
     | '/dashboard/college'
+    | '/exam-prep/$slug'
     | '/exams/$slug'
+    | '/news/$slug'
     | '/scholarships/$slug'
+    | '/study-abroad/$slug'
   id:
     | '__root__'
     | '/'
@@ -275,9 +330,11 @@ export interface FileRouteTypes {
     | '/compare'
     | '/counseling'
     | '/courses'
+    | '/exam-prep'
     | '/exams'
     | '/join'
     | '/login'
+    | '/news'
     | '/questions'
     | '/reviews'
     | '/scholarships'
@@ -287,8 +344,11 @@ export interface FileRouteTypes {
     | '/colleges/$slug'
     | '/courses/$slug'
     | '/dashboard/college'
+    | '/exam-prep/$slug'
     | '/exams/$slug'
+    | '/news/$slug'
     | '/scholarships/$slug'
+    | '/study-abroad/$slug'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -300,14 +360,16 @@ export interface RootRouteChildren {
   CompareRoute: typeof CompareRoute
   CounselingRoute: typeof CounselingRoute
   CoursesRoute: typeof CoursesRouteWithChildren
+  ExamPrepRoute: typeof ExamPrepRouteWithChildren
   ExamsRoute: typeof ExamsRouteWithChildren
   JoinRoute: typeof JoinRoute
   LoginRoute: typeof LoginRoute
+  NewsRoute: typeof NewsRouteWithChildren
   QuestionsRoute: typeof QuestionsRoute
   ReviewsRoute: typeof ReviewsRoute
   ScholarshipsRoute: typeof ScholarshipsRouteWithChildren
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  StudyAbroadRoute: typeof StudyAbroadRoute
+  StudyAbroadRoute: typeof StudyAbroadRouteWithChildren
   DashboardCollegeRoute: typeof DashboardCollegeRoute
 }
 
@@ -348,6 +410,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QuestionsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -367,6 +436,13 @@ declare module '@tanstack/react-router' {
       path: '/exams'
       fullPath: '/exams'
       preLoaderRoute: typeof ExamsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exam-prep': {
+      id: '/exam-prep'
+      path: '/exam-prep'
+      fullPath: '/exam-prep'
+      preLoaderRoute: typeof ExamPrepRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/courses': {
@@ -425,6 +501,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/study-abroad/$slug': {
+      id: '/study-abroad/$slug'
+      path: '/$slug'
+      fullPath: '/study-abroad/$slug'
+      preLoaderRoute: typeof StudyAbroadSlugRouteImport
+      parentRoute: typeof StudyAbroadRoute
+    }
     '/scholarships/$slug': {
       id: '/scholarships/$slug'
       path: '/$slug'
@@ -432,12 +515,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ScholarshipsSlugRouteImport
       parentRoute: typeof ScholarshipsRoute
     }
+    '/news/$slug': {
+      id: '/news/$slug'
+      path: '/$slug'
+      fullPath: '/news/$slug'
+      preLoaderRoute: typeof NewsSlugRouteImport
+      parentRoute: typeof NewsRoute
+    }
     '/exams/$slug': {
       id: '/exams/$slug'
       path: '/$slug'
       fullPath: '/exams/$slug'
       preLoaderRoute: typeof ExamsSlugRouteImport
       parentRoute: typeof ExamsRoute
+    }
+    '/exam-prep/$slug': {
+      id: '/exam-prep/$slug'
+      path: '/$slug'
+      fullPath: '/exam-prep/$slug'
+      preLoaderRoute: typeof ExamPrepSlugRouteImport
+      parentRoute: typeof ExamPrepRoute
     }
     '/dashboard/college': {
       id: '/dashboard/college'
@@ -505,6 +602,18 @@ const CoursesRouteChildren: CoursesRouteChildren = {
 const CoursesRouteWithChildren =
   CoursesRoute._addFileChildren(CoursesRouteChildren)
 
+interface ExamPrepRouteChildren {
+  ExamPrepSlugRoute: typeof ExamPrepSlugRoute
+}
+
+const ExamPrepRouteChildren: ExamPrepRouteChildren = {
+  ExamPrepSlugRoute: ExamPrepSlugRoute,
+}
+
+const ExamPrepRouteWithChildren = ExamPrepRoute._addFileChildren(
+  ExamPrepRouteChildren,
+)
+
 interface ExamsRouteChildren {
   ExamsSlugRoute: typeof ExamsSlugRoute
 }
@@ -514,6 +623,16 @@ const ExamsRouteChildren: ExamsRouteChildren = {
 }
 
 const ExamsRouteWithChildren = ExamsRoute._addFileChildren(ExamsRouteChildren)
+
+interface NewsRouteChildren {
+  NewsSlugRoute: typeof NewsSlugRoute
+}
+
+const NewsRouteChildren: NewsRouteChildren = {
+  NewsSlugRoute: NewsSlugRoute,
+}
+
+const NewsRouteWithChildren = NewsRoute._addFileChildren(NewsRouteChildren)
 
 interface ScholarshipsRouteChildren {
   ScholarshipsSlugRoute: typeof ScholarshipsSlugRoute
@@ -527,6 +646,18 @@ const ScholarshipsRouteWithChildren = ScholarshipsRoute._addFileChildren(
   ScholarshipsRouteChildren,
 )
 
+interface StudyAbroadRouteChildren {
+  StudyAbroadSlugRoute: typeof StudyAbroadSlugRoute
+}
+
+const StudyAbroadRouteChildren: StudyAbroadRouteChildren = {
+  StudyAbroadSlugRoute: StudyAbroadSlugRoute,
+}
+
+const StudyAbroadRouteWithChildren = StudyAbroadRoute._addFileChildren(
+  StudyAbroadRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ArticlesRoute: ArticlesRouteWithChildren,
@@ -536,14 +667,16 @@ const rootRouteChildren: RootRouteChildren = {
   CompareRoute: CompareRoute,
   CounselingRoute: CounselingRoute,
   CoursesRoute: CoursesRouteWithChildren,
+  ExamPrepRoute: ExamPrepRouteWithChildren,
   ExamsRoute: ExamsRouteWithChildren,
   JoinRoute: JoinRoute,
   LoginRoute: LoginRoute,
+  NewsRoute: NewsRouteWithChildren,
   QuestionsRoute: QuestionsRoute,
   ReviewsRoute: ReviewsRoute,
   ScholarshipsRoute: ScholarshipsRouteWithChildren,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  StudyAbroadRoute: StudyAbroadRoute,
+  StudyAbroadRoute: StudyAbroadRouteWithChildren,
   DashboardCollegeRoute: DashboardCollegeRoute,
 }
 export const routeTree = rootRouteImport
