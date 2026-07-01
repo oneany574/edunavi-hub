@@ -1,75 +1,77 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { ArrowLeft, ArrowRight, Award, Building2, CheckCircle2, FileBadge, ShieldCheck, Upload } from "lucide-react";
+import { ArrowRight, ArrowLeft, Award, Building2, CheckCircle2, FileBadge, ShieldCheck, Upload } from "lucide-react";
 import { z } from "zod";
 import { toast } from "sonner";
 import { SiteHeader } from "@/components/edufinder/site-header";
 import { SiteFooter } from "@/components/edufinder/site-footer";
-import { colleges } from "@/lib/edufinder-data";
+import { consultancies } from "@/lib/edufinder-more";
 
-type Search = { college?: string };
+type Search = { consultancy?: string };
 
-export const Route = createFileRoute("/claim-college")({
+export const Route = createFileRoute("/claim-consultancy")({
   validateSearch: (s: Record<string, unknown>): Search => ({
-    college: typeof s.college === "string" ? s.college : undefined,
+    consultancy: typeof s.consultancy === "string" ? s.consultancy : undefined,
   }),
   head: () => ({
     meta: [
-      { title: "Claim your college — Verify your institution | EduFinder" },
-      { name: "description", content: "Claim and verify your college profile on EduFinder in four steps: identity, documents, admin review, and dashboard access." },
-      { property: "og:title", content: "Claim your college — EduFinder" },
-      { property: "og:description", content: "Verify your institution and manage your EduFinder profile." },
+      { title: "Claim your consultancy — EduFinder" },
+      { name: "description", content: "Claim and verify your consultancy profile on EduFinder. Manage services, respond to reviews, and get admissions leads." },
+      { property: "og:title", content: "Claim your consultancy — EduFinder" },
+      { property: "og:description", content: "Verify your consultancy and manage your EduFinder profile." },
     ],
   }),
-  component: ClaimCollegePage,
+  component: ClaimConsultancyPage,
 });
 
-const STEPS = ["Identity", "Institution", "Documents", "Review"] as const;
+const STEPS = ["Identity", "Business details", "Documents", "Review"] as const;
 type StepIdx = 0 | 1 | 2 | 3 | 4;
 
 const identitySchema = z.object({
-  collegeSlug: z.string().min(1, "Select the college you represent"),
+  consultancySlug: z.string().min(1, "Select your consultancy"),
+  officialName: z.string().trim().min(2, "Enter the official business name").max(120),
   contactName: z.string().trim().min(2).max(80),
   designation: z.string().trim().min(2).max(80),
   workEmail: z.string().trim().email().max(255).refine(
     (e) => !/@(gmail|yahoo|outlook|hotmail|icloud)\./i.test(e),
-    "Please use your institutional email address",
+    "Please use your business email address",
   ),
   workPhone: z.string().trim().min(7).max(20).regex(/^[+\d\s()-]+$/, "Invalid characters"),
 });
 
-const institutionSchema = z.object({
-  officialName: z.string().trim().min(2).max(120),
+const businessSchema = z.object({
   website: z.string().trim().url().max(255),
-  accreditation: z.string().trim().min(2).max(120),
-  establishedYear: z.coerce.number().min(1500).max(2100),
+  registrationNo: z.string().trim().min(3, "Business registration required").max(80),
+  yearsInOperation: z.coerce.number().min(0).max(80),
+  hqAddress: z.string().trim().min(6).max(240),
 });
 
 const documentsSchema = z.object({
-  primaryDoc: z.enum(["Domain email", "Authorization letter", "Government ID", "Accreditation letter"]),
+  primaryDoc: z.enum(["Business registration", "GST / Tax ID", "MEA / ICEF certificate"]),
   agreesTerms: z.literal(true, { errorMap: () => ({ message: "You must agree to platform terms" }) }),
 });
 
-function ClaimCollegePage() {
+function ClaimConsultancyPage() {
   const search = Route.useSearch();
   const initial = useMemo(
-    () => (search.college && colleges.some((c) => c.slug === search.college) ? search.college : ""),
-    [search.college],
+    () => (search.consultancy && consultancies.some((c) => c.slug === search.consultancy) ? search.consultancy : ""),
+    [search.consultancy],
   );
 
   const [step, setStep] = useState<StepIdx>(0);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [form, setForm] = useState({
-    collegeSlug: initial,
+    consultancySlug: initial,
+    officialName: "",
     contactName: "",
     designation: "",
     workEmail: "",
     workPhone: "",
-    officialName: "",
     website: "",
-    accreditation: "",
-    establishedYear: "" as unknown as number,
-    primaryDoc: "Domain email",
+    registrationNo: "",
+    yearsInOperation: "" as unknown as number,
+    hqAddress: "",
+    primaryDoc: "Business registration",
     fileName: "",
     agreesTerms: false,
   });
@@ -78,10 +80,10 @@ function ClaimCollegePage() {
     setForm((f) => ({ ...f, [k]: v }));
   }
 
-  function next() {
+  function validateAndAdvance() {
     let parsed;
     if (step === 0) parsed = identitySchema.safeParse(form);
-    else if (step === 1) parsed = institutionSchema.safeParse(form);
+    else if (step === 1) parsed = businessSchema.safeParse(form);
     else if (step === 2) parsed = documentsSchema.safeParse(form);
     else parsed = { success: true } as const;
 
@@ -95,26 +97,24 @@ function ClaimCollegePage() {
     setErrors({});
     setStep((s) => (s + 1) as StepIdx);
     if (step === 3) {
-      toast.success("Claim submitted for admin review", { description: "We'll respond within 2 business days." });
+      toast.success("Claim submitted", { description: "We'll verify within 2 business days." });
     }
   }
-
-  const selectedCollege = colleges.find((c) => c.slug === form.collegeSlug);
 
   return (
     <div className="min-h-screen bg-background">
       <SiteHeader />
 
       <section className="bg-gradient-to-br from-brand via-academic to-brand text-white">
-        <div className="container-page py-16 md:py-20">
+        <div className="container-page py-16">
           <span className="font-mono-tight rounded-full bg-white/15 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.22em] backdrop-blur">
-            For institutions
+            For consultancies
           </span>
-          <h1 className="font-display mt-5 max-w-3xl text-4xl leading-[1.05] tracking-tight md:text-6xl">
-            Claim your college profile.
+          <h1 className="font-display mt-5 max-w-3xl text-4xl leading-[1.05] tracking-tight md:text-5xl">
+            Claim your consultancy profile.
           </h1>
-          <p className="mt-4 max-w-2xl text-base text-white/85 md:text-lg">
-            Four quick steps: verify identity, share institution details, upload proof, and get admin approval. Free forever.
+          <p className="mt-4 max-w-2xl text-white/85">
+            Verified consultancies get lead analytics, review responses, and premium visibility across EduFinder.
           </p>
         </div>
       </section>
@@ -124,62 +124,46 @@ function ClaimCollegePage() {
           <Stepper step={step} />
 
           {step === 4 ? (
-            <div className="mt-8 rounded-3xl border border-success/30 bg-success/5 p-10 text-center">
-              <CheckCircle2 className="mx-auto size-12 text-success" />
-              <h2 className="font-display mt-4 text-3xl">Submitted for admin review</h2>
-              <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground">
-                Our verification team will check your documents and email you at your work address within 2 business days.
-              </p>
-              <div className="mt-6 flex flex-wrap justify-center gap-3">
-                <Link to="/colleges" className="rounded-full bg-brand px-5 py-2.5 text-sm font-bold text-brand-foreground">
-                  Browse colleges
-                </Link>
-                <Link to="/dashboard/college" className="rounded-full border border-border px-5 py-2.5 text-sm font-semibold">
-                  Go to dashboard
-                </Link>
-              </div>
-            </div>
+            <SubmittedCard />
           ) : (
             <div className="mt-8">
               {step === 0 && (
                 <StepShell title="Identity verification" icon={<ShieldCheck className="size-4" />}>
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div className="sm:col-span-2">
-                      <Select label="Select your college" value={form.collegeSlug} onChange={(v) => set("collegeSlug", v)} error={errors.collegeSlug}>
+                      <Select label="Which consultancy do you represent?" value={form.consultancySlug} onChange={(v) => set("consultancySlug", v)} error={errors.consultancySlug}>
                         <option value="">Search directory…</option>
-                        {colleges.map((c) => (
-                          <option key={c.slug} value={c.slug}>{c.name} — {c.city}, {c.country}</option>
+                        {consultancies.map((c) => (
+                          <option key={c.slug} value={c.slug}>{c.name} — {c.city}</option>
                         ))}
                       </Select>
                     </div>
+                    <Field label="Official business name" value={form.officialName} onChange={(v) => set("officialName", v)} error={errors.officialName} />
                     <Field label="Your full name" value={form.contactName} onChange={(v) => set("contactName", v)} error={errors.contactName} />
-                    <Field label="Your designation" value={form.designation} onChange={(v) => set("designation", v)} placeholder="Dean, Admissions Director…" error={errors.designation} />
-                    <Field label="Work email" type="email" value={form.workEmail} onChange={(v) => set("workEmail", v)} placeholder="you@institution.edu" error={errors.workEmail} />
-                    <Field label="Work phone" value={form.workPhone} onChange={(v) => set("workPhone", v)} placeholder="+1 415 555 0142" error={errors.workPhone} />
+                    <Field label="Your designation" value={form.designation} onChange={(v) => set("designation", v)} placeholder="Founder, Director…" error={errors.designation} />
+                    <Field label="Work email" type="email" value={form.workEmail} onChange={(v) => set("workEmail", v)} placeholder="you@company.com" error={errors.workEmail} />
+                    <Field label="Work phone" value={form.workPhone} onChange={(v) => set("workPhone", v)} placeholder="+91 98…" error={errors.workPhone} />
                   </div>
                 </StepShell>
               )}
 
               {step === 1 && (
-                <StepShell title="Institution details" icon={<Building2 className="size-4" />}>
+                <StepShell title="Business details" icon={<Building2 className="size-4" />}>
                   <div className="grid gap-5 sm:grid-cols-2">
-                    <Field label="Official institution name" value={form.officialName} onChange={(v) => set("officialName", v)} error={errors.officialName} />
-                    <Field label="Official website" value={form.website} onChange={(v) => set("website", v)} placeholder="https://" error={errors.website} />
-                    <Field label="Accreditation body" value={form.accreditation} onChange={(v) => set("accreditation", v)} placeholder="NAAC, UGC, AACSB, ABET…" error={errors.accreditation} />
-                    <Field label="Established year" type="number" value={String(form.establishedYear ?? "")} onChange={(v) => set("establishedYear", Number(v) as number)} error={errors.establishedYear} />
+                    <Field label="Website" value={form.website} onChange={(v) => set("website", v)} placeholder="https://" error={errors.website} />
+                    <Field label="Business registration no." value={form.registrationNo} onChange={(v) => set("registrationNo", v)} error={errors.registrationNo} />
+                    <Field label="Years in operation" type="number" value={String(form.yearsInOperation ?? "")} onChange={(v) => set("yearsInOperation", Number(v) as number)} error={errors.yearsInOperation} />
+                    <div className="sm:col-span-2">
+                      <Field label="Head office address" value={form.hqAddress} onChange={(v) => set("hqAddress", v)} error={errors.hqAddress} />
+                    </div>
                   </div>
-                  {selectedCollege && (
-                    <p className="mt-4 rounded-xl bg-secondary p-3 text-xs text-muted-foreground">
-                      Pre-linked to <strong className="text-foreground">{selectedCollege.name}</strong> · {selectedCollege.city}, {selectedCollege.country}
-                    </p>
-                  )}
                 </StepShell>
               )}
 
               {step === 2 && (
                 <StepShell title="Upload documents" icon={<FileBadge className="size-4" />}>
-                  <Select label="Primary verification method" value={form.primaryDoc} onChange={(v) => set("primaryDoc", v)}>
-                    {["Domain email", "Authorization letter", "Government ID", "Accreditation letter"].map((p) => (
+                  <Select label="Primary verification document" value={form.primaryDoc} onChange={(v) => set("primaryDoc", v)}>
+                    {["Business registration", "GST / Tax ID", "MEA / ICEF certificate"].map((p) => (
                       <option key={p} value={p}>{p}</option>
                     ))}
                   </Select>
@@ -202,7 +186,7 @@ function ClaimCollegePage() {
                       className="mt-0.5 size-4 accent-academic"
                     />
                     <span>
-                      I confirm I'm authorised by the institution above to claim and manage this profile.
+                      I confirm I'm authorised to represent this consultancy and agree to EduFinder's listing terms.
                       {errors.agreesTerms && <span className="mt-1 block font-semibold text-destructive">{errors.agreesTerms}</span>}
                     </span>
                   </label>
@@ -211,16 +195,15 @@ function ClaimCollegePage() {
 
               {step === 3 && (
                 <StepShell title="Review & submit" icon={<Award className="size-4" />}>
-                  <ReviewRow label="College" value={selectedCollege?.name ?? "—"} />
+                  <ReviewRow label="Consultancy" value={consultancies.find((c) => c.slug === form.consultancySlug)?.name ?? "—"} />
                   <ReviewRow label="Contact" value={`${form.contactName} · ${form.designation}`} />
                   <ReviewRow label="Work email" value={form.workEmail} />
                   <ReviewRow label="Phone" value={form.workPhone} />
                   <ReviewRow label="Website" value={form.website} />
-                  <ReviewRow label="Accreditation" value={form.accreditation} />
-                  <ReviewRow label="Established" value={String(form.establishedYear || "—")} />
+                  <ReviewRow label="Registration no." value={form.registrationNo} />
                   <ReviewRow label="Document" value={`${form.primaryDoc}${form.fileName ? ` · ${form.fileName}` : ""}`} />
                   <p className="mt-6 rounded-2xl bg-gold-soft p-4 text-xs text-brand">
-                    On submission the admin team will review within <strong>2 business days</strong>. You'll receive a confirmation at your work email.
+                    On submission our admin team will review within <strong>2 business days</strong>. You'll receive a confirmation at your work email.
                   </p>
                 </StepShell>
               )}
@@ -236,10 +219,10 @@ function ClaimCollegePage() {
                 </button>
                 <button
                   type="button"
-                  onClick={next}
+                  onClick={validateAndAdvance}
                   className="inline-flex items-center gap-2 rounded-full bg-brand px-6 py-3 text-sm font-bold text-brand-foreground"
                 >
-                  {step === 3 ? "Submit for review" : "Continue"} <ArrowRight className="size-4" />
+                  {step === 3 ? "Submit claim" : "Continue"} <ArrowRight className="size-4" />
                 </button>
               </div>
             </div>
@@ -250,14 +233,7 @@ function ClaimCollegePage() {
           <div className="rounded-3xl border border-border bg-card p-6">
             <p className="text-xs font-bold uppercase tracking-widest text-foreground/70">Claim workflow</p>
             <ol className="mt-4 space-y-3 text-sm">
-              {[
-                "Claim college",
-                "Identity verification",
-                "Upload documents",
-                "Admin review",
-                "Approved",
-                "College dashboard",
-              ].map((s, i) => (
+              {["Identity verification", "Business documents", "Admin review", "Approved", "Consultancy dashboard"].map((s, i) => (
                 <li key={s} className="flex items-start gap-3">
                   <div className="grid size-7 shrink-0 place-items-center rounded-full bg-gold-soft font-mono-tight text-[10px] font-bold text-brand">
                     {String(i + 1).padStart(2, "0")}
@@ -270,9 +246,9 @@ function ClaimCollegePage() {
 
           <div className="rounded-3xl bg-gradient-to-br from-brand to-academic p-6 text-white">
             <ShieldCheck className="size-6 text-gold" />
-            <p className="font-display mt-3 text-xl">Already claimed?</p>
-            <p className="mt-2 text-sm text-white/80">Head to your dashboard to edit your profile or respond to reviews.</p>
-            <Link to="/dashboard/college" className="mt-4 inline-flex items-center gap-2 rounded-full bg-gold px-4 py-2 text-xs font-bold text-brand">
+            <p className="font-display mt-3 text-xl">Already verified?</p>
+            <p className="mt-2 text-sm text-white/80">Head to your consultancy dashboard to manage leads and reviews.</p>
+            <Link to="/dashboard/consultancy" className="mt-4 inline-flex items-center gap-2 rounded-full bg-gold px-4 py-2 text-xs font-bold text-brand">
               Open dashboard <ArrowRight className="size-3" />
             </Link>
           </div>
@@ -323,6 +299,21 @@ function StepShell({ title, icon, children }: { title: string; icon: React.React
         <p className="font-display text-2xl">{title}</p>
       </div>
       {children}
+    </div>
+  );
+}
+
+function SubmittedCard() {
+  return (
+    <div className="mt-8 rounded-3xl border border-success/30 bg-success/5 p-10 text-center">
+      <CheckCircle2 className="mx-auto size-12 text-success" />
+      <h2 className="font-display mt-4 text-3xl">Claim submitted</h2>
+      <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground">
+        Our verification team will review your submission within 2 business days. You'll be notified via your work email.
+      </p>
+      <Link to="/consultancies" className="mt-6 inline-flex items-center gap-2 rounded-full bg-brand px-5 py-2.5 text-sm font-bold text-brand-foreground">
+        Browse consultancies <ArrowRight className="size-4" />
+      </Link>
     </div>
   );
 }

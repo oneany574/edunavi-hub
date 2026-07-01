@@ -15,25 +15,31 @@ import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as QuestionsRouteImport } from './routes/questions'
 import { Route as NewsRouteImport } from './routes/news'
+import { Route as MockTestsRouteImport } from './routes/mock-tests'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as JoinRouteImport } from './routes/join'
 import { Route as ExamsRouteImport } from './routes/exams'
 import { Route as ExamPrepRouteImport } from './routes/exam-prep'
 import { Route as CoursesRouteImport } from './routes/courses'
 import { Route as CounselingRouteImport } from './routes/counseling'
+import { Route as ConsultanciesRouteImport } from './routes/consultancies'
 import { Route as CompareRouteImport } from './routes/compare'
 import { Route as CollegesRouteImport } from './routes/colleges'
 import { Route as CollegePredictorRouteImport } from './routes/college-predictor'
+import { Route as ClaimConsultancyRouteImport } from './routes/claim-consultancy'
 import { Route as ClaimCollegeRouteImport } from './routes/claim-college'
 import { Route as ArticlesRouteImport } from './routes/articles'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as StudyAbroadSlugRouteImport } from './routes/study-abroad.$slug'
 import { Route as ScholarshipsSlugRouteImport } from './routes/scholarships.$slug'
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
+import { Route as MockTestsSlugRouteImport } from './routes/mock-tests.$slug'
 import { Route as ExamsSlugRouteImport } from './routes/exams.$slug'
 import { Route as ExamPrepSlugRouteImport } from './routes/exam-prep.$slug'
+import { Route as DashboardConsultancyRouteImport } from './routes/dashboard.consultancy'
 import { Route as DashboardCollegeRouteImport } from './routes/dashboard.college'
 import { Route as CoursesSlugRouteImport } from './routes/courses.$slug'
+import { Route as ConsultanciesSlugRouteImport } from './routes/consultancies.$slug'
 import { Route as CollegesSlugRouteImport } from './routes/colleges.$slug'
 import { Route as ArticlesSlugRouteImport } from './routes/articles.$slug'
 
@@ -67,6 +73,11 @@ const NewsRoute = NewsRouteImport.update({
   path: '/news',
   getParentRoute: () => rootRouteImport,
 } as any)
+const MockTestsRoute = MockTestsRouteImport.update({
+  id: '/mock-tests',
+  path: '/mock-tests',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
@@ -97,6 +108,11 @@ const CounselingRoute = CounselingRouteImport.update({
   path: '/counseling',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConsultanciesRoute = ConsultanciesRouteImport.update({
+  id: '/consultancies',
+  path: '/consultancies',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const CompareRoute = CompareRouteImport.update({
   id: '/compare',
   path: '/compare',
@@ -110,6 +126,11 @@ const CollegesRoute = CollegesRouteImport.update({
 const CollegePredictorRoute = CollegePredictorRouteImport.update({
   id: '/college-predictor',
   path: '/college-predictor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClaimConsultancyRoute = ClaimConsultancyRouteImport.update({
+  id: '/claim-consultancy',
+  path: '/claim-consultancy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ClaimCollegeRoute = ClaimCollegeRouteImport.update({
@@ -142,6 +163,11 @@ const NewsSlugRoute = NewsSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => NewsRoute,
 } as any)
+const MockTestsSlugRoute = MockTestsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => MockTestsRoute,
+} as any)
 const ExamsSlugRoute = ExamsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -152,6 +178,11 @@ const ExamPrepSlugRoute = ExamPrepSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ExamPrepRoute,
 } as any)
+const DashboardConsultancyRoute = DashboardConsultancyRouteImport.update({
+  id: '/dashboard/consultancy',
+  path: '/dashboard/consultancy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardCollegeRoute = DashboardCollegeRouteImport.update({
   id: '/dashboard/college',
   path: '/dashboard/college',
@@ -161,6 +192,11 @@ const CoursesSlugRoute = CoursesSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
   getParentRoute: () => CoursesRoute,
+} as any)
+const ConsultanciesSlugRoute = ConsultanciesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ConsultanciesRoute,
 } as any)
 const CollegesSlugRoute = CollegesSlugRouteImport.update({
   id: '/$slug',
@@ -177,15 +213,18 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/articles': typeof ArticlesRouteWithChildren
   '/claim-college': typeof ClaimCollegeRoute
+  '/claim-consultancy': typeof ClaimConsultancyRoute
   '/college-predictor': typeof CollegePredictorRoute
   '/colleges': typeof CollegesRouteWithChildren
   '/compare': typeof CompareRoute
+  '/consultancies': typeof ConsultanciesRouteWithChildren
   '/counseling': typeof CounselingRoute
   '/courses': typeof CoursesRouteWithChildren
   '/exam-prep': typeof ExamPrepRouteWithChildren
   '/exams': typeof ExamsRouteWithChildren
   '/join': typeof JoinRoute
   '/login': typeof LoginRoute
+  '/mock-tests': typeof MockTestsRouteWithChildren
   '/news': typeof NewsRouteWithChildren
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
@@ -194,10 +233,13 @@ export interface FileRoutesByFullPath {
   '/study-abroad': typeof StudyAbroadRouteWithChildren
   '/articles/$slug': typeof ArticlesSlugRoute
   '/colleges/$slug': typeof CollegesSlugRoute
+  '/consultancies/$slug': typeof ConsultanciesSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
   '/dashboard/college': typeof DashboardCollegeRoute
+  '/dashboard/consultancy': typeof DashboardConsultancyRoute
   '/exam-prep/$slug': typeof ExamPrepSlugRoute
   '/exams/$slug': typeof ExamsSlugRoute
+  '/mock-tests/$slug': typeof MockTestsSlugRoute
   '/news/$slug': typeof NewsSlugRoute
   '/scholarships/$slug': typeof ScholarshipsSlugRoute
   '/study-abroad/$slug': typeof StudyAbroadSlugRoute
@@ -206,15 +248,18 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/articles': typeof ArticlesRouteWithChildren
   '/claim-college': typeof ClaimCollegeRoute
+  '/claim-consultancy': typeof ClaimConsultancyRoute
   '/college-predictor': typeof CollegePredictorRoute
   '/colleges': typeof CollegesRouteWithChildren
   '/compare': typeof CompareRoute
+  '/consultancies': typeof ConsultanciesRouteWithChildren
   '/counseling': typeof CounselingRoute
   '/courses': typeof CoursesRouteWithChildren
   '/exam-prep': typeof ExamPrepRouteWithChildren
   '/exams': typeof ExamsRouteWithChildren
   '/join': typeof JoinRoute
   '/login': typeof LoginRoute
+  '/mock-tests': typeof MockTestsRouteWithChildren
   '/news': typeof NewsRouteWithChildren
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
@@ -223,10 +268,13 @@ export interface FileRoutesByTo {
   '/study-abroad': typeof StudyAbroadRouteWithChildren
   '/articles/$slug': typeof ArticlesSlugRoute
   '/colleges/$slug': typeof CollegesSlugRoute
+  '/consultancies/$slug': typeof ConsultanciesSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
   '/dashboard/college': typeof DashboardCollegeRoute
+  '/dashboard/consultancy': typeof DashboardConsultancyRoute
   '/exam-prep/$slug': typeof ExamPrepSlugRoute
   '/exams/$slug': typeof ExamsSlugRoute
+  '/mock-tests/$slug': typeof MockTestsSlugRoute
   '/news/$slug': typeof NewsSlugRoute
   '/scholarships/$slug': typeof ScholarshipsSlugRoute
   '/study-abroad/$slug': typeof StudyAbroadSlugRoute
@@ -236,15 +284,18 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/articles': typeof ArticlesRouteWithChildren
   '/claim-college': typeof ClaimCollegeRoute
+  '/claim-consultancy': typeof ClaimConsultancyRoute
   '/college-predictor': typeof CollegePredictorRoute
   '/colleges': typeof CollegesRouteWithChildren
   '/compare': typeof CompareRoute
+  '/consultancies': typeof ConsultanciesRouteWithChildren
   '/counseling': typeof CounselingRoute
   '/courses': typeof CoursesRouteWithChildren
   '/exam-prep': typeof ExamPrepRouteWithChildren
   '/exams': typeof ExamsRouteWithChildren
   '/join': typeof JoinRoute
   '/login': typeof LoginRoute
+  '/mock-tests': typeof MockTestsRouteWithChildren
   '/news': typeof NewsRouteWithChildren
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
@@ -253,10 +304,13 @@ export interface FileRoutesById {
   '/study-abroad': typeof StudyAbroadRouteWithChildren
   '/articles/$slug': typeof ArticlesSlugRoute
   '/colleges/$slug': typeof CollegesSlugRoute
+  '/consultancies/$slug': typeof ConsultanciesSlugRoute
   '/courses/$slug': typeof CoursesSlugRoute
   '/dashboard/college': typeof DashboardCollegeRoute
+  '/dashboard/consultancy': typeof DashboardConsultancyRoute
   '/exam-prep/$slug': typeof ExamPrepSlugRoute
   '/exams/$slug': typeof ExamsSlugRoute
+  '/mock-tests/$slug': typeof MockTestsSlugRoute
   '/news/$slug': typeof NewsSlugRoute
   '/scholarships/$slug': typeof ScholarshipsSlugRoute
   '/study-abroad/$slug': typeof StudyAbroadSlugRoute
@@ -267,15 +321,18 @@ export interface FileRouteTypes {
     | '/'
     | '/articles'
     | '/claim-college'
+    | '/claim-consultancy'
     | '/college-predictor'
     | '/colleges'
     | '/compare'
+    | '/consultancies'
     | '/counseling'
     | '/courses'
     | '/exam-prep'
     | '/exams'
     | '/join'
     | '/login'
+    | '/mock-tests'
     | '/news'
     | '/questions'
     | '/reviews'
@@ -284,10 +341,13 @@ export interface FileRouteTypes {
     | '/study-abroad'
     | '/articles/$slug'
     | '/colleges/$slug'
+    | '/consultancies/$slug'
     | '/courses/$slug'
     | '/dashboard/college'
+    | '/dashboard/consultancy'
     | '/exam-prep/$slug'
     | '/exams/$slug'
+    | '/mock-tests/$slug'
     | '/news/$slug'
     | '/scholarships/$slug'
     | '/study-abroad/$slug'
@@ -296,15 +356,18 @@ export interface FileRouteTypes {
     | '/'
     | '/articles'
     | '/claim-college'
+    | '/claim-consultancy'
     | '/college-predictor'
     | '/colleges'
     | '/compare'
+    | '/consultancies'
     | '/counseling'
     | '/courses'
     | '/exam-prep'
     | '/exams'
     | '/join'
     | '/login'
+    | '/mock-tests'
     | '/news'
     | '/questions'
     | '/reviews'
@@ -313,10 +376,13 @@ export interface FileRouteTypes {
     | '/study-abroad'
     | '/articles/$slug'
     | '/colleges/$slug'
+    | '/consultancies/$slug'
     | '/courses/$slug'
     | '/dashboard/college'
+    | '/dashboard/consultancy'
     | '/exam-prep/$slug'
     | '/exams/$slug'
+    | '/mock-tests/$slug'
     | '/news/$slug'
     | '/scholarships/$slug'
     | '/study-abroad/$slug'
@@ -325,15 +391,18 @@ export interface FileRouteTypes {
     | '/'
     | '/articles'
     | '/claim-college'
+    | '/claim-consultancy'
     | '/college-predictor'
     | '/colleges'
     | '/compare'
+    | '/consultancies'
     | '/counseling'
     | '/courses'
     | '/exam-prep'
     | '/exams'
     | '/join'
     | '/login'
+    | '/mock-tests'
     | '/news'
     | '/questions'
     | '/reviews'
@@ -342,10 +411,13 @@ export interface FileRouteTypes {
     | '/study-abroad'
     | '/articles/$slug'
     | '/colleges/$slug'
+    | '/consultancies/$slug'
     | '/courses/$slug'
     | '/dashboard/college'
+    | '/dashboard/consultancy'
     | '/exam-prep/$slug'
     | '/exams/$slug'
+    | '/mock-tests/$slug'
     | '/news/$slug'
     | '/scholarships/$slug'
     | '/study-abroad/$slug'
@@ -355,15 +427,18 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ArticlesRoute: typeof ArticlesRouteWithChildren
   ClaimCollegeRoute: typeof ClaimCollegeRoute
+  ClaimConsultancyRoute: typeof ClaimConsultancyRoute
   CollegePredictorRoute: typeof CollegePredictorRoute
   CollegesRoute: typeof CollegesRouteWithChildren
   CompareRoute: typeof CompareRoute
+  ConsultanciesRoute: typeof ConsultanciesRouteWithChildren
   CounselingRoute: typeof CounselingRoute
   CoursesRoute: typeof CoursesRouteWithChildren
   ExamPrepRoute: typeof ExamPrepRouteWithChildren
   ExamsRoute: typeof ExamsRouteWithChildren
   JoinRoute: typeof JoinRoute
   LoginRoute: typeof LoginRoute
+  MockTestsRoute: typeof MockTestsRouteWithChildren
   NewsRoute: typeof NewsRouteWithChildren
   QuestionsRoute: typeof QuestionsRoute
   ReviewsRoute: typeof ReviewsRoute
@@ -371,6 +446,7 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StudyAbroadRoute: typeof StudyAbroadRouteWithChildren
   DashboardCollegeRoute: typeof DashboardCollegeRoute
+  DashboardConsultancyRoute: typeof DashboardConsultancyRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -417,6 +493,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/mock-tests': {
+      id: '/mock-tests'
+      path: '/mock-tests'
+      fullPath: '/mock-tests'
+      preLoaderRoute: typeof MockTestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/login': {
       id: '/login'
       path: '/login'
@@ -459,6 +542,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CounselingRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/consultancies': {
+      id: '/consultancies'
+      path: '/consultancies'
+      fullPath: '/consultancies'
+      preLoaderRoute: typeof ConsultanciesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/compare': {
       id: '/compare'
       path: '/compare'
@@ -478,6 +568,13 @@ declare module '@tanstack/react-router' {
       path: '/college-predictor'
       fullPath: '/college-predictor'
       preLoaderRoute: typeof CollegePredictorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/claim-consultancy': {
+      id: '/claim-consultancy'
+      path: '/claim-consultancy'
+      fullPath: '/claim-consultancy'
+      preLoaderRoute: typeof ClaimConsultancyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/claim-college': {
@@ -522,6 +619,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof NewsSlugRouteImport
       parentRoute: typeof NewsRoute
     }
+    '/mock-tests/$slug': {
+      id: '/mock-tests/$slug'
+      path: '/$slug'
+      fullPath: '/mock-tests/$slug'
+      preLoaderRoute: typeof MockTestsSlugRouteImport
+      parentRoute: typeof MockTestsRoute
+    }
     '/exams/$slug': {
       id: '/exams/$slug'
       path: '/$slug'
@@ -536,6 +640,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ExamPrepSlugRouteImport
       parentRoute: typeof ExamPrepRoute
     }
+    '/dashboard/consultancy': {
+      id: '/dashboard/consultancy'
+      path: '/dashboard/consultancy'
+      fullPath: '/dashboard/consultancy'
+      preLoaderRoute: typeof DashboardConsultancyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/dashboard/college': {
       id: '/dashboard/college'
       path: '/dashboard/college'
@@ -549,6 +660,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/courses/$slug'
       preLoaderRoute: typeof CoursesSlugRouteImport
       parentRoute: typeof CoursesRoute
+    }
+    '/consultancies/$slug': {
+      id: '/consultancies/$slug'
+      path: '/$slug'
+      fullPath: '/consultancies/$slug'
+      preLoaderRoute: typeof ConsultanciesSlugRouteImport
+      parentRoute: typeof ConsultanciesRoute
     }
     '/colleges/$slug': {
       id: '/colleges/$slug'
@@ -591,6 +709,18 @@ const CollegesRouteWithChildren = CollegesRoute._addFileChildren(
   CollegesRouteChildren,
 )
 
+interface ConsultanciesRouteChildren {
+  ConsultanciesSlugRoute: typeof ConsultanciesSlugRoute
+}
+
+const ConsultanciesRouteChildren: ConsultanciesRouteChildren = {
+  ConsultanciesSlugRoute: ConsultanciesSlugRoute,
+}
+
+const ConsultanciesRouteWithChildren = ConsultanciesRoute._addFileChildren(
+  ConsultanciesRouteChildren,
+)
+
 interface CoursesRouteChildren {
   CoursesSlugRoute: typeof CoursesSlugRoute
 }
@@ -623,6 +753,18 @@ const ExamsRouteChildren: ExamsRouteChildren = {
 }
 
 const ExamsRouteWithChildren = ExamsRoute._addFileChildren(ExamsRouteChildren)
+
+interface MockTestsRouteChildren {
+  MockTestsSlugRoute: typeof MockTestsSlugRoute
+}
+
+const MockTestsRouteChildren: MockTestsRouteChildren = {
+  MockTestsSlugRoute: MockTestsSlugRoute,
+}
+
+const MockTestsRouteWithChildren = MockTestsRoute._addFileChildren(
+  MockTestsRouteChildren,
+)
 
 interface NewsRouteChildren {
   NewsSlugRoute: typeof NewsSlugRoute
@@ -662,15 +804,18 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ArticlesRoute: ArticlesRouteWithChildren,
   ClaimCollegeRoute: ClaimCollegeRoute,
+  ClaimConsultancyRoute: ClaimConsultancyRoute,
   CollegePredictorRoute: CollegePredictorRoute,
   CollegesRoute: CollegesRouteWithChildren,
   CompareRoute: CompareRoute,
+  ConsultanciesRoute: ConsultanciesRouteWithChildren,
   CounselingRoute: CounselingRoute,
   CoursesRoute: CoursesRouteWithChildren,
   ExamPrepRoute: ExamPrepRouteWithChildren,
   ExamsRoute: ExamsRouteWithChildren,
   JoinRoute: JoinRoute,
   LoginRoute: LoginRoute,
+  MockTestsRoute: MockTestsRouteWithChildren,
   NewsRoute: NewsRouteWithChildren,
   QuestionsRoute: QuestionsRoute,
   ReviewsRoute: ReviewsRoute,
@@ -678,6 +823,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StudyAbroadRoute: StudyAbroadRouteWithChildren,
   DashboardCollegeRoute: DashboardCollegeRoute,
+  DashboardConsultancyRoute: DashboardConsultancyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
