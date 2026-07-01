@@ -14,8 +14,9 @@ const navItems = [
   { label: "Colleges", to: "/colleges", hasMega: true },
   { label: "Courses", to: "/courses", hasMega: false },
   { label: "Exams", to: "/exams", hasMega: false },
-  { label: "Exam Prep", to: "/exam-prep", hasMega: false },
+  { label: "Mock Tests", to: "/mock-tests", hasMega: false },
   { label: "Study Abroad", to: "/study-abroad", hasMega: false },
+  { label: "Consultancies", to: "/consultancies", hasMega: false },
   { label: "News", to: "/news", hasMega: false },
   { label: "Predictor", to: "/college-predictor", hasMega: false },
 ] as const;
