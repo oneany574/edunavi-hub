@@ -1,7 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
-  BookOpen,
   Building2,
   ChevronRight,
   Compass,
@@ -9,10 +8,8 @@ import {
   GraduationCap,
   LogIn,
   Menu,
-  Newspaper,
   Search,
   Sparkles,
-  Trophy,
   UserPlus,
   X,
 } from "lucide-react";

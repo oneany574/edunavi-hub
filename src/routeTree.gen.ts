@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as StudyAbroadRouteImport } from './routes/study-abroad'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
@@ -48,6 +49,11 @@ import { Route as ConsultanciesSlugRouteImport } from './routes/consultancies.$s
 import { Route as CollegesSlugRouteImport } from './routes/colleges.$slug'
 import { Route as ArticlesSlugRouteImport } from './routes/articles.$slug'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TeamRoute = TeamRouteImport.update({
   id: '/team',
   path: '/team',
@@ -266,6 +272,7 @@ export interface FileRoutesByFullPath {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-abroad': typeof StudyAbroadRouteWithChildren
   '/team': typeof TeamRoute
+  '/terms': typeof TermsRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/consultancies/$slug': typeof ConsultanciesSlugRoute
@@ -306,6 +313,7 @@ export interface FileRoutesByTo {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-abroad': typeof StudyAbroadRouteWithChildren
   '/team': typeof TeamRoute
+  '/terms': typeof TermsRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/consultancies/$slug': typeof ConsultanciesSlugRoute
@@ -347,6 +355,7 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/study-abroad': typeof StudyAbroadRouteWithChildren
   '/team': typeof TeamRoute
+  '/terms': typeof TermsRoute
   '/articles/$slug': typeof ArticlesSlugRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/consultancies/$slug': typeof ConsultanciesSlugRoute
@@ -389,6 +398,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/study-abroad'
     | '/team'
+    | '/terms'
     | '/articles/$slug'
     | '/colleges/$slug'
     | '/consultancies/$slug'
@@ -429,6 +439,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/study-abroad'
     | '/team'
+    | '/terms'
     | '/articles/$slug'
     | '/colleges/$slug'
     | '/consultancies/$slug'
@@ -469,6 +480,7 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/study-abroad'
     | '/team'
+    | '/terms'
     | '/articles/$slug'
     | '/colleges/$slug'
     | '/consultancies/$slug'
@@ -510,12 +522,20 @@ export interface RootRouteChildren {
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   StudyAbroadRoute: typeof StudyAbroadRouteWithChildren
   TeamRoute: typeof TeamRoute
+  TermsRoute: typeof TermsRoute
   DashboardCollegeRoute: typeof DashboardCollegeRoute
   DashboardConsultancyRoute: typeof DashboardConsultancyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/team': {
       id: '/team'
       path: '/team'
@@ -927,6 +947,7 @@ const rootRouteChildren: RootRouteChildren = {
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   StudyAbroadRoute: StudyAbroadRouteWithChildren,
   TeamRoute: TeamRoute,
+  TermsRoute: TermsRoute,
   DashboardCollegeRoute: DashboardCollegeRoute,
   DashboardConsultancyRoute: DashboardConsultancyRoute,
 }
