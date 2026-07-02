@@ -137,12 +137,20 @@ function CollegeDetailPage() {
             </div>
 
             <div className="flex flex-wrap gap-2">
-              <button className="flex items-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-bold text-brand">
-                Apply now <ArrowRight className="size-4" />
-              </button>
-              <button className="flex items-center gap-2 rounded-full bg-white/15 px-4 py-3 text-sm font-bold backdrop-blur">
-                <Download className="size-4" /> Brochure
-              </button>
+              <ApplyDialog
+                college={college}
+                trigger={
+                  <button className="flex items-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-bold text-brand">
+                    Apply now <ArrowRight className="size-4" />
+                  </button>
+                }
+              />
+              <BrochureButton
+                college={college}
+                className="flex items-center gap-2 rounded-full bg-white/15 px-4 py-3 text-sm font-bold backdrop-blur"
+              >
+                Brochure
+              </BrochureButton>
               <Link
                 to="/compare"
                 className="flex items-center gap-2 rounded-full border border-white/30 px-4 py-3 text-sm font-bold"
