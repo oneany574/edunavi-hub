@@ -21,6 +21,7 @@ import {
 import { SiteHeader } from "@/components/edufinder/site-header";
 import { SiteFooter } from "@/components/edufinder/site-footer";
 import { CollegeCard } from "@/components/edufinder/college-card";
+import { ApplyDialog, BrochureButton } from "@/components/edufinder/apply-dialog";
 import {
   colleges,
   formatFees,
