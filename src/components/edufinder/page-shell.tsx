@@ -44,7 +44,7 @@ export function PageShell({ eyebrow, title, lede, children }: Props) {
 
 export function ProseCard({ children }: { children: ReactNode }) {
   return (
-    <div className="prose prose-neutral max-w-none rounded-3xl border border-border bg-card p-8 text-foreground/85 prose-headings:font-display prose-headings:tracking-tight prose-headings:text-foreground prose-a:text-academic prose-strong:text-foreground">
+    <div className="space-y-4 rounded-3xl border border-border bg-card p-8 text-[15px] leading-relaxed text-foreground/85">
       {children}
     </div>
   );
