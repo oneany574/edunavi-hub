@@ -82,7 +82,7 @@ export function GlobalSearch() {
         items: exams.slice(0, 20).map((e) => ({
           id: `e-${e.slug}`,
           label: e.name,
-          hint: e.mode,
+          hint: e.conductingBody,
           keywords: [e.slug],
           go: () => navigate({ to: "/exams/$slug", params: { slug: e.slug } }),
         })),
