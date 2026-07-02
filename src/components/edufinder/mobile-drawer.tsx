@@ -245,6 +245,3 @@ export function MobileDrawer() {
     </Sheet>
   );
 }
-
-// Referenced by icons import above but only used inside sections; keep silent to satisfy tree-shaking
-void [BookOpen, Newspaper, Trophy];
