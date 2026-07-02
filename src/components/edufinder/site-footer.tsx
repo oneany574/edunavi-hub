@@ -32,10 +32,12 @@ const columns = [
   {
     title: "Company",
     links: [
-      { label: "About", to: "/" },
-      { label: "Press", to: "/" },
-      { label: "Privacy", to: "/" },
-      { label: "Terms", to: "/" },
+      { label: "About", to: "/about" },
+      { label: "Careers", to: "/careers" },
+      { label: "Press", to: "/press" },
+      { label: "Team", to: "/team" },
+      { label: "Privacy", to: "/privacy" },
+      { label: "Terms", to: "/terms" },
     ],
   },
 ] as const;

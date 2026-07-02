@@ -6,7 +6,6 @@ import {
   Building2,
   Calendar,
   CheckCircle2,
-  Download,
   GitCompareArrows,
   Globe2,
   GraduationCap,
@@ -21,6 +20,7 @@ import {
 import { SiteHeader } from "@/components/edufinder/site-header";
 import { SiteFooter } from "@/components/edufinder/site-footer";
 import { CollegeCard } from "@/components/edufinder/college-card";
+import { ApplyDialog, BrochureButton } from "@/components/edufinder/apply-dialog";
 import {
   colleges,
   formatFees,
@@ -136,12 +136,20 @@ function CollegeDetailPage() {
             </div>
 
             <div className="flex flex-wrap gap-2">
-              <button className="flex items-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-bold text-brand">
-                Apply now <ArrowRight className="size-4" />
-              </button>
-              <button className="flex items-center gap-2 rounded-full bg-white/15 px-4 py-3 text-sm font-bold backdrop-blur">
-                <Download className="size-4" /> Brochure
-              </button>
+              <ApplyDialog
+                college={college}
+                trigger={
+                  <button className="flex items-center gap-2 rounded-full bg-gold px-5 py-3 text-sm font-bold text-brand">
+                    Apply now <ArrowRight className="size-4" />
+                  </button>
+                }
+              />
+              <BrochureButton
+                college={college}
+                className="flex items-center gap-2 rounded-full bg-white/15 px-4 py-3 text-sm font-bold backdrop-blur"
+              >
+                Brochure
+              </BrochureButton>
               <Link
                 to="/compare"
                 className="flex items-center gap-2 rounded-full border border-white/30 px-4 py-3 text-sm font-bold"
@@ -431,12 +439,20 @@ function CollegeDetailPage() {
                   <Row label="Exams accepted" value={college.examsAccepted.join(", ")} />
                   <Row label="Established" value={String(college.established)} />
                 </div>
-                <button className="mt-6 w-full rounded-full bg-brand py-3 text-sm font-bold text-brand-foreground">
-                  Apply now
-                </button>
-                <button className="mt-2 w-full rounded-full border border-border py-3 text-sm font-bold">
+                <ApplyDialog
+                  college={college}
+                  trigger={
+                    <button className="mt-6 w-full rounded-full bg-brand py-3 text-sm font-bold text-brand-foreground">
+                      Apply now
+                    </button>
+                  }
+                />
+                <BrochureButton
+                  college={college}
+                  className="mt-2 flex w-full items-center justify-center gap-2 rounded-full border border-border py-3 text-sm font-bold"
+                >
                   Download brochure
-                </button>
+                </BrochureButton>
               </div>
 
               <div className="rounded-3xl bg-brand p-6 text-brand-foreground">
