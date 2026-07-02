@@ -28,6 +28,7 @@ import { Route as CollegesRouteImport } from './routes/colleges'
 import { Route as CollegePredictorRouteImport } from './routes/college-predictor'
 import { Route as ClaimConsultancyRouteImport } from './routes/claim-consultancy'
 import { Route as ClaimCollegeRouteImport } from './routes/claim-college'
+import { Route as CareersRouteImport } from './routes/careers'
 import { Route as ArticlesRouteImport } from './routes/articles'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -139,6 +140,11 @@ const ClaimCollegeRoute = ClaimCollegeRouteImport.update({
   path: '/claim-college',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ArticlesRoute = ArticlesRouteImport.update({
   id: '/articles',
   path: '/articles',
@@ -219,6 +225,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/articles': typeof ArticlesRouteWithChildren
+  '/careers': typeof CareersRoute
   '/claim-college': typeof ClaimCollegeRoute
   '/claim-consultancy': typeof ClaimConsultancyRoute
   '/college-predictor': typeof CollegePredictorRoute
@@ -255,6 +262,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/articles': typeof ArticlesRouteWithChildren
+  '/careers': typeof CareersRoute
   '/claim-college': typeof ClaimCollegeRoute
   '/claim-consultancy': typeof ClaimConsultancyRoute
   '/college-predictor': typeof CollegePredictorRoute
@@ -292,6 +300,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/articles': typeof ArticlesRouteWithChildren
+  '/careers': typeof CareersRoute
   '/claim-college': typeof ClaimCollegeRoute
   '/claim-consultancy': typeof ClaimConsultancyRoute
   '/college-predictor': typeof CollegePredictorRoute
@@ -330,6 +339,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/articles'
+    | '/careers'
     | '/claim-college'
     | '/claim-consultancy'
     | '/college-predictor'
@@ -366,6 +376,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/articles'
+    | '/careers'
     | '/claim-college'
     | '/claim-consultancy'
     | '/college-predictor'
@@ -402,6 +413,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/articles'
+    | '/careers'
     | '/claim-college'
     | '/claim-consultancy'
     | '/college-predictor'
@@ -439,6 +451,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   ArticlesRoute: typeof ArticlesRouteWithChildren
+  CareersRoute: typeof CareersRoute
   ClaimCollegeRoute: typeof ClaimCollegeRoute
   ClaimConsultancyRoute: typeof ClaimConsultancyRoute
   CollegePredictorRoute: typeof CollegePredictorRoute
@@ -595,6 +608,13 @@ declare module '@tanstack/react-router' {
       path: '/claim-college'
       fullPath: '/claim-college'
       preLoaderRoute: typeof ClaimCollegeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/articles': {
@@ -824,6 +844,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   ArticlesRoute: ArticlesRouteWithChildren,
+  CareersRoute: CareersRoute,
   ClaimCollegeRoute: ClaimCollegeRoute,
   ClaimConsultancyRoute: ClaimConsultancyRoute,
   CollegePredictorRoute: CollegePredictorRoute,
