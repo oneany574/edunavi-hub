@@ -6,7 +6,6 @@ import {
   Building2,
   Calendar,
   CheckCircle2,
-  CheckCircle2,
   GitCompareArrows,
   Globe2,
   GraduationCap,
