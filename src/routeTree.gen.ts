@@ -14,6 +14,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as QuestionsRouteImport } from './routes/questions'
+import { Route as PressRouteImport } from './routes/press'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as MockTestsRouteImport } from './routes/mock-tests'
 import { Route as LoginRouteImport } from './routes/login'
@@ -68,6 +69,11 @@ const ReviewsRoute = ReviewsRouteImport.update({
 const QuestionsRoute = QuestionsRouteImport.update({
   id: '/questions',
   path: '/questions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PressRoute = PressRouteImport.update({
+  id: '/press',
+  path: '/press',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NewsRoute = NewsRouteImport.update({
@@ -240,6 +246,7 @@ export interface FileRoutesByFullPath {
   '/login': typeof LoginRoute
   '/mock-tests': typeof MockTestsRouteWithChildren
   '/news': typeof NewsRouteWithChildren
+  '/press': typeof PressRoute
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
   '/scholarships': typeof ScholarshipsRouteWithChildren
@@ -277,6 +284,7 @@ export interface FileRoutesByTo {
   '/login': typeof LoginRoute
   '/mock-tests': typeof MockTestsRouteWithChildren
   '/news': typeof NewsRouteWithChildren
+  '/press': typeof PressRoute
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
   '/scholarships': typeof ScholarshipsRouteWithChildren
@@ -315,6 +323,7 @@ export interface FileRoutesById {
   '/login': typeof LoginRoute
   '/mock-tests': typeof MockTestsRouteWithChildren
   '/news': typeof NewsRouteWithChildren
+  '/press': typeof PressRoute
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
   '/scholarships': typeof ScholarshipsRouteWithChildren
@@ -354,6 +363,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/mock-tests'
     | '/news'
+    | '/press'
     | '/questions'
     | '/reviews'
     | '/scholarships'
@@ -391,6 +401,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/mock-tests'
     | '/news'
+    | '/press'
     | '/questions'
     | '/reviews'
     | '/scholarships'
@@ -428,6 +439,7 @@ export interface FileRouteTypes {
     | '/login'
     | '/mock-tests'
     | '/news'
+    | '/press'
     | '/questions'
     | '/reviews'
     | '/scholarships'
@@ -466,6 +478,7 @@ export interface RootRouteChildren {
   LoginRoute: typeof LoginRoute
   MockTestsRoute: typeof MockTestsRouteWithChildren
   NewsRoute: typeof NewsRouteWithChildren
+  PressRoute: typeof PressRoute
   QuestionsRoute: typeof QuestionsRoute
   ReviewsRoute: typeof ReviewsRoute
   ScholarshipsRoute: typeof ScholarshipsRouteWithChildren
@@ -510,6 +523,13 @@ declare module '@tanstack/react-router' {
       path: '/questions'
       fullPath: '/questions'
       preLoaderRoute: typeof QuestionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/press': {
+      id: '/press'
+      path: '/press'
+      fullPath: '/press'
+      preLoaderRoute: typeof PressRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/news': {
@@ -859,6 +879,7 @@ const rootRouteChildren: RootRouteChildren = {
   LoginRoute: LoginRoute,
   MockTestsRoute: MockTestsRouteWithChildren,
   NewsRoute: NewsRouteWithChildren,
+  PressRoute: PressRoute,
   QuestionsRoute: QuestionsRoute,
   ReviewsRoute: ReviewsRoute,
   ScholarshipsRoute: ScholarshipsRouteWithChildren,
