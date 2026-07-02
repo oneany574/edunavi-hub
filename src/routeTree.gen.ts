@@ -15,6 +15,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ScholarshipsRouteImport } from './routes/scholarships'
 import { Route as ReviewsRouteImport } from './routes/reviews'
 import { Route as QuestionsRouteImport } from './routes/questions'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as PressRouteImport } from './routes/press'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as MockTestsRouteImport } from './routes/mock-tests'
@@ -75,6 +76,11 @@ const ReviewsRoute = ReviewsRouteImport.update({
 const QuestionsRoute = QuestionsRouteImport.update({
   id: '/questions',
   path: '/questions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PressRoute = PressRouteImport.update({
@@ -253,6 +259,7 @@ export interface FileRoutesByFullPath {
   '/mock-tests': typeof MockTestsRouteWithChildren
   '/news': typeof NewsRouteWithChildren
   '/press': typeof PressRoute
+  '/privacy': typeof PrivacyRoute
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
   '/scholarships': typeof ScholarshipsRouteWithChildren
@@ -292,6 +299,7 @@ export interface FileRoutesByTo {
   '/mock-tests': typeof MockTestsRouteWithChildren
   '/news': typeof NewsRouteWithChildren
   '/press': typeof PressRoute
+  '/privacy': typeof PrivacyRoute
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
   '/scholarships': typeof ScholarshipsRouteWithChildren
@@ -332,6 +340,7 @@ export interface FileRoutesById {
   '/mock-tests': typeof MockTestsRouteWithChildren
   '/news': typeof NewsRouteWithChildren
   '/press': typeof PressRoute
+  '/privacy': typeof PrivacyRoute
   '/questions': typeof QuestionsRoute
   '/reviews': typeof ReviewsRoute
   '/scholarships': typeof ScholarshipsRouteWithChildren
@@ -373,6 +382,7 @@ export interface FileRouteTypes {
     | '/mock-tests'
     | '/news'
     | '/press'
+    | '/privacy'
     | '/questions'
     | '/reviews'
     | '/scholarships'
@@ -412,6 +422,7 @@ export interface FileRouteTypes {
     | '/mock-tests'
     | '/news'
     | '/press'
+    | '/privacy'
     | '/questions'
     | '/reviews'
     | '/scholarships'
@@ -451,6 +462,7 @@ export interface FileRouteTypes {
     | '/mock-tests'
     | '/news'
     | '/press'
+    | '/privacy'
     | '/questions'
     | '/reviews'
     | '/scholarships'
@@ -491,6 +503,7 @@ export interface RootRouteChildren {
   MockTestsRoute: typeof MockTestsRouteWithChildren
   NewsRoute: typeof NewsRouteWithChildren
   PressRoute: typeof PressRoute
+  PrivacyRoute: typeof PrivacyRoute
   QuestionsRoute: typeof QuestionsRoute
   ReviewsRoute: typeof ReviewsRoute
   ScholarshipsRoute: typeof ScholarshipsRouteWithChildren
@@ -543,6 +556,13 @@ declare module '@tanstack/react-router' {
       path: '/questions'
       fullPath: '/questions'
       preLoaderRoute: typeof QuestionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/press': {
@@ -900,6 +920,7 @@ const rootRouteChildren: RootRouteChildren = {
   MockTestsRoute: MockTestsRouteWithChildren,
   NewsRoute: NewsRouteWithChildren,
   PressRoute: PressRoute,
+  PrivacyRoute: PrivacyRoute,
   QuestionsRoute: QuestionsRoute,
   ReviewsRoute: ReviewsRoute,
   ScholarshipsRoute: ScholarshipsRouteWithChildren,
