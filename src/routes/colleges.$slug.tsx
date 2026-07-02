@@ -440,12 +440,20 @@ function CollegeDetailPage() {
                   <Row label="Exams accepted" value={college.examsAccepted.join(", ")} />
                   <Row label="Established" value={String(college.established)} />
                 </div>
-                <button className="mt-6 w-full rounded-full bg-brand py-3 text-sm font-bold text-brand-foreground">
-                  Apply now
-                </button>
-                <button className="mt-2 w-full rounded-full border border-border py-3 text-sm font-bold">
+                <ApplyDialog
+                  college={college}
+                  trigger={
+                    <button className="mt-6 w-full rounded-full bg-brand py-3 text-sm font-bold text-brand-foreground">
+                      Apply now
+                    </button>
+                  }
+                />
+                <BrochureButton
+                  college={college}
+                  className="mt-2 flex w-full items-center justify-center gap-2 rounded-full border border-border py-3 text-sm font-bold"
+                >
                   Download brochure
-                </button>
+                </BrochureButton>
               </div>
 
               <div className="rounded-3xl bg-brand p-6 text-brand-foreground">
