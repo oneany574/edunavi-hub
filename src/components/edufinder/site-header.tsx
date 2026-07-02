@@ -3,12 +3,12 @@ import { useState } from "react";
 import {
   ChevronDown,
   GraduationCap,
-  Menu,
   Search,
   Sparkles,
-  X,
 } from "lucide-react";
 import { streams } from "@/lib/edufinder-data";
+import { GlobalSearch, openGlobalSearch } from "./global-search";
+import { MobileDrawer } from "./mobile-drawer";
 
 const navItems = [
   { label: "Colleges", to: "/colleges", hasMega: true },
@@ -22,7 +22,6 @@ const navItems = [
 ] as const;
 
 export function SiteHeader() {
-  const [mobileOpen, setMobileOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState(false);
 
   return (
@@ -119,8 +118,21 @@ export function SiteHeader() {
         <div className="flex items-center gap-2">
           <button
             type="button"
+            onClick={openGlobalSearch}
             aria-label="Search"
-            className="hidden md:grid size-10 place-items-center rounded-full text-foreground/70 transition-colors hover:bg-secondary hover:text-foreground"
+            className="hidden md:inline-flex h-10 items-center gap-2 rounded-full border border-border bg-card px-3.5 text-xs font-medium text-muted-foreground transition-colors hover:border-academic/40 hover:text-foreground"
+          >
+            <Search className="size-3.5" />
+            <span className="hidden xl:inline">Search anything</span>
+            <span className="ml-2 hidden xl:inline rounded border border-border bg-background px-1.5 py-0.5 font-mono-tight text-[10px] font-bold">
+              ⌘K
+            </span>
+          </button>
+          <button
+            type="button"
+            onClick={openGlobalSearch}
+            aria-label="Search"
+            className="md:hidden grid size-10 place-items-center rounded-full text-foreground/70 transition-colors hover:bg-secondary hover:text-foreground"
           >
             <Search className="size-4" />
           </button>
@@ -132,37 +144,15 @@ export function SiteHeader() {
           </Link>
           <Link
             to="/join"
-            className="rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-brand-foreground transition-transform hover:-translate-y-px hover:bg-brand/90"
+            className="hidden sm:inline-flex rounded-full bg-brand px-5 py-2.5 text-sm font-semibold text-brand-foreground transition-transform hover:-translate-y-px hover:bg-brand/90"
           >
             Join free
           </Link>
-          <button
-            type="button"
-            aria-label="Open menu"
-            onClick={() => setMobileOpen((v) => !v)}
-            className="lg:hidden grid size-10 place-items-center rounded-full text-foreground/70 hover:bg-secondary"
-          >
-            {mobileOpen ? <X className="size-5" /> : <Menu className="size-5" />}
-          </button>
+          <MobileDrawer />
         </div>
       </div>
 
-      {mobileOpen && (
-        <div className="lg:hidden border-t border-border bg-background">
-          <nav className="container-page flex flex-col py-4">
-            {navItems.map((item) => (
-              <Link
-                key={item.to}
-                to={item.to}
-                onClick={() => setMobileOpen(false)}
-                className="rounded-xl px-3 py-3 text-base font-medium text-foreground/80 hover:bg-secondary"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      )}
+      <GlobalSearch />
     </header>
   );
 }
