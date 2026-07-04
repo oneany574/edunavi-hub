@@ -1,5 +1,6 @@
 import { useMemo, useState, type ReactNode } from "react";
-import { ArrowDown, ArrowUp, MoreHorizontal, Plus, Search, SlidersHorizontal, Download } from "lucide-react";
+import { ArrowDown, ArrowUp, MoreHorizontal, Pencil, Plus, Search, SlidersHorizontal, Download } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -12,6 +13,8 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import type { Kpi, Row, Status } from "@/lib/panel-data";
+
+export type RowAction = { label: string; href?: string; destructive?: boolean };
 
 const statusStyles: Record<Status, string> = {
   Active: "bg-success/15 text-success",
@@ -74,12 +77,13 @@ export function KpiGrid({ items }: { items: Kpi[] }) {
 
 type DataTableProps = {
   rows: Row[];
-  actions?: (row: Row) => { label: string; destructive?: boolean }[];
+  actions?: (row: Row) => RowAction[];
   searchable?: boolean;
   primaryKey?: string;
+  getEditHref?: (row: Row) => string | undefined;
 };
 
-export function DataTable({ rows, actions, searchable = true, primaryKey }: DataTableProps) {
+export function DataTable({ rows, actions, searchable = true, primaryKey, getEditHref }: DataTableProps) {
   const [q, setQ] = useState("");
   const columns = useMemo(() => (rows[0] ? Object.keys(rows[0]) : []), [rows]);
 
@@ -120,7 +124,7 @@ export function DataTable({ rows, actions, searchable = true, primaryKey }: Data
                     {c}
                   </th>
                 ))}
-                {actions && <th className="px-4 py-3" />}
+                {(actions || getEditHref) && <th className="px-4 py-3" />}
               </tr>
             </thead>
             <tbody>
@@ -139,32 +143,54 @@ export function DataTable({ rows, actions, searchable = true, primaryKey }: Data
                       )}
                     </td>
                   ))}
-                  {actions && (
+                  {(actions || getEditHref) && (
                     <td className="px-4 py-3 text-right">
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="icon" className="size-7">
-                            <MoreHorizontal className="size-4" />
+                      <div className="flex items-center justify-end gap-1">
+                        {getEditHref && getEditHref(row) && (
+                          <Button
+                            asChild
+                            variant="outline"
+                            size="sm"
+                            className="h-7 gap-1.5 px-2 text-xs"
+                          >
+                            <Link to={getEditHref(row)!}>
+                              <Pencil className="size-3" /> Edit
+                            </Link>
                           </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          {actions(row).map((a, idx) => (
-                            <div key={a.label}>
-                              {idx > 0 && a.destructive && <DropdownMenuSeparator />}
-                              <DropdownMenuItem className={a.destructive ? "text-destructive" : ""}>
-                                {a.label}
-                              </DropdownMenuItem>
-                            </div>
-                          ))}
-                        </DropdownMenuContent>
-                      </DropdownMenu>
+                        )}
+                        {actions && (
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="icon" className="size-7">
+                                <MoreHorizontal className="size-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              {actions(row).map((a, idx) => (
+                                <div key={a.label}>
+                                  {idx > 0 && a.destructive && <DropdownMenuSeparator />}
+                                  {a.href ? (
+                                    <DropdownMenuItem asChild>
+                                      <Link to={a.href}>{a.label}</Link>
+                                    </DropdownMenuItem>
+                                  ) : (
+                                    <DropdownMenuItem className={a.destructive ? "text-destructive" : ""}>
+                                      {a.label}
+                                    </DropdownMenuItem>
+                                  )}
+                                </div>
+                              ))}
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        )}
+                      </div>
                     </td>
                   )}
                 </tr>
               ))}
               {filtered.length === 0 && (
                 <tr>
-                  <td className="px-4 py-10 text-center text-sm text-muted-foreground" colSpan={columns.length + (actions ? 1 : 0)}>
+                  <td className="px-4 py-10 text-center text-sm text-muted-foreground" colSpan={columns.length + (actions || getEditHref ? 1 : 0)}>
                     No results.
                   </td>
                 </tr>
@@ -197,11 +223,8 @@ export function ListModule({
   primaryLabel = "Add new",
   kpis,
   rows,
-  rowActions = () => [
-    { label: "View" },
-    { label: "Edit" },
-    { label: "Delete", destructive: true },
-  ],
+  getEditHref,
+  rowActions,
 }: {
   eyebrow?: string;
   title: string;
@@ -209,8 +232,18 @@ export function ListModule({
   primaryLabel?: string;
   kpis?: Kpi[];
   rows: Row[];
-  rowActions?: (row: Row) => { label: string; destructive?: boolean }[];
+  getEditHref?: (row: Row) => string | undefined;
+  rowActions?: (row: Row) => RowAction[];
 }) {
+  const defaultActions = (row: Row): RowAction[] => {
+    const href = getEditHref?.(row);
+    return [
+      ...(href ? [{ label: "View / edit", href }] : [{ label: "View" }]),
+      { label: "Duplicate" },
+      { label: "Archive" },
+      { label: "Delete", destructive: true },
+    ];
+  };
   return (
     <>
       <PageHeader
@@ -220,7 +253,7 @@ export function ListModule({
         actions={<PrimaryAction label={primaryLabel} />}
       />
       {kpis && <KpiGrid items={kpis} />}
-      <DataTable rows={rows} actions={rowActions} />
+      <DataTable rows={rows} getEditHref={getEditHref} actions={rowActions ?? defaultActions} />
     </>
   );
 }

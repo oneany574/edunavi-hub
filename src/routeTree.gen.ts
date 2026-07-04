@@ -63,6 +63,7 @@ import { Route as ArticlesSlugRouteImport } from './routes/articles.$slug'
 import { Route as AdminStudyAbroadRouteImport } from './routes/admin.study-abroad'
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as AdminScholarshipsRouteImport } from './routes/admin.scholarships'
+import { Route as AdminProfileRouteImport } from './routes/admin.profile'
 import { Route as AdminNewsRouteImport } from './routes/admin.news'
 import { Route as AdminModerationRouteImport } from './routes/admin.moderation'
 import { Route as AdminExamsRouteImport } from './routes/admin.exams'
@@ -79,6 +80,15 @@ import { Route as PortalCollegeProfileRouteImport } from './routes/portal.colleg
 import { Route as PortalCollegeGalleryRouteImport } from './routes/portal.college.gallery'
 import { Route as PortalCollegeCoursesRouteImport } from './routes/portal.college.courses'
 import { Route as PortalCollegeAnalyticsRouteImport } from './routes/portal.college.analytics'
+import { Route as AdminStudyAbroadSlugRouteImport } from './routes/admin.study-abroad.$slug'
+import { Route as AdminScholarshipsSlugRouteImport } from './routes/admin.scholarships.$slug'
+import { Route as AdminNewsSlugRouteImport } from './routes/admin.news.$slug'
+import { Route as AdminExamsSlugRouteImport } from './routes/admin.exams.$slug'
+import { Route as AdminCoursesSlugRouteImport } from './routes/admin.courses.$slug'
+import { Route as AdminConsultanciesSlugRouteImport } from './routes/admin.consultancies.$slug'
+import { Route as AdminCollegesSlugRouteImport } from './routes/admin.colleges.$slug'
+import { Route as AdminClaimsSlugRouteImport } from './routes/admin.claims.$slug'
+import { Route as AdminBlogsSlugRouteImport } from './routes/admin.blogs.$slug'
 
 const TermsRoute = TermsRouteImport.update({
   id: '/terms',
@@ -350,6 +360,11 @@ const AdminScholarshipsRoute = AdminScholarshipsRouteImport.update({
   path: '/scholarships',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminProfileRoute = AdminProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminNewsRoute = AdminNewsRouteImport.update({
   id: '/news',
   path: '/news',
@@ -431,6 +446,51 @@ const PortalCollegeAnalyticsRoute = PortalCollegeAnalyticsRouteImport.update({
   path: '/analytics',
   getParentRoute: () => PortalCollegeRoute,
 } as any)
+const AdminStudyAbroadSlugRoute = AdminStudyAbroadSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminStudyAbroadRoute,
+} as any)
+const AdminScholarshipsSlugRoute = AdminScholarshipsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminScholarshipsRoute,
+} as any)
+const AdminNewsSlugRoute = AdminNewsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminNewsRoute,
+} as any)
+const AdminExamsSlugRoute = AdminExamsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminExamsRoute,
+} as any)
+const AdminCoursesSlugRoute = AdminCoursesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminCoursesRoute,
+} as any)
+const AdminConsultanciesSlugRoute = AdminConsultanciesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminConsultanciesRoute,
+} as any)
+const AdminCollegesSlugRoute = AdminCollegesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminCollegesRoute,
+} as any)
+const AdminClaimsSlugRoute = AdminClaimsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminClaimsRoute,
+} as any)
+const AdminBlogsSlugRoute = AdminBlogsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminBlogsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -463,17 +523,18 @@ export interface FileRoutesByFullPath {
   '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
-  '/admin/blogs': typeof AdminBlogsRoute
-  '/admin/claims': typeof AdminClaimsRoute
-  '/admin/colleges': typeof AdminCollegesRoute
-  '/admin/consultancies': typeof AdminConsultanciesRoute
-  '/admin/courses': typeof AdminCoursesRoute
-  '/admin/exams': typeof AdminExamsRoute
+  '/admin/blogs': typeof AdminBlogsRouteWithChildren
+  '/admin/claims': typeof AdminClaimsRouteWithChildren
+  '/admin/colleges': typeof AdminCollegesRouteWithChildren
+  '/admin/consultancies': typeof AdminConsultanciesRouteWithChildren
+  '/admin/courses': typeof AdminCoursesRouteWithChildren
+  '/admin/exams': typeof AdminExamsRouteWithChildren
   '/admin/moderation': typeof AdminModerationRoute
-  '/admin/news': typeof AdminNewsRoute
-  '/admin/scholarships': typeof AdminScholarshipsRoute
+  '/admin/news': typeof AdminNewsRouteWithChildren
+  '/admin/profile': typeof AdminProfileRoute
+  '/admin/scholarships': typeof AdminScholarshipsRouteWithChildren
   '/admin/settings': typeof AdminSettingsRoute
-  '/admin/study-abroad': typeof AdminStudyAbroadRoute
+  '/admin/study-abroad': typeof AdminStudyAbroadRouteWithChildren
   '/articles/$slug': typeof ArticlesSlugRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/consultancies/$slug': typeof ConsultanciesSlugRoute
@@ -496,6 +557,15 @@ export interface FileRoutesByFullPath {
   '/study-abroad/$slug': typeof StudyAbroadSlugRoute
   '/admin/': typeof AdminIndexRoute
   '/counselor/': typeof CounselorIndexRoute
+  '/admin/blogs/$slug': typeof AdminBlogsSlugRoute
+  '/admin/claims/$slug': typeof AdminClaimsSlugRoute
+  '/admin/colleges/$slug': typeof AdminCollegesSlugRoute
+  '/admin/consultancies/$slug': typeof AdminConsultanciesSlugRoute
+  '/admin/courses/$slug': typeof AdminCoursesSlugRoute
+  '/admin/exams/$slug': typeof AdminExamsSlugRoute
+  '/admin/news/$slug': typeof AdminNewsSlugRoute
+  '/admin/scholarships/$slug': typeof AdminScholarshipsSlugRoute
+  '/admin/study-abroad/$slug': typeof AdminStudyAbroadSlugRoute
   '/portal/college/analytics': typeof PortalCollegeAnalyticsRoute
   '/portal/college/courses': typeof PortalCollegeCoursesRoute
   '/portal/college/gallery': typeof PortalCollegeGalleryRoute
@@ -533,17 +603,18 @@ export interface FileRoutesByTo {
   '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
-  '/admin/blogs': typeof AdminBlogsRoute
-  '/admin/claims': typeof AdminClaimsRoute
-  '/admin/colleges': typeof AdminCollegesRoute
-  '/admin/consultancies': typeof AdminConsultanciesRoute
-  '/admin/courses': typeof AdminCoursesRoute
-  '/admin/exams': typeof AdminExamsRoute
+  '/admin/blogs': typeof AdminBlogsRouteWithChildren
+  '/admin/claims': typeof AdminClaimsRouteWithChildren
+  '/admin/colleges': typeof AdminCollegesRouteWithChildren
+  '/admin/consultancies': typeof AdminConsultanciesRouteWithChildren
+  '/admin/courses': typeof AdminCoursesRouteWithChildren
+  '/admin/exams': typeof AdminExamsRouteWithChildren
   '/admin/moderation': typeof AdminModerationRoute
-  '/admin/news': typeof AdminNewsRoute
-  '/admin/scholarships': typeof AdminScholarshipsRoute
+  '/admin/news': typeof AdminNewsRouteWithChildren
+  '/admin/profile': typeof AdminProfileRoute
+  '/admin/scholarships': typeof AdminScholarshipsRouteWithChildren
   '/admin/settings': typeof AdminSettingsRoute
-  '/admin/study-abroad': typeof AdminStudyAbroadRoute
+  '/admin/study-abroad': typeof AdminStudyAbroadRouteWithChildren
   '/articles/$slug': typeof ArticlesSlugRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/consultancies/$slug': typeof ConsultanciesSlugRoute
@@ -565,6 +636,15 @@ export interface FileRoutesByTo {
   '/study-abroad/$slug': typeof StudyAbroadSlugRoute
   '/admin': typeof AdminIndexRoute
   '/counselor': typeof CounselorIndexRoute
+  '/admin/blogs/$slug': typeof AdminBlogsSlugRoute
+  '/admin/claims/$slug': typeof AdminClaimsSlugRoute
+  '/admin/colleges/$slug': typeof AdminCollegesSlugRoute
+  '/admin/consultancies/$slug': typeof AdminConsultanciesSlugRoute
+  '/admin/courses/$slug': typeof AdminCoursesSlugRoute
+  '/admin/exams/$slug': typeof AdminExamsSlugRoute
+  '/admin/news/$slug': typeof AdminNewsSlugRoute
+  '/admin/scholarships/$slug': typeof AdminScholarshipsSlugRoute
+  '/admin/study-abroad/$slug': typeof AdminStudyAbroadSlugRoute
   '/portal/college/analytics': typeof PortalCollegeAnalyticsRoute
   '/portal/college/courses': typeof PortalCollegeCoursesRoute
   '/portal/college/gallery': typeof PortalCollegeGalleryRoute
@@ -605,17 +685,18 @@ export interface FileRoutesById {
   '/team': typeof TeamRoute
   '/terms': typeof TermsRoute
   '/admin/analytics': typeof AdminAnalyticsRoute
-  '/admin/blogs': typeof AdminBlogsRoute
-  '/admin/claims': typeof AdminClaimsRoute
-  '/admin/colleges': typeof AdminCollegesRoute
-  '/admin/consultancies': typeof AdminConsultanciesRoute
-  '/admin/courses': typeof AdminCoursesRoute
-  '/admin/exams': typeof AdminExamsRoute
+  '/admin/blogs': typeof AdminBlogsRouteWithChildren
+  '/admin/claims': typeof AdminClaimsRouteWithChildren
+  '/admin/colleges': typeof AdminCollegesRouteWithChildren
+  '/admin/consultancies': typeof AdminConsultanciesRouteWithChildren
+  '/admin/courses': typeof AdminCoursesRouteWithChildren
+  '/admin/exams': typeof AdminExamsRouteWithChildren
   '/admin/moderation': typeof AdminModerationRoute
-  '/admin/news': typeof AdminNewsRoute
-  '/admin/scholarships': typeof AdminScholarshipsRoute
+  '/admin/news': typeof AdminNewsRouteWithChildren
+  '/admin/profile': typeof AdminProfileRoute
+  '/admin/scholarships': typeof AdminScholarshipsRouteWithChildren
   '/admin/settings': typeof AdminSettingsRoute
-  '/admin/study-abroad': typeof AdminStudyAbroadRoute
+  '/admin/study-abroad': typeof AdminStudyAbroadRouteWithChildren
   '/articles/$slug': typeof ArticlesSlugRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/consultancies/$slug': typeof ConsultanciesSlugRoute
@@ -638,6 +719,15 @@ export interface FileRoutesById {
   '/study-abroad/$slug': typeof StudyAbroadSlugRoute
   '/admin/': typeof AdminIndexRoute
   '/counselor/': typeof CounselorIndexRoute
+  '/admin/blogs/$slug': typeof AdminBlogsSlugRoute
+  '/admin/claims/$slug': typeof AdminClaimsSlugRoute
+  '/admin/colleges/$slug': typeof AdminCollegesSlugRoute
+  '/admin/consultancies/$slug': typeof AdminConsultanciesSlugRoute
+  '/admin/courses/$slug': typeof AdminCoursesSlugRoute
+  '/admin/exams/$slug': typeof AdminExamsSlugRoute
+  '/admin/news/$slug': typeof AdminNewsSlugRoute
+  '/admin/scholarships/$slug': typeof AdminScholarshipsSlugRoute
+  '/admin/study-abroad/$slug': typeof AdminStudyAbroadSlugRoute
   '/portal/college/analytics': typeof PortalCollegeAnalyticsRoute
   '/portal/college/courses': typeof PortalCollegeCoursesRoute
   '/portal/college/gallery': typeof PortalCollegeGalleryRoute
@@ -687,6 +777,7 @@ export interface FileRouteTypes {
     | '/admin/exams'
     | '/admin/moderation'
     | '/admin/news'
+    | '/admin/profile'
     | '/admin/scholarships'
     | '/admin/settings'
     | '/admin/study-abroad'
@@ -712,6 +803,15 @@ export interface FileRouteTypes {
     | '/study-abroad/$slug'
     | '/admin/'
     | '/counselor/'
+    | '/admin/blogs/$slug'
+    | '/admin/claims/$slug'
+    | '/admin/colleges/$slug'
+    | '/admin/consultancies/$slug'
+    | '/admin/courses/$slug'
+    | '/admin/exams/$slug'
+    | '/admin/news/$slug'
+    | '/admin/scholarships/$slug'
+    | '/admin/study-abroad/$slug'
     | '/portal/college/analytics'
     | '/portal/college/courses'
     | '/portal/college/gallery'
@@ -757,6 +857,7 @@ export interface FileRouteTypes {
     | '/admin/exams'
     | '/admin/moderation'
     | '/admin/news'
+    | '/admin/profile'
     | '/admin/scholarships'
     | '/admin/settings'
     | '/admin/study-abroad'
@@ -781,6 +882,15 @@ export interface FileRouteTypes {
     | '/study-abroad/$slug'
     | '/admin'
     | '/counselor'
+    | '/admin/blogs/$slug'
+    | '/admin/claims/$slug'
+    | '/admin/colleges/$slug'
+    | '/admin/consultancies/$slug'
+    | '/admin/courses/$slug'
+    | '/admin/exams/$slug'
+    | '/admin/news/$slug'
+    | '/admin/scholarships/$slug'
+    | '/admin/study-abroad/$slug'
     | '/portal/college/analytics'
     | '/portal/college/courses'
     | '/portal/college/gallery'
@@ -828,6 +938,7 @@ export interface FileRouteTypes {
     | '/admin/exams'
     | '/admin/moderation'
     | '/admin/news'
+    | '/admin/profile'
     | '/admin/scholarships'
     | '/admin/settings'
     | '/admin/study-abroad'
@@ -853,6 +964,15 @@ export interface FileRouteTypes {
     | '/study-abroad/$slug'
     | '/admin/'
     | '/counselor/'
+    | '/admin/blogs/$slug'
+    | '/admin/claims/$slug'
+    | '/admin/colleges/$slug'
+    | '/admin/consultancies/$slug'
+    | '/admin/courses/$slug'
+    | '/admin/exams/$slug'
+    | '/admin/news/$slug'
+    | '/admin/scholarships/$slug'
+    | '/admin/study-abroad/$slug'
     | '/portal/college/analytics'
     | '/portal/college/courses'
     | '/portal/college/gallery'
@@ -1277,6 +1397,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminScholarshipsRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/profile': {
+      id: '/admin/profile'
+      path: '/profile'
+      fullPath: '/admin/profile'
+      preLoaderRoute: typeof AdminProfileRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/news': {
       id: '/admin/news'
       path: '/news'
@@ -1389,38 +1516,208 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalCollegeAnalyticsRouteImport
       parentRoute: typeof PortalCollegeRoute
     }
+    '/admin/study-abroad/$slug': {
+      id: '/admin/study-abroad/$slug'
+      path: '/$slug'
+      fullPath: '/admin/study-abroad/$slug'
+      preLoaderRoute: typeof AdminStudyAbroadSlugRouteImport
+      parentRoute: typeof AdminStudyAbroadRoute
+    }
+    '/admin/scholarships/$slug': {
+      id: '/admin/scholarships/$slug'
+      path: '/$slug'
+      fullPath: '/admin/scholarships/$slug'
+      preLoaderRoute: typeof AdminScholarshipsSlugRouteImport
+      parentRoute: typeof AdminScholarshipsRoute
+    }
+    '/admin/news/$slug': {
+      id: '/admin/news/$slug'
+      path: '/$slug'
+      fullPath: '/admin/news/$slug'
+      preLoaderRoute: typeof AdminNewsSlugRouteImport
+      parentRoute: typeof AdminNewsRoute
+    }
+    '/admin/exams/$slug': {
+      id: '/admin/exams/$slug'
+      path: '/$slug'
+      fullPath: '/admin/exams/$slug'
+      preLoaderRoute: typeof AdminExamsSlugRouteImport
+      parentRoute: typeof AdminExamsRoute
+    }
+    '/admin/courses/$slug': {
+      id: '/admin/courses/$slug'
+      path: '/$slug'
+      fullPath: '/admin/courses/$slug'
+      preLoaderRoute: typeof AdminCoursesSlugRouteImport
+      parentRoute: typeof AdminCoursesRoute
+    }
+    '/admin/consultancies/$slug': {
+      id: '/admin/consultancies/$slug'
+      path: '/$slug'
+      fullPath: '/admin/consultancies/$slug'
+      preLoaderRoute: typeof AdminConsultanciesSlugRouteImport
+      parentRoute: typeof AdminConsultanciesRoute
+    }
+    '/admin/colleges/$slug': {
+      id: '/admin/colleges/$slug'
+      path: '/$slug'
+      fullPath: '/admin/colleges/$slug'
+      preLoaderRoute: typeof AdminCollegesSlugRouteImport
+      parentRoute: typeof AdminCollegesRoute
+    }
+    '/admin/claims/$slug': {
+      id: '/admin/claims/$slug'
+      path: '/$slug'
+      fullPath: '/admin/claims/$slug'
+      preLoaderRoute: typeof AdminClaimsSlugRouteImport
+      parentRoute: typeof AdminClaimsRoute
+    }
+    '/admin/blogs/$slug': {
+      id: '/admin/blogs/$slug'
+      path: '/$slug'
+      fullPath: '/admin/blogs/$slug'
+      preLoaderRoute: typeof AdminBlogsSlugRouteImport
+      parentRoute: typeof AdminBlogsRoute
+    }
   }
 }
 
+interface AdminBlogsRouteChildren {
+  AdminBlogsSlugRoute: typeof AdminBlogsSlugRoute
+}
+
+const AdminBlogsRouteChildren: AdminBlogsRouteChildren = {
+  AdminBlogsSlugRoute: AdminBlogsSlugRoute,
+}
+
+const AdminBlogsRouteWithChildren = AdminBlogsRoute._addFileChildren(
+  AdminBlogsRouteChildren,
+)
+
+interface AdminClaimsRouteChildren {
+  AdminClaimsSlugRoute: typeof AdminClaimsSlugRoute
+}
+
+const AdminClaimsRouteChildren: AdminClaimsRouteChildren = {
+  AdminClaimsSlugRoute: AdminClaimsSlugRoute,
+}
+
+const AdminClaimsRouteWithChildren = AdminClaimsRoute._addFileChildren(
+  AdminClaimsRouteChildren,
+)
+
+interface AdminCollegesRouteChildren {
+  AdminCollegesSlugRoute: typeof AdminCollegesSlugRoute
+}
+
+const AdminCollegesRouteChildren: AdminCollegesRouteChildren = {
+  AdminCollegesSlugRoute: AdminCollegesSlugRoute,
+}
+
+const AdminCollegesRouteWithChildren = AdminCollegesRoute._addFileChildren(
+  AdminCollegesRouteChildren,
+)
+
+interface AdminConsultanciesRouteChildren {
+  AdminConsultanciesSlugRoute: typeof AdminConsultanciesSlugRoute
+}
+
+const AdminConsultanciesRouteChildren: AdminConsultanciesRouteChildren = {
+  AdminConsultanciesSlugRoute: AdminConsultanciesSlugRoute,
+}
+
+const AdminConsultanciesRouteWithChildren =
+  AdminConsultanciesRoute._addFileChildren(AdminConsultanciesRouteChildren)
+
+interface AdminCoursesRouteChildren {
+  AdminCoursesSlugRoute: typeof AdminCoursesSlugRoute
+}
+
+const AdminCoursesRouteChildren: AdminCoursesRouteChildren = {
+  AdminCoursesSlugRoute: AdminCoursesSlugRoute,
+}
+
+const AdminCoursesRouteWithChildren = AdminCoursesRoute._addFileChildren(
+  AdminCoursesRouteChildren,
+)
+
+interface AdminExamsRouteChildren {
+  AdminExamsSlugRoute: typeof AdminExamsSlugRoute
+}
+
+const AdminExamsRouteChildren: AdminExamsRouteChildren = {
+  AdminExamsSlugRoute: AdminExamsSlugRoute,
+}
+
+const AdminExamsRouteWithChildren = AdminExamsRoute._addFileChildren(
+  AdminExamsRouteChildren,
+)
+
+interface AdminNewsRouteChildren {
+  AdminNewsSlugRoute: typeof AdminNewsSlugRoute
+}
+
+const AdminNewsRouteChildren: AdminNewsRouteChildren = {
+  AdminNewsSlugRoute: AdminNewsSlugRoute,
+}
+
+const AdminNewsRouteWithChildren = AdminNewsRoute._addFileChildren(
+  AdminNewsRouteChildren,
+)
+
+interface AdminScholarshipsRouteChildren {
+  AdminScholarshipsSlugRoute: typeof AdminScholarshipsSlugRoute
+}
+
+const AdminScholarshipsRouteChildren: AdminScholarshipsRouteChildren = {
+  AdminScholarshipsSlugRoute: AdminScholarshipsSlugRoute,
+}
+
+const AdminScholarshipsRouteWithChildren =
+  AdminScholarshipsRoute._addFileChildren(AdminScholarshipsRouteChildren)
+
+interface AdminStudyAbroadRouteChildren {
+  AdminStudyAbroadSlugRoute: typeof AdminStudyAbroadSlugRoute
+}
+
+const AdminStudyAbroadRouteChildren: AdminStudyAbroadRouteChildren = {
+  AdminStudyAbroadSlugRoute: AdminStudyAbroadSlugRoute,
+}
+
+const AdminStudyAbroadRouteWithChildren =
+  AdminStudyAbroadRoute._addFileChildren(AdminStudyAbroadRouteChildren)
+
 interface AdminRouteChildren {
   AdminAnalyticsRoute: typeof AdminAnalyticsRoute
-  AdminBlogsRoute: typeof AdminBlogsRoute
-  AdminClaimsRoute: typeof AdminClaimsRoute
-  AdminCollegesRoute: typeof AdminCollegesRoute
-  AdminConsultanciesRoute: typeof AdminConsultanciesRoute
-  AdminCoursesRoute: typeof AdminCoursesRoute
-  AdminExamsRoute: typeof AdminExamsRoute
+  AdminBlogsRoute: typeof AdminBlogsRouteWithChildren
+  AdminClaimsRoute: typeof AdminClaimsRouteWithChildren
+  AdminCollegesRoute: typeof AdminCollegesRouteWithChildren
+  AdminConsultanciesRoute: typeof AdminConsultanciesRouteWithChildren
+  AdminCoursesRoute: typeof AdminCoursesRouteWithChildren
+  AdminExamsRoute: typeof AdminExamsRouteWithChildren
   AdminModerationRoute: typeof AdminModerationRoute
-  AdminNewsRoute: typeof AdminNewsRoute
-  AdminScholarshipsRoute: typeof AdminScholarshipsRoute
+  AdminNewsRoute: typeof AdminNewsRouteWithChildren
+  AdminProfileRoute: typeof AdminProfileRoute
+  AdminScholarshipsRoute: typeof AdminScholarshipsRouteWithChildren
   AdminSettingsRoute: typeof AdminSettingsRoute
-  AdminStudyAbroadRoute: typeof AdminStudyAbroadRoute
+  AdminStudyAbroadRoute: typeof AdminStudyAbroadRouteWithChildren
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminAnalyticsRoute: AdminAnalyticsRoute,
-  AdminBlogsRoute: AdminBlogsRoute,
-  AdminClaimsRoute: AdminClaimsRoute,
-  AdminCollegesRoute: AdminCollegesRoute,
-  AdminConsultanciesRoute: AdminConsultanciesRoute,
-  AdminCoursesRoute: AdminCoursesRoute,
-  AdminExamsRoute: AdminExamsRoute,
+  AdminBlogsRoute: AdminBlogsRouteWithChildren,
+  AdminClaimsRoute: AdminClaimsRouteWithChildren,
+  AdminCollegesRoute: AdminCollegesRouteWithChildren,
+  AdminConsultanciesRoute: AdminConsultanciesRouteWithChildren,
+  AdminCoursesRoute: AdminCoursesRouteWithChildren,
+  AdminExamsRoute: AdminExamsRouteWithChildren,
   AdminModerationRoute: AdminModerationRoute,
-  AdminNewsRoute: AdminNewsRoute,
-  AdminScholarshipsRoute: AdminScholarshipsRoute,
+  AdminNewsRoute: AdminNewsRouteWithChildren,
+  AdminProfileRoute: AdminProfileRoute,
+  AdminScholarshipsRoute: AdminScholarshipsRouteWithChildren,
   AdminSettingsRoute: AdminSettingsRoute,
-  AdminStudyAbroadRoute: AdminStudyAbroadRoute,
+  AdminStudyAbroadRoute: AdminStudyAbroadRouteWithChildren,
   AdminIndexRoute: AdminIndexRoute,
 }
 
