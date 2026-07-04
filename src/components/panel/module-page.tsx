@@ -1,5 +1,6 @@
 import { useMemo, useState, type ReactNode } from "react";
-import { ArrowDown, ArrowUp, MoreHorizontal, Plus, Search, SlidersHorizontal, Download } from "lucide-react";
+import { ArrowDown, ArrowUp, MoreHorizontal, Pencil, Plus, Search, SlidersHorizontal, Download } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
@@ -12,6 +13,8 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import type { Kpi, Row, Status } from "@/lib/panel-data";
+
+export type RowAction = { label: string; href?: string; destructive?: boolean };
 
 const statusStyles: Record<Status, string> = {
   Active: "bg-success/15 text-success",
@@ -74,12 +77,13 @@ export function KpiGrid({ items }: { items: Kpi[] }) {
 
 type DataTableProps = {
   rows: Row[];
-  actions?: (row: Row) => { label: string; destructive?: boolean }[];
+  actions?: (row: Row) => RowAction[];
   searchable?: boolean;
   primaryKey?: string;
+  getEditHref?: (row: Row) => string | undefined;
 };
 
-export function DataTable({ rows, actions, searchable = true, primaryKey }: DataTableProps) {
+export function DataTable({ rows, actions, searchable = true, primaryKey, getEditHref }: DataTableProps) {
   const [q, setQ] = useState("");
   const columns = useMemo(() => (rows[0] ? Object.keys(rows[0]) : []), [rows]);
 
