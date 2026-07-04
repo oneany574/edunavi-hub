@@ -1,7 +1,7 @@
 import { createFileRoute, Outlet, Link } from "@tanstack/react-router";
 import {
   LayoutDashboard, Building2, BookOpen, FileCheck2, ShieldAlert, Award, GraduationCap,
-  Newspaper, Megaphone, Handshake, Globe2, BarChart3, Settings2,
+  Newspaper, Megaphone, Handshake, Globe2, BarChart3, Settings2, UserCircle2,
 } from "lucide-react";
 import { PanelShell, type PanelNavGroup } from "@/components/panel/panel-shell";
 
@@ -40,6 +40,7 @@ const groups: PanelNavGroup[] = [
     items: [
       { label: "Analytics", to: "/admin/analytics", icon: BarChart3 },
       { label: "Settings", to: "/admin/settings", icon: Settings2 },
+      { label: "My profile", to: "/admin/profile", icon: UserCircle2 },
     ],
   },
 ];
