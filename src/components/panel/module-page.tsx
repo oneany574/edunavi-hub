@@ -124,7 +124,7 @@ export function DataTable({ rows, actions, searchable = true, primaryKey, getEdi
                     {c}
                   </th>
                 ))}
-                {actions && <th className="px-4 py-3" />}
+                {(actions || getEditHref) && <th className="px-4 py-3" />}
               </tr>
             </thead>
             <tbody>
@@ -143,25 +143,47 @@ export function DataTable({ rows, actions, searchable = true, primaryKey, getEdi
                       )}
                     </td>
                   ))}
-                  {actions && (
+                  {(actions || getEditHref) && (
                     <td className="px-4 py-3 text-right">
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="icon" className="size-7">
-                            <MoreHorizontal className="size-4" />
+                      <div className="flex items-center justify-end gap-1">
+                        {getEditHref && getEditHref(row) && (
+                          <Button
+                            asChild
+                            variant="outline"
+                            size="sm"
+                            className="h-7 gap-1.5 px-2 text-xs"
+                          >
+                            <Link to={getEditHref(row)!}>
+                              <Pencil className="size-3" /> Edit
+                            </Link>
                           </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          {actions(row).map((a, idx) => (
-                            <div key={a.label}>
-                              {idx > 0 && a.destructive && <DropdownMenuSeparator />}
-                              <DropdownMenuItem className={a.destructive ? "text-destructive" : ""}>
-                                {a.label}
-                              </DropdownMenuItem>
-                            </div>
-                          ))}
-                        </DropdownMenuContent>
-                      </DropdownMenu>
+                        )}
+                        {actions && (
+                          <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                              <Button variant="ghost" size="icon" className="size-7">
+                                <MoreHorizontal className="size-4" />
+                              </Button>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent align="end">
+                              {actions(row).map((a, idx) => (
+                                <div key={a.label}>
+                                  {idx > 0 && a.destructive && <DropdownMenuSeparator />}
+                                  {a.href ? (
+                                    <DropdownMenuItem asChild>
+                                      <Link to={a.href}>{a.label}</Link>
+                                    </DropdownMenuItem>
+                                  ) : (
+                                    <DropdownMenuItem className={a.destructive ? "text-destructive" : ""}>
+                                      {a.label}
+                                    </DropdownMenuItem>
+                                  )}
+                                </div>
+                              ))}
+                            </DropdownMenuContent>
+                          </DropdownMenu>
+                        )}
+                      </div>
                     </td>
                   )}
                 </tr>
