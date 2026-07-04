@@ -190,7 +190,7 @@ export function DataTable({ rows, actions, searchable = true, primaryKey, getEdi
               ))}
               {filtered.length === 0 && (
                 <tr>
-                  <td className="px-4 py-10 text-center text-sm text-muted-foreground" colSpan={columns.length + (actions ? 1 : 0)}>
+                  <td className="px-4 py-10 text-center text-sm text-muted-foreground" colSpan={columns.length + (actions || getEditHref ? 1 : 0)}>
                     No results.
                   </td>
                 </tr>
@@ -223,11 +223,8 @@ export function ListModule({
   primaryLabel = "Add new",
   kpis,
   rows,
-  rowActions = () => [
-    { label: "View" },
-    { label: "Edit" },
-    { label: "Delete", destructive: true },
-  ],
+  getEditHref,
+  rowActions,
 }: {
   eyebrow?: string;
   title: string;
@@ -235,8 +232,18 @@ export function ListModule({
   primaryLabel?: string;
   kpis?: Kpi[];
   rows: Row[];
-  rowActions?: (row: Row) => { label: string; destructive?: boolean }[];
+  getEditHref?: (row: Row) => string | undefined;
+  rowActions?: (row: Row) => RowAction[];
 }) {
+  const defaultActions = (row: Row): RowAction[] => {
+    const href = getEditHref?.(row);
+    return [
+      ...(href ? [{ label: "View / edit", href }] : [{ label: "View" }]),
+      { label: "Duplicate" },
+      { label: "Archive" },
+      { label: "Delete", destructive: true },
+    ];
+  };
   return (
     <>
       <PageHeader
@@ -246,7 +253,7 @@ export function ListModule({
         actions={<PrimaryAction label={primaryLabel} />}
       />
       {kpis && <KpiGrid items={kpis} />}
-      <DataTable rows={rows} actions={rowActions} />
+      <DataTable rows={rows} getEditHref={getEditHref} actions={rowActions ?? defaultActions} />
     </>
   );
 }
