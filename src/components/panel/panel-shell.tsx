@@ -159,3 +159,55 @@ function PanelTopBar({ user }: { user: Props["user"] }) {
     </header>
   );
 }
+
+function NotificationBell() {
+  const unread = notifications.filter((n) => !n.read).length;
+  const preview = notifications.slice(0, 5);
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="ghost" size="icon" className="relative" aria-label="Notifications">
+          <Bell className="size-4" />
+          {unread > 0 && (
+            <span className="absolute right-1.5 top-1.5 grid min-w-4 place-items-center rounded-full bg-destructive px-1 text-[9px] font-bold leading-4 text-white">
+              {unread}
+            </span>
+          )}
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" className="w-[360px] p-0">
+        <div className="flex items-center justify-between border-b border-border p-3">
+          <div>
+            <p className="text-sm font-bold">Notifications</p>
+            <p className="text-[10px] text-muted-foreground">{unread} unread</p>
+          </div>
+          <Button variant="ghost" size="sm" className="h-7 text-[11px]">Mark all read</Button>
+        </div>
+        <ul className="max-h-80 overflow-y-auto">
+          {preview.map((n) => {
+            const inner = (
+              <div className={`flex gap-3 border-b border-border/60 p-3 last:border-0 hover:bg-secondary/40 ${!n.read ? "bg-brand/[0.03]" : ""}`}>
+                <div className="mt-1 size-2 shrink-0 rounded-full bg-brand" style={{ opacity: n.read ? 0.25 : 1 }} />
+                <div className="min-w-0 flex-1">
+                  <p className="truncate text-xs font-bold">{n.title}</p>
+                  <p className="mt-0.5 line-clamp-2 text-[11px] text-muted-foreground">{n.body}</p>
+                  <p className="mt-1 text-[10px] text-muted-foreground">{n.at}</p>
+                </div>
+              </div>
+            );
+            return (
+              <li key={n.id}>
+                {n.href ? <Link to={n.href}>{inner}</Link> : inner}
+              </li>
+            );
+          })}
+        </ul>
+        <div className="border-t border-border p-2">
+          <Button asChild variant="ghost" size="sm" className="w-full justify-center text-xs font-bold">
+            <Link to="/admin/notifications">View all notifications</Link>
+          </Button>
+        </div>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
