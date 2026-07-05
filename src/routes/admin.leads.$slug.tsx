@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Textarea } from "@/components/ui/textarea";
-import { getLeadDetail } from "@/lib/panel-leads";
+import { getLeadDetail, type LeadDetail } from "@/lib/panel-leads";
 
 export const Route = createFileRoute("/admin/leads/$slug")({
   loader: ({ params }) => {
@@ -33,7 +33,7 @@ const activityIcons = {
 } as const;
 
 function LeadDetailPage() {
-  const lead = Route.useLoaderData();
+  const lead = Route.useLoaderData() as LeadDetail;
   return (
     <div className="space-y-6">
       <Link to="/admin/leads" className="inline-flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground">

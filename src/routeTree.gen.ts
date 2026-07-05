@@ -64,8 +64,12 @@ import { Route as AdminStudyAbroadRouteImport } from './routes/admin.study-abroa
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as AdminScholarshipsRouteImport } from './routes/admin.scholarships'
 import { Route as AdminProfileRouteImport } from './routes/admin.profile'
+import { Route as AdminNotificationsRouteImport } from './routes/admin.notifications'
 import { Route as AdminNewsRouteImport } from './routes/admin.news'
+import { Route as AdminNavigationRouteImport } from './routes/admin.navigation'
 import { Route as AdminModerationRouteImport } from './routes/admin.moderation'
+import { Route as AdminLeadsRouteImport } from './routes/admin.leads'
+import { Route as AdminFooterRouteImport } from './routes/admin.footer'
 import { Route as AdminExamsRouteImport } from './routes/admin.exams'
 import { Route as AdminCoursesRouteImport } from './routes/admin.courses'
 import { Route as AdminConsultanciesRouteImport } from './routes/admin.consultancies'
@@ -83,6 +87,7 @@ import { Route as PortalCollegeAnalyticsRouteImport } from './routes/portal.coll
 import { Route as AdminStudyAbroadSlugRouteImport } from './routes/admin.study-abroad.$slug'
 import { Route as AdminScholarshipsSlugRouteImport } from './routes/admin.scholarships.$slug'
 import { Route as AdminNewsSlugRouteImport } from './routes/admin.news.$slug'
+import { Route as AdminLeadsSlugRouteImport } from './routes/admin.leads.$slug'
 import { Route as AdminExamsSlugRouteImport } from './routes/admin.exams.$slug'
 import { Route as AdminCoursesSlugRouteImport } from './routes/admin.courses.$slug'
 import { Route as AdminConsultanciesSlugRouteImport } from './routes/admin.consultancies.$slug'
@@ -365,14 +370,34 @@ const AdminProfileRoute = AdminProfileRouteImport.update({
   path: '/profile',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminNotificationsRoute = AdminNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminNewsRoute = AdminNewsRouteImport.update({
   id: '/news',
   path: '/news',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminNavigationRoute = AdminNavigationRouteImport.update({
+  id: '/navigation',
+  path: '/navigation',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminModerationRoute = AdminModerationRouteImport.update({
   id: '/moderation',
   path: '/moderation',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLeadsRoute = AdminLeadsRouteImport.update({
+  id: '/leads',
+  path: '/leads',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminFooterRoute = AdminFooterRouteImport.update({
+  id: '/footer',
+  path: '/footer',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminExamsRoute = AdminExamsRouteImport.update({
@@ -461,6 +486,11 @@ const AdminNewsSlugRoute = AdminNewsSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => AdminNewsRoute,
 } as any)
+const AdminLeadsSlugRoute = AdminLeadsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminLeadsRoute,
+} as any)
 const AdminExamsSlugRoute = AdminExamsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -529,8 +559,12 @@ export interface FileRoutesByFullPath {
   '/admin/consultancies': typeof AdminConsultanciesRouteWithChildren
   '/admin/courses': typeof AdminCoursesRouteWithChildren
   '/admin/exams': typeof AdminExamsRouteWithChildren
+  '/admin/footer': typeof AdminFooterRoute
+  '/admin/leads': typeof AdminLeadsRouteWithChildren
   '/admin/moderation': typeof AdminModerationRoute
+  '/admin/navigation': typeof AdminNavigationRoute
   '/admin/news': typeof AdminNewsRouteWithChildren
+  '/admin/notifications': typeof AdminNotificationsRoute
   '/admin/profile': typeof AdminProfileRoute
   '/admin/scholarships': typeof AdminScholarshipsRouteWithChildren
   '/admin/settings': typeof AdminSettingsRoute
@@ -563,6 +597,7 @@ export interface FileRoutesByFullPath {
   '/admin/consultancies/$slug': typeof AdminConsultanciesSlugRoute
   '/admin/courses/$slug': typeof AdminCoursesSlugRoute
   '/admin/exams/$slug': typeof AdminExamsSlugRoute
+  '/admin/leads/$slug': typeof AdminLeadsSlugRoute
   '/admin/news/$slug': typeof AdminNewsSlugRoute
   '/admin/scholarships/$slug': typeof AdminScholarshipsSlugRoute
   '/admin/study-abroad/$slug': typeof AdminStudyAbroadSlugRoute
@@ -609,8 +644,12 @@ export interface FileRoutesByTo {
   '/admin/consultancies': typeof AdminConsultanciesRouteWithChildren
   '/admin/courses': typeof AdminCoursesRouteWithChildren
   '/admin/exams': typeof AdminExamsRouteWithChildren
+  '/admin/footer': typeof AdminFooterRoute
+  '/admin/leads': typeof AdminLeadsRouteWithChildren
   '/admin/moderation': typeof AdminModerationRoute
+  '/admin/navigation': typeof AdminNavigationRoute
   '/admin/news': typeof AdminNewsRouteWithChildren
+  '/admin/notifications': typeof AdminNotificationsRoute
   '/admin/profile': typeof AdminProfileRoute
   '/admin/scholarships': typeof AdminScholarshipsRouteWithChildren
   '/admin/settings': typeof AdminSettingsRoute
@@ -642,6 +681,7 @@ export interface FileRoutesByTo {
   '/admin/consultancies/$slug': typeof AdminConsultanciesSlugRoute
   '/admin/courses/$slug': typeof AdminCoursesSlugRoute
   '/admin/exams/$slug': typeof AdminExamsSlugRoute
+  '/admin/leads/$slug': typeof AdminLeadsSlugRoute
   '/admin/news/$slug': typeof AdminNewsSlugRoute
   '/admin/scholarships/$slug': typeof AdminScholarshipsSlugRoute
   '/admin/study-abroad/$slug': typeof AdminStudyAbroadSlugRoute
@@ -691,8 +731,12 @@ export interface FileRoutesById {
   '/admin/consultancies': typeof AdminConsultanciesRouteWithChildren
   '/admin/courses': typeof AdminCoursesRouteWithChildren
   '/admin/exams': typeof AdminExamsRouteWithChildren
+  '/admin/footer': typeof AdminFooterRoute
+  '/admin/leads': typeof AdminLeadsRouteWithChildren
   '/admin/moderation': typeof AdminModerationRoute
+  '/admin/navigation': typeof AdminNavigationRoute
   '/admin/news': typeof AdminNewsRouteWithChildren
+  '/admin/notifications': typeof AdminNotificationsRoute
   '/admin/profile': typeof AdminProfileRoute
   '/admin/scholarships': typeof AdminScholarshipsRouteWithChildren
   '/admin/settings': typeof AdminSettingsRoute
@@ -725,6 +769,7 @@ export interface FileRoutesById {
   '/admin/consultancies/$slug': typeof AdminConsultanciesSlugRoute
   '/admin/courses/$slug': typeof AdminCoursesSlugRoute
   '/admin/exams/$slug': typeof AdminExamsSlugRoute
+  '/admin/leads/$slug': typeof AdminLeadsSlugRoute
   '/admin/news/$slug': typeof AdminNewsSlugRoute
   '/admin/scholarships/$slug': typeof AdminScholarshipsSlugRoute
   '/admin/study-abroad/$slug': typeof AdminStudyAbroadSlugRoute
@@ -775,8 +820,12 @@ export interface FileRouteTypes {
     | '/admin/consultancies'
     | '/admin/courses'
     | '/admin/exams'
+    | '/admin/footer'
+    | '/admin/leads'
     | '/admin/moderation'
+    | '/admin/navigation'
     | '/admin/news'
+    | '/admin/notifications'
     | '/admin/profile'
     | '/admin/scholarships'
     | '/admin/settings'
@@ -809,6 +858,7 @@ export interface FileRouteTypes {
     | '/admin/consultancies/$slug'
     | '/admin/courses/$slug'
     | '/admin/exams/$slug'
+    | '/admin/leads/$slug'
     | '/admin/news/$slug'
     | '/admin/scholarships/$slug'
     | '/admin/study-abroad/$slug'
@@ -855,8 +905,12 @@ export interface FileRouteTypes {
     | '/admin/consultancies'
     | '/admin/courses'
     | '/admin/exams'
+    | '/admin/footer'
+    | '/admin/leads'
     | '/admin/moderation'
+    | '/admin/navigation'
     | '/admin/news'
+    | '/admin/notifications'
     | '/admin/profile'
     | '/admin/scholarships'
     | '/admin/settings'
@@ -888,6 +942,7 @@ export interface FileRouteTypes {
     | '/admin/consultancies/$slug'
     | '/admin/courses/$slug'
     | '/admin/exams/$slug'
+    | '/admin/leads/$slug'
     | '/admin/news/$slug'
     | '/admin/scholarships/$slug'
     | '/admin/study-abroad/$slug'
@@ -936,8 +991,12 @@ export interface FileRouteTypes {
     | '/admin/consultancies'
     | '/admin/courses'
     | '/admin/exams'
+    | '/admin/footer'
+    | '/admin/leads'
     | '/admin/moderation'
+    | '/admin/navigation'
     | '/admin/news'
+    | '/admin/notifications'
     | '/admin/profile'
     | '/admin/scholarships'
     | '/admin/settings'
@@ -970,6 +1029,7 @@ export interface FileRouteTypes {
     | '/admin/consultancies/$slug'
     | '/admin/courses/$slug'
     | '/admin/exams/$slug'
+    | '/admin/leads/$slug'
     | '/admin/news/$slug'
     | '/admin/scholarships/$slug'
     | '/admin/study-abroad/$slug'
@@ -1404,6 +1464,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProfileRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/notifications': {
+      id: '/admin/notifications'
+      path: '/notifications'
+      fullPath: '/admin/notifications'
+      preLoaderRoute: typeof AdminNotificationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/news': {
       id: '/admin/news'
       path: '/news'
@@ -1411,11 +1478,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminNewsRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/navigation': {
+      id: '/admin/navigation'
+      path: '/navigation'
+      fullPath: '/admin/navigation'
+      preLoaderRoute: typeof AdminNavigationRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/moderation': {
       id: '/admin/moderation'
       path: '/moderation'
       fullPath: '/admin/moderation'
       preLoaderRoute: typeof AdminModerationRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/leads': {
+      id: '/admin/leads'
+      path: '/leads'
+      fullPath: '/admin/leads'
+      preLoaderRoute: typeof AdminLeadsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/footer': {
+      id: '/admin/footer'
+      path: '/footer'
+      fullPath: '/admin/footer'
+      preLoaderRoute: typeof AdminFooterRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/exams': {
@@ -1537,6 +1625,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminNewsSlugRouteImport
       parentRoute: typeof AdminNewsRoute
     }
+    '/admin/leads/$slug': {
+      id: '/admin/leads/$slug'
+      path: '/$slug'
+      fullPath: '/admin/leads/$slug'
+      preLoaderRoute: typeof AdminLeadsSlugRouteImport
+      parentRoute: typeof AdminLeadsRoute
+    }
     '/admin/exams/$slug': {
       id: '/admin/exams/$slug'
       path: '/$slug'
@@ -1653,6 +1748,18 @@ const AdminExamsRouteWithChildren = AdminExamsRoute._addFileChildren(
   AdminExamsRouteChildren,
 )
 
+interface AdminLeadsRouteChildren {
+  AdminLeadsSlugRoute: typeof AdminLeadsSlugRoute
+}
+
+const AdminLeadsRouteChildren: AdminLeadsRouteChildren = {
+  AdminLeadsSlugRoute: AdminLeadsSlugRoute,
+}
+
+const AdminLeadsRouteWithChildren = AdminLeadsRoute._addFileChildren(
+  AdminLeadsRouteChildren,
+)
+
 interface AdminNewsRouteChildren {
   AdminNewsSlugRoute: typeof AdminNewsSlugRoute
 }
@@ -1695,8 +1802,12 @@ interface AdminRouteChildren {
   AdminConsultanciesRoute: typeof AdminConsultanciesRouteWithChildren
   AdminCoursesRoute: typeof AdminCoursesRouteWithChildren
   AdminExamsRoute: typeof AdminExamsRouteWithChildren
+  AdminFooterRoute: typeof AdminFooterRoute
+  AdminLeadsRoute: typeof AdminLeadsRouteWithChildren
   AdminModerationRoute: typeof AdminModerationRoute
+  AdminNavigationRoute: typeof AdminNavigationRoute
   AdminNewsRoute: typeof AdminNewsRouteWithChildren
+  AdminNotificationsRoute: typeof AdminNotificationsRoute
   AdminProfileRoute: typeof AdminProfileRoute
   AdminScholarshipsRoute: typeof AdminScholarshipsRouteWithChildren
   AdminSettingsRoute: typeof AdminSettingsRoute
@@ -1712,8 +1823,12 @@ const AdminRouteChildren: AdminRouteChildren = {
   AdminConsultanciesRoute: AdminConsultanciesRouteWithChildren,
   AdminCoursesRoute: AdminCoursesRouteWithChildren,
   AdminExamsRoute: AdminExamsRouteWithChildren,
+  AdminFooterRoute: AdminFooterRoute,
+  AdminLeadsRoute: AdminLeadsRouteWithChildren,
   AdminModerationRoute: AdminModerationRoute,
+  AdminNavigationRoute: AdminNavigationRoute,
   AdminNewsRoute: AdminNewsRouteWithChildren,
+  AdminNotificationsRoute: AdminNotificationsRoute,
   AdminProfileRoute: AdminProfileRoute,
   AdminScholarshipsRoute: AdminScholarshipsRouteWithChildren,
   AdminSettingsRoute: AdminSettingsRoute,
@@ -1925,13 +2040,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
