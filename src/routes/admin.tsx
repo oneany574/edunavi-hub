@@ -2,6 +2,7 @@ import { createFileRoute, Outlet, Link } from "@tanstack/react-router";
 import {
   LayoutDashboard, Building2, BookOpen, FileCheck2, ShieldAlert, Award, GraduationCap,
   Newspaper, Megaphone, Handshake, Globe2, BarChart3, Settings2, UserCircle2,
+  Users, Bell, Compass, PanelBottom,
 } from "lucide-react";
 import { PanelShell, type PanelNavGroup } from "@/components/panel/panel-shell";
 
@@ -13,7 +14,11 @@ export const Route = createFileRoute("/admin")({
 const groups: PanelNavGroup[] = [
   {
     label: "Overview",
-    items: [{ label: "Dashboard", to: "/admin", icon: LayoutDashboard }],
+    items: [
+      { label: "Dashboard", to: "/admin", icon: LayoutDashboard },
+      { label: "Leads", to: "/admin/leads", icon: Users, badge: "1.2k" },
+      { label: "Notifications", to: "/admin/notifications", icon: Bell, badge: "5" },
+    ],
   },
   {
     label: "Catalog",
@@ -33,6 +38,13 @@ const groups: PanelNavGroup[] = [
       { label: "Moderation", to: "/admin/moderation", icon: ShieldAlert, badge: "19" },
       { label: "Blogs & Articles", to: "/admin/blogs", icon: Newspaper },
       { label: "News", to: "/admin/news", icon: Megaphone },
+    ],
+  },
+  {
+    label: "Site builder",
+    items: [
+      { label: "Navigation", to: "/admin/navigation", icon: Compass },
+      { label: "Footer", to: "/admin/footer", icon: PanelBottom },
     ],
   },
   {
