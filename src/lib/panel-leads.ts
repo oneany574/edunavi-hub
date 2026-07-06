@@ -152,33 +152,48 @@ export const notifications: NotificationItem[] = [
 ];
 
 // ---------- NAVIGATION BUILDER ----------
-export type NavItem = { id: string; label: string; url: string; children?: NavItem[] };
+export type NavItem = {
+  id: string;
+  label: string;
+  url: string;
+  newTab?: boolean;
+  cta?: boolean;
+  mega?: boolean;
+  badge?: string;
+  visible?: boolean;
+  children?: NavItem[];
+};
 
 export const defaultHeaderNav: NavItem[] = [
   {
     id: "colleges",
     label: "Colleges",
     url: "/colleges",
+    mega: true,
+    visible: true,
     children: [
-      { id: "colleges-all", label: "All colleges", url: "/colleges" },
-      { id: "colleges-compare", label: "Compare colleges", url: "/compare" },
-      { id: "colleges-predictor", label: "College predictor", url: "/college-predictor" },
+      { id: "colleges-all", label: "All colleges", url: "/colleges", visible: true },
+      { id: "colleges-compare", label: "Compare colleges", url: "/compare", visible: true },
+      { id: "colleges-predictor", label: "College predictor", url: "/college-predictor", visible: true, badge: "AI" },
     ],
   },
   {
     id: "courses",
     label: "Courses",
     url: "/courses",
+    visible: true,
     children: [
-      { id: "courses-all", label: "All courses", url: "/courses" },
-      { id: "courses-ug", label: "Undergraduate", url: "/courses" },
-      { id: "courses-pg", label: "Postgraduate", url: "/courses" },
+      { id: "courses-all", label: "All courses", url: "/courses", visible: true },
+      { id: "courses-ug", label: "Undergraduate", url: "/courses", visible: true },
+      { id: "courses-pg", label: "Postgraduate", url: "/courses", visible: true },
     ],
   },
-  { id: "exams", label: "Exams", url: "/exams" },
-  { id: "study-abroad", label: "Study Abroad", url: "/study-abroad" },
-  { id: "scholarships", label: "Scholarships", url: "/scholarships" },
-  { id: "articles", label: "Articles", url: "/articles" },
+  { id: "exams", label: "Exams", url: "/exams", visible: true },
+  { id: "mock-tests", label: "Mock Tests", url: "/mock-tests", visible: true, badge: "Free" },
+  { id: "study-abroad", label: "Study Abroad", url: "/study-abroad", visible: true },
+  { id: "consultancies", label: "Consultancies", url: "/consultancies", visible: true },
+  { id: "news", label: "News", url: "/news", visible: true },
+  { id: "predictor", label: "Predictor", url: "/college-predictor", visible: true, cta: true },
 ];
 
 // ---------- FOOTER BUILDER ----------
