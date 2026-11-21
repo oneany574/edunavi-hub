@@ -1,5 +1,4 @@
 import { createServerFn } from "@tanstack/react-start";
-import type { ResponsesInputItem } from "@lovable.dev/ai-gateway";
 import { toolDefinitions } from "./tools";
 
 const INSTRUCTIONS = `You are Atlas, the AI operations assistant inside the EduFinder admin panel (an education discovery platform for colleges, courses, exams, scholarships, study abroad, consultancies, blogs, news, claims, moderation and leads).
@@ -19,11 +18,11 @@ export const runAgentStep = createServerFn({ method: "POST" })
       const res = await generateResponse({
         model: "openai/gpt-6.1-sol",
         instructions: INSTRUCTIONS,
-        input: data.items as ResponsesInputItem[],
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        input: data.items as any,
         tools: toolDefinitions,
-        store: false,
       });
-      return { ok: true as const, output: JSON.parse(JSON.stringify(res.output)) as unknown[] };
+      return { ok: true as const, outputJson: JSON.stringify(res.output) };
     } catch (e) {
       if (e instanceof GatewayError) {
         console.error("agent gateway error", e.code, e.message);
