@@ -43,7 +43,7 @@ export const Route = createFileRoute("/articles/$slug")({
       <SiteHeader />
       <div className="container-page py-32 text-center">
         <h1 className="font-display text-3xl font-semibold">Something went wrong</h1>
-        <p className="mt-3 text-muted-foreground">{error.message}</p>
+        <p className="mt-3 text-muted-foreground">{error instanceof Error ? error.message : String(error)}</p>
         <button onClick={reset} className="mt-6 rounded-full bg-brand px-5 py-2 text-sm font-semibold text-brand-foreground">
           Try again
         </button>
