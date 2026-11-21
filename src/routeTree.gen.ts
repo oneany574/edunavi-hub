@@ -9,225 +9,95 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as TermsRouteImport } from './routes/terms'
-import { Route as TeamRouteImport } from './routes/team'
-import { Route as StudyAbroadRouteImport } from './routes/study-abroad'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as ScholarshipsRouteImport } from './routes/scholarships'
-import { Route as ReviewsRouteImport } from './routes/reviews'
-import { Route as QuestionsRouteImport } from './routes/questions'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as PressRouteImport } from './routes/press'
-import { Route as NewsRouteImport } from './routes/news'
-import { Route as MockTestsRouteImport } from './routes/mock-tests'
-import { Route as LoginRouteImport } from './routes/login'
-import { Route as JoinRouteImport } from './routes/join'
-import { Route as ExamsRouteImport } from './routes/exams'
-import { Route as ExamPrepRouteImport } from './routes/exam-prep'
-import { Route as CoursesRouteImport } from './routes/courses'
-import { Route as CounselorRouteImport } from './routes/counselor'
-import { Route as CounselingRouteImport } from './routes/counseling'
-import { Route as ConsultanciesRouteImport } from './routes/consultancies'
-import { Route as CompareRouteImport } from './routes/compare'
-import { Route as CollegesRouteImport } from './routes/colleges'
-import { Route as CollegePredictorRouteImport } from './routes/college-predictor'
-import { Route as ClaimConsultancyRouteImport } from './routes/claim-consultancy'
-import { Route as ClaimCollegeRouteImport } from './routes/claim-college'
-import { Route as CareersRouteImport } from './routes/careers'
-import { Route as ArticlesRouteImport } from './routes/articles'
-import { Route as AdminRouteImport } from './routes/admin'
-import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as CounselorIndexRouteImport } from './routes/counselor.index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as AdminRouteImport } from './routes/admin'
+import { Route as ArticlesRouteImport } from './routes/articles'
+import { Route as CareersRouteImport } from './routes/careers'
+import { Route as ClaimCollegeRouteImport } from './routes/claim-college'
+import { Route as ClaimConsultancyRouteImport } from './routes/claim-consultancy'
+import { Route as CollegePredictorRouteImport } from './routes/college-predictor'
+import { Route as CollegesRouteImport } from './routes/colleges'
+import { Route as CompareRouteImport } from './routes/compare'
+import { Route as ConsultanciesRouteImport } from './routes/consultancies'
+import { Route as CounselingRouteImport } from './routes/counseling'
+import { Route as CounselorRouteImport } from './routes/counselor'
+import { Route as CoursesRouteImport } from './routes/courses'
+import { Route as ExamPrepRouteImport } from './routes/exam-prep'
+import { Route as ExamsRouteImport } from './routes/exams'
+import { Route as JoinRouteImport } from './routes/join'
+import { Route as LoginRouteImport } from './routes/login'
+import { Route as MockTestsRouteImport } from './routes/mock-tests'
+import { Route as NewsRouteImport } from './routes/news'
+import { Route as PressRouteImport } from './routes/press'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as QuestionsRouteImport } from './routes/questions'
+import { Route as ReviewsRouteImport } from './routes/reviews'
+import { Route as ScholarshipsRouteImport } from './routes/scholarships'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as StudyAbroadRouteImport } from './routes/study-abroad'
+import { Route as TeamRouteImport } from './routes/team'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
-import { Route as StudyAbroadSlugRouteImport } from './routes/study-abroad.$slug'
-import { Route as ScholarshipsSlugRouteImport } from './routes/scholarships.$slug'
-import { Route as PortalCollegeRouteImport } from './routes/portal.college'
-import { Route as NewsSlugRouteImport } from './routes/news.$slug'
-import { Route as MockTestsSlugRouteImport } from './routes/mock-tests.$slug'
-import { Route as ExamsSlugRouteImport } from './routes/exams.$slug'
-import { Route as ExamPrepSlugRouteImport } from './routes/exam-prep.$slug'
-import { Route as DashboardConsultancyRouteImport } from './routes/dashboard.consultancy'
-import { Route as DashboardCollegeRouteImport } from './routes/dashboard.college'
-import { Route as CoursesSlugRouteImport } from './routes/courses.$slug'
-import { Route as CounselorStudentsRouteImport } from './routes/counselor.students'
-import { Route as CounselorSessionsRouteImport } from './routes/counselor.sessions'
-import { Route as CounselorReviewsRouteImport } from './routes/counselor.reviews'
-import { Route as CounselorProfileRouteImport } from './routes/counselor.profile'
-import { Route as CounselorMessagesRouteImport } from './routes/counselor.messages'
-import { Route as CounselorEarningsRouteImport } from './routes/counselor.earnings'
-import { Route as CounselorClaimRouteImport } from './routes/counselor.claim'
-import { Route as ConsultanciesSlugRouteImport } from './routes/consultancies.$slug'
-import { Route as CollegesSlugRouteImport } from './routes/colleges.$slug'
-import { Route as ArticlesSlugRouteImport } from './routes/articles.$slug'
-import { Route as AdminStudyAbroadRouteImport } from './routes/admin.study-abroad'
-import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
-import { Route as AdminScholarshipsRouteImport } from './routes/admin.scholarships'
-import { Route as AdminProfileRouteImport } from './routes/admin.profile'
-import { Route as AdminNotificationsRouteImport } from './routes/admin.notifications'
-import { Route as AdminNewsRouteImport } from './routes/admin.news'
-import { Route as AdminNavigationRouteImport } from './routes/admin.navigation'
-import { Route as AdminModerationRouteImport } from './routes/admin.moderation'
-import { Route as AdminLeadsRouteImport } from './routes/admin.leads'
-import { Route as AdminFooterRouteImport } from './routes/admin.footer'
-import { Route as AdminExamsRouteImport } from './routes/admin.exams'
-import { Route as AdminCoursesRouteImport } from './routes/admin.courses'
-import { Route as AdminConsultanciesRouteImport } from './routes/admin.consultancies'
-import { Route as AdminCollegesRouteImport } from './routes/admin.colleges'
-import { Route as AdminClaimsRouteImport } from './routes/admin.claims'
-import { Route as AdminBlogsRouteImport } from './routes/admin.blogs'
 import { Route as AdminAnalyticsRouteImport } from './routes/admin.analytics'
-import { Route as PortalCollegeIndexRouteImport } from './routes/portal.college.index'
-import { Route as PortalCollegeScholarshipsRouteImport } from './routes/portal.college.scholarships'
-import { Route as PortalCollegeReviewsRouteImport } from './routes/portal.college.reviews'
-import { Route as PortalCollegeProfileRouteImport } from './routes/portal.college.profile'
-import { Route as PortalCollegeGalleryRouteImport } from './routes/portal.college.gallery'
-import { Route as PortalCollegeCoursesRouteImport } from './routes/portal.college.courses'
-import { Route as PortalCollegeAnalyticsRouteImport } from './routes/portal.college.analytics'
-import { Route as AdminStudyAbroadSlugRouteImport } from './routes/admin.study-abroad.$slug'
-import { Route as AdminScholarshipsSlugRouteImport } from './routes/admin.scholarships.$slug'
-import { Route as AdminNewsSlugRouteImport } from './routes/admin.news.$slug'
-import { Route as AdminLeadsSlugRouteImport } from './routes/admin.leads.$slug'
-import { Route as AdminExamsSlugRouteImport } from './routes/admin.exams.$slug'
-import { Route as AdminCoursesSlugRouteImport } from './routes/admin.courses.$slug'
-import { Route as AdminConsultanciesSlugRouteImport } from './routes/admin.consultancies.$slug'
-import { Route as AdminCollegesSlugRouteImport } from './routes/admin.colleges.$slug'
-import { Route as AdminClaimsSlugRouteImport } from './routes/admin.claims.$slug'
+import { Route as AdminBlogsRouteImport } from './routes/admin.blogs'
+import { Route as AdminClaimsRouteImport } from './routes/admin.claims'
+import { Route as AdminCollegesRouteImport } from './routes/admin.colleges'
+import { Route as AdminConsultanciesRouteImport } from './routes/admin.consultancies'
+import { Route as AdminCoursesRouteImport } from './routes/admin.courses'
+import { Route as AdminExamsRouteImport } from './routes/admin.exams'
+import { Route as AdminFooterRouteImport } from './routes/admin.footer'
+import { Route as AdminLeadsRouteImport } from './routes/admin.leads'
+import { Route as AdminModerationRouteImport } from './routes/admin.moderation'
+import { Route as AdminNavigationRouteImport } from './routes/admin.navigation'
+import { Route as AdminNewsRouteImport } from './routes/admin.news'
+import { Route as AdminNotificationsRouteImport } from './routes/admin.notifications'
+import { Route as AdminProfileRouteImport } from './routes/admin.profile'
+import { Route as AdminScholarshipsRouteImport } from './routes/admin.scholarships'
+import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
+import { Route as AdminStudyAbroadRouteImport } from './routes/admin.study-abroad'
+import { Route as ArticlesSlugRouteImport } from './routes/articles.$slug'
+import { Route as CollegesSlugRouteImport } from './routes/colleges.$slug'
+import { Route as ConsultanciesSlugRouteImport } from './routes/consultancies.$slug'
+import { Route as CounselorIndexRouteImport } from './routes/counselor.index'
+import { Route as CounselorClaimRouteImport } from './routes/counselor.claim'
+import { Route as CounselorEarningsRouteImport } from './routes/counselor.earnings'
+import { Route as CounselorMessagesRouteImport } from './routes/counselor.messages'
+import { Route as CounselorProfileRouteImport } from './routes/counselor.profile'
+import { Route as CounselorReviewsRouteImport } from './routes/counselor.reviews'
+import { Route as CounselorSessionsRouteImport } from './routes/counselor.sessions'
+import { Route as CounselorStudentsRouteImport } from './routes/counselor.students'
+import { Route as CoursesSlugRouteImport } from './routes/courses.$slug'
+import { Route as DashboardCollegeRouteImport } from './routes/dashboard.college'
+import { Route as DashboardConsultancyRouteImport } from './routes/dashboard.consultancy'
+import { Route as ExamPrepSlugRouteImport } from './routes/exam-prep.$slug'
+import { Route as ExamsSlugRouteImport } from './routes/exams.$slug'
+import { Route as MockTestsSlugRouteImport } from './routes/mock-tests.$slug'
+import { Route as NewsSlugRouteImport } from './routes/news.$slug'
+import { Route as PortalCollegeRouteImport } from './routes/portal.college'
+import { Route as ScholarshipsSlugRouteImport } from './routes/scholarships.$slug'
+import { Route as StudyAbroadSlugRouteImport } from './routes/study-abroad.$slug'
 import { Route as AdminBlogsSlugRouteImport } from './routes/admin.blogs.$slug'
+import { Route as AdminClaimsSlugRouteImport } from './routes/admin.claims.$slug'
+import { Route as AdminCollegesSlugRouteImport } from './routes/admin.colleges.$slug'
+import { Route as AdminConsultanciesSlugRouteImport } from './routes/admin.consultancies.$slug'
+import { Route as AdminCoursesSlugRouteImport } from './routes/admin.courses.$slug'
+import { Route as AdminExamsSlugRouteImport } from './routes/admin.exams.$slug'
+import { Route as AdminLeadsSlugRouteImport } from './routes/admin.leads.$slug'
+import { Route as AdminNewsSlugRouteImport } from './routes/admin.news.$slug'
+import { Route as AdminScholarshipsSlugRouteImport } from './routes/admin.scholarships.$slug'
+import { Route as AdminStudyAbroadSlugRouteImport } from './routes/admin.study-abroad.$slug'
+import { Route as PortalCollegeIndexRouteImport } from './routes/portal.college.index'
+import { Route as PortalCollegeAnalyticsRouteImport } from './routes/portal.college.analytics'
+import { Route as PortalCollegeCoursesRouteImport } from './routes/portal.college.courses'
+import { Route as PortalCollegeGalleryRouteImport } from './routes/portal.college.gallery'
+import { Route as PortalCollegeProfileRouteImport } from './routes/portal.college.profile'
+import { Route as PortalCollegeReviewsRouteImport } from './routes/portal.college.reviews'
+import { Route as PortalCollegeScholarshipsRouteImport } from './routes/portal.college.scholarships'
 
-const TermsRoute = TermsRouteImport.update({
-  id: '/terms',
-  path: '/terms',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const TeamRoute = TeamRouteImport.update({
-  id: '/team',
-  path: '/team',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const StudyAbroadRoute = StudyAbroadRouteImport.update({
-  id: '/study-abroad',
-  path: '/study-abroad',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ScholarshipsRoute = ScholarshipsRouteImport.update({
-  id: '/scholarships',
-  path: '/scholarships',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ReviewsRoute = ReviewsRouteImport.update({
-  id: '/reviews',
-  path: '/reviews',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const QuestionsRoute = QuestionsRouteImport.update({
-  id: '/questions',
-  path: '/questions',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PressRoute = PressRouteImport.update({
-  id: '/press',
-  path: '/press',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NewsRoute = NewsRouteImport.update({
-  id: '/news',
-  path: '/news',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MockTestsRoute = MockTestsRouteImport.update({
-  id: '/mock-tests',
-  path: '/mock-tests',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LoginRoute = LoginRouteImport.update({
-  id: '/login',
-  path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const JoinRoute = JoinRouteImport.update({
-  id: '/join',
-  path: '/join',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ExamsRoute = ExamsRouteImport.update({
-  id: '/exams',
-  path: '/exams',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ExamPrepRoute = ExamPrepRouteImport.update({
-  id: '/exam-prep',
-  path: '/exam-prep',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CoursesRoute = CoursesRouteImport.update({
-  id: '/courses',
-  path: '/courses',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CounselorRoute = CounselorRouteImport.update({
-  id: '/counselor',
-  path: '/counselor',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CounselingRoute = CounselingRouteImport.update({
-  id: '/counseling',
-  path: '/counseling',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConsultanciesRoute = ConsultanciesRouteImport.update({
-  id: '/consultancies',
-  path: '/consultancies',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CompareRoute = CompareRouteImport.update({
-  id: '/compare',
-  path: '/compare',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CollegesRoute = CollegesRouteImport.update({
-  id: '/colleges',
-  path: '/colleges',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CollegePredictorRoute = CollegePredictorRouteImport.update({
-  id: '/college-predictor',
-  path: '/college-predictor',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ClaimConsultancyRoute = ClaimConsultancyRouteImport.update({
-  id: '/claim-consultancy',
-  path: '/claim-consultancy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ClaimCollegeRoute = ClaimCollegeRouteImport.update({
-  id: '/claim-college',
-  path: '/claim-college',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CareersRoute = CareersRouteImport.update({
-  id: '/careers',
-  path: '/careers',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ArticlesRoute = ArticlesRouteImport.update({
-  id: '/articles',
-  path: '/articles',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AdminRoute = AdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AboutRoute = AboutRouteImport.update({
@@ -235,199 +105,144 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const AdminRoute = AdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CounselorIndexRoute = CounselorIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => CounselorRoute,
+const ArticlesRoute = ArticlesRouteImport.update({
+  id: '/articles',
+  path: '/articles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClaimCollegeRoute = ClaimCollegeRouteImport.update({
+  id: '/claim-college',
+  path: '/claim-college',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ClaimConsultancyRoute = ClaimConsultancyRouteImport.update({
+  id: '/claim-consultancy',
+  path: '/claim-consultancy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollegePredictorRoute = CollegePredictorRouteImport.update({
+  id: '/college-predictor',
+  path: '/college-predictor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CollegesRoute = CollegesRouteImport.update({
+  id: '/colleges',
+  path: '/colleges',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompareRoute = CompareRouteImport.update({
+  id: '/compare',
+  path: '/compare',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConsultanciesRoute = ConsultanciesRouteImport.update({
+  id: '/consultancies',
+  path: '/consultancies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CounselingRoute = CounselingRouteImport.update({
+  id: '/counseling',
+  path: '/counseling',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CounselorRoute = CounselorRouteImport.update({
+  id: '/counselor',
+  path: '/counselor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CoursesRoute = CoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExamPrepRoute = ExamPrepRouteImport.update({
+  id: '/exam-prep',
+  path: '/exam-prep',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExamsRoute = ExamsRouteImport.update({
+  id: '/exams',
+  path: '/exams',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JoinRoute = JoinRouteImport.update({
+  id: '/join',
+  path: '/join',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MockTestsRoute = MockTestsRouteImport.update({
+  id: '/mock-tests',
+  path: '/mock-tests',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PressRoute = PressRouteImport.update({
+  id: '/press',
+  path: '/press',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const QuestionsRoute = QuestionsRouteImport.update({
+  id: '/questions',
+  path: '/questions',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReviewsRoute = ReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScholarshipsRoute = ScholarshipsRouteImport.update({
+  id: '/scholarships',
+  path: '/scholarships',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StudyAbroadRoute = StudyAbroadRouteImport.update({
+  id: '/study-abroad',
+  path: '/study-abroad',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamRoute = TeamRouteImport.update({
+  id: '/team',
+  path: '/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const AdminIndexRoute = AdminIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => AdminRoute,
-} as any)
-const StudyAbroadSlugRoute = StudyAbroadSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => StudyAbroadRoute,
-} as any)
-const ScholarshipsSlugRoute = ScholarshipsSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ScholarshipsRoute,
-} as any)
-const PortalCollegeRoute = PortalCollegeRouteImport.update({
-  id: '/portal/college',
-  path: '/portal/college',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const NewsSlugRoute = NewsSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => NewsRoute,
-} as any)
-const MockTestsSlugRoute = MockTestsSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => MockTestsRoute,
-} as any)
-const ExamsSlugRoute = ExamsSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ExamsRoute,
-} as any)
-const ExamPrepSlugRoute = ExamPrepSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ExamPrepRoute,
-} as any)
-const DashboardConsultancyRoute = DashboardConsultancyRouteImport.update({
-  id: '/dashboard/consultancy',
-  path: '/dashboard/consultancy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const DashboardCollegeRoute = DashboardCollegeRouteImport.update({
-  id: '/dashboard/college',
-  path: '/dashboard/college',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CoursesSlugRoute = CoursesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => CoursesRoute,
-} as any)
-const CounselorStudentsRoute = CounselorStudentsRouteImport.update({
-  id: '/students',
-  path: '/students',
-  getParentRoute: () => CounselorRoute,
-} as any)
-const CounselorSessionsRoute = CounselorSessionsRouteImport.update({
-  id: '/sessions',
-  path: '/sessions',
-  getParentRoute: () => CounselorRoute,
-} as any)
-const CounselorReviewsRoute = CounselorReviewsRouteImport.update({
-  id: '/reviews',
-  path: '/reviews',
-  getParentRoute: () => CounselorRoute,
-} as any)
-const CounselorProfileRoute = CounselorProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => CounselorRoute,
-} as any)
-const CounselorMessagesRoute = CounselorMessagesRouteImport.update({
-  id: '/messages',
-  path: '/messages',
-  getParentRoute: () => CounselorRoute,
-} as any)
-const CounselorEarningsRoute = CounselorEarningsRouteImport.update({
-  id: '/earnings',
-  path: '/earnings',
-  getParentRoute: () => CounselorRoute,
-} as any)
-const CounselorClaimRoute = CounselorClaimRouteImport.update({
-  id: '/claim',
-  path: '/claim',
-  getParentRoute: () => CounselorRoute,
-} as any)
-const ConsultanciesSlugRoute = ConsultanciesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ConsultanciesRoute,
-} as any)
-const CollegesSlugRoute = CollegesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => CollegesRoute,
-} as any)
-const ArticlesSlugRoute = ArticlesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => ArticlesRoute,
-} as any)
-const AdminStudyAbroadRoute = AdminStudyAbroadRouteImport.update({
-  id: '/study-abroad',
-  path: '/study-abroad',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminSettingsRoute = AdminSettingsRouteImport.update({
-  id: '/settings',
-  path: '/settings',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminScholarshipsRoute = AdminScholarshipsRouteImport.update({
-  id: '/scholarships',
-  path: '/scholarships',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminProfileRoute = AdminProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminNotificationsRoute = AdminNotificationsRouteImport.update({
-  id: '/notifications',
-  path: '/notifications',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminNewsRoute = AdminNewsRouteImport.update({
-  id: '/news',
-  path: '/news',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminNavigationRoute = AdminNavigationRouteImport.update({
-  id: '/navigation',
-  path: '/navigation',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminModerationRoute = AdminModerationRouteImport.update({
-  id: '/moderation',
-  path: '/moderation',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminLeadsRoute = AdminLeadsRouteImport.update({
-  id: '/leads',
-  path: '/leads',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminFooterRoute = AdminFooterRouteImport.update({
-  id: '/footer',
-  path: '/footer',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminExamsRoute = AdminExamsRouteImport.update({
-  id: '/exams',
-  path: '/exams',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminCoursesRoute = AdminCoursesRouteImport.update({
-  id: '/courses',
-  path: '/courses',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminConsultanciesRoute = AdminConsultanciesRouteImport.update({
-  id: '/consultancies',
-  path: '/consultancies',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminCollegesRoute = AdminCollegesRouteImport.update({
-  id: '/colleges',
-  path: '/colleges',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminClaimsRoute = AdminClaimsRouteImport.update({
-  id: '/claims',
-  path: '/claims',
-  getParentRoute: () => AdminRoute,
-} as any)
-const AdminBlogsRoute = AdminBlogsRouteImport.update({
-  id: '/blogs',
-  path: '/blogs',
   getParentRoute: () => AdminRoute,
 } as any)
 const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
@@ -435,9 +250,269 @@ const AdminAnalyticsRoute = AdminAnalyticsRouteImport.update({
   path: '/analytics',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminBlogsRoute = AdminBlogsRouteImport.update({
+  id: '/blogs',
+  path: '/blogs',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminClaimsRoute = AdminClaimsRouteImport.update({
+  id: '/claims',
+  path: '/claims',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCollegesRoute = AdminCollegesRouteImport.update({
+  id: '/colleges',
+  path: '/colleges',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminConsultanciesRoute = AdminConsultanciesRouteImport.update({
+  id: '/consultancies',
+  path: '/consultancies',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminCoursesRoute = AdminCoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminExamsRoute = AdminExamsRouteImport.update({
+  id: '/exams',
+  path: '/exams',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminFooterRoute = AdminFooterRouteImport.update({
+  id: '/footer',
+  path: '/footer',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminLeadsRoute = AdminLeadsRouteImport.update({
+  id: '/leads',
+  path: '/leads',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminModerationRoute = AdminModerationRouteImport.update({
+  id: '/moderation',
+  path: '/moderation',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminNavigationRoute = AdminNavigationRouteImport.update({
+  id: '/navigation',
+  path: '/navigation',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminNewsRoute = AdminNewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminNotificationsRoute = AdminNotificationsRouteImport.update({
+  id: '/notifications',
+  path: '/notifications',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminProfileRoute = AdminProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminScholarshipsRoute = AdminScholarshipsRouteImport.update({
+  id: '/scholarships',
+  path: '/scholarships',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminSettingsRoute = AdminSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminStudyAbroadRoute = AdminStudyAbroadRouteImport.update({
+  id: '/study-abroad',
+  path: '/study-abroad',
+  getParentRoute: () => AdminRoute,
+} as any)
+const ArticlesSlugRoute = ArticlesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ArticlesRoute,
+} as any)
+const CollegesSlugRoute = CollegesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => CollegesRoute,
+} as any)
+const ConsultanciesSlugRoute = ConsultanciesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ConsultanciesRoute,
+} as any)
+const CounselorIndexRoute = CounselorIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => CounselorRoute,
+} as any)
+const CounselorClaimRoute = CounselorClaimRouteImport.update({
+  id: '/claim',
+  path: '/claim',
+  getParentRoute: () => CounselorRoute,
+} as any)
+const CounselorEarningsRoute = CounselorEarningsRouteImport.update({
+  id: '/earnings',
+  path: '/earnings',
+  getParentRoute: () => CounselorRoute,
+} as any)
+const CounselorMessagesRoute = CounselorMessagesRouteImport.update({
+  id: '/messages',
+  path: '/messages',
+  getParentRoute: () => CounselorRoute,
+} as any)
+const CounselorProfileRoute = CounselorProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => CounselorRoute,
+} as any)
+const CounselorReviewsRoute = CounselorReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
+  getParentRoute: () => CounselorRoute,
+} as any)
+const CounselorSessionsRoute = CounselorSessionsRouteImport.update({
+  id: '/sessions',
+  path: '/sessions',
+  getParentRoute: () => CounselorRoute,
+} as any)
+const CounselorStudentsRoute = CounselorStudentsRouteImport.update({
+  id: '/students',
+  path: '/students',
+  getParentRoute: () => CounselorRoute,
+} as any)
+const CoursesSlugRoute = CoursesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => CoursesRoute,
+} as any)
+const DashboardCollegeRoute = DashboardCollegeRouteImport.update({
+  id: '/dashboard/college',
+  path: '/dashboard/college',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardConsultancyRoute = DashboardConsultancyRouteImport.update({
+  id: '/dashboard/consultancy',
+  path: '/dashboard/consultancy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ExamPrepSlugRoute = ExamPrepSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ExamPrepRoute,
+} as any)
+const ExamsSlugRoute = ExamsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ExamsRoute,
+} as any)
+const MockTestsSlugRoute = MockTestsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => MockTestsRoute,
+} as any)
+const NewsSlugRoute = NewsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => NewsRoute,
+} as any)
+const PortalCollegeRoute = PortalCollegeRouteImport.update({
+  id: '/portal/college',
+  path: '/portal/college',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ScholarshipsSlugRoute = ScholarshipsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ScholarshipsRoute,
+} as any)
+const StudyAbroadSlugRoute = StudyAbroadSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => StudyAbroadRoute,
+} as any)
+const AdminBlogsSlugRoute = AdminBlogsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminBlogsRoute,
+} as any)
+const AdminClaimsSlugRoute = AdminClaimsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminClaimsRoute,
+} as any)
+const AdminCollegesSlugRoute = AdminCollegesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminCollegesRoute,
+} as any)
+const AdminConsultanciesSlugRoute = AdminConsultanciesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminConsultanciesRoute,
+} as any)
+const AdminCoursesSlugRoute = AdminCoursesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminCoursesRoute,
+} as any)
+const AdminExamsSlugRoute = AdminExamsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminExamsRoute,
+} as any)
+const AdminLeadsSlugRoute = AdminLeadsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminLeadsRoute,
+} as any)
+const AdminNewsSlugRoute = AdminNewsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminNewsRoute,
+} as any)
+const AdminScholarshipsSlugRoute = AdminScholarshipsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminScholarshipsRoute,
+} as any)
+const AdminStudyAbroadSlugRoute = AdminStudyAbroadSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => AdminStudyAbroadRoute,
+} as any)
 const PortalCollegeIndexRoute = PortalCollegeIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => PortalCollegeRoute,
+} as any)
+const PortalCollegeAnalyticsRoute = PortalCollegeAnalyticsRouteImport.update({
+  id: '/analytics',
+  path: '/analytics',
+  getParentRoute: () => PortalCollegeRoute,
+} as any)
+const PortalCollegeCoursesRoute = PortalCollegeCoursesRouteImport.update({
+  id: '/courses',
+  path: '/courses',
+  getParentRoute: () => PortalCollegeRoute,
+} as any)
+const PortalCollegeGalleryRoute = PortalCollegeGalleryRouteImport.update({
+  id: '/gallery',
+  path: '/gallery',
+  getParentRoute: () => PortalCollegeRoute,
+} as any)
+const PortalCollegeProfileRoute = PortalCollegeProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => PortalCollegeRoute,
+} as any)
+const PortalCollegeReviewsRoute = PortalCollegeReviewsRouteImport.update({
+  id: '/reviews',
+  path: '/reviews',
   getParentRoute: () => PortalCollegeRoute,
 } as any)
 const PortalCollegeScholarshipsRoute =
@@ -446,81 +521,6 @@ const PortalCollegeScholarshipsRoute =
     path: '/scholarships',
     getParentRoute: () => PortalCollegeRoute,
   } as any)
-const PortalCollegeReviewsRoute = PortalCollegeReviewsRouteImport.update({
-  id: '/reviews',
-  path: '/reviews',
-  getParentRoute: () => PortalCollegeRoute,
-} as any)
-const PortalCollegeProfileRoute = PortalCollegeProfileRouteImport.update({
-  id: '/profile',
-  path: '/profile',
-  getParentRoute: () => PortalCollegeRoute,
-} as any)
-const PortalCollegeGalleryRoute = PortalCollegeGalleryRouteImport.update({
-  id: '/gallery',
-  path: '/gallery',
-  getParentRoute: () => PortalCollegeRoute,
-} as any)
-const PortalCollegeCoursesRoute = PortalCollegeCoursesRouteImport.update({
-  id: '/courses',
-  path: '/courses',
-  getParentRoute: () => PortalCollegeRoute,
-} as any)
-const PortalCollegeAnalyticsRoute = PortalCollegeAnalyticsRouteImport.update({
-  id: '/analytics',
-  path: '/analytics',
-  getParentRoute: () => PortalCollegeRoute,
-} as any)
-const AdminStudyAbroadSlugRoute = AdminStudyAbroadSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => AdminStudyAbroadRoute,
-} as any)
-const AdminScholarshipsSlugRoute = AdminScholarshipsSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => AdminScholarshipsRoute,
-} as any)
-const AdminNewsSlugRoute = AdminNewsSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => AdminNewsRoute,
-} as any)
-const AdminLeadsSlugRoute = AdminLeadsSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => AdminLeadsRoute,
-} as any)
-const AdminExamsSlugRoute = AdminExamsSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => AdminExamsRoute,
-} as any)
-const AdminCoursesSlugRoute = AdminCoursesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => AdminCoursesRoute,
-} as any)
-const AdminConsultanciesSlugRoute = AdminConsultanciesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => AdminConsultanciesRoute,
-} as any)
-const AdminCollegesSlugRoute = AdminCollegesSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => AdminCollegesRoute,
-} as any)
-const AdminClaimsSlugRoute = AdminClaimsSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => AdminClaimsRoute,
-} as any)
-const AdminBlogsSlugRoute = AdminBlogsSlugRouteImport.update({
-  id: '/$slug',
-  path: '/$slug',
-  getParentRoute: () => AdminBlogsRoute,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -1079,193 +1079,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/terms': {
-      id: '/terms'
-      path: '/terms'
-      fullPath: '/terms'
-      preLoaderRoute: typeof TermsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/team': {
-      id: '/team'
-      path: '/team'
-      fullPath: '/team'
-      preLoaderRoute: typeof TeamRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/study-abroad': {
-      id: '/study-abroad'
-      path: '/study-abroad'
-      fullPath: '/study-abroad'
-      preLoaderRoute: typeof StudyAbroadRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/scholarships': {
-      id: '/scholarships'
-      path: '/scholarships'
-      fullPath: '/scholarships'
-      preLoaderRoute: typeof ScholarshipsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/reviews': {
-      id: '/reviews'
-      path: '/reviews'
-      fullPath: '/reviews'
-      preLoaderRoute: typeof ReviewsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/questions': {
-      id: '/questions'
-      path: '/questions'
-      fullPath: '/questions'
-      preLoaderRoute: typeof QuestionsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/press': {
-      id: '/press'
-      path: '/press'
-      fullPath: '/press'
-      preLoaderRoute: typeof PressRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/news': {
-      id: '/news'
-      path: '/news'
-      fullPath: '/news'
-      preLoaderRoute: typeof NewsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mock-tests': {
-      id: '/mock-tests'
-      path: '/mock-tests'
-      fullPath: '/mock-tests'
-      preLoaderRoute: typeof MockTestsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/login': {
-      id: '/login'
-      path: '/login'
-      fullPath: '/login'
-      preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/join': {
-      id: '/join'
-      path: '/join'
-      fullPath: '/join'
-      preLoaderRoute: typeof JoinRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/exams': {
-      id: '/exams'
-      path: '/exams'
-      fullPath: '/exams'
-      preLoaderRoute: typeof ExamsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/exam-prep': {
-      id: '/exam-prep'
-      path: '/exam-prep'
-      fullPath: '/exam-prep'
-      preLoaderRoute: typeof ExamPrepRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/courses': {
-      id: '/courses'
-      path: '/courses'
-      fullPath: '/courses'
-      preLoaderRoute: typeof CoursesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/counselor': {
-      id: '/counselor'
-      path: '/counselor'
-      fullPath: '/counselor'
-      preLoaderRoute: typeof CounselorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/counseling': {
-      id: '/counseling'
-      path: '/counseling'
-      fullPath: '/counseling'
-      preLoaderRoute: typeof CounselingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/consultancies': {
-      id: '/consultancies'
-      path: '/consultancies'
-      fullPath: '/consultancies'
-      preLoaderRoute: typeof ConsultanciesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/compare': {
-      id: '/compare'
-      path: '/compare'
-      fullPath: '/compare'
-      preLoaderRoute: typeof CompareRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/colleges': {
-      id: '/colleges'
-      path: '/colleges'
-      fullPath: '/colleges'
-      preLoaderRoute: typeof CollegesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/college-predictor': {
-      id: '/college-predictor'
-      path: '/college-predictor'
-      fullPath: '/college-predictor'
-      preLoaderRoute: typeof CollegePredictorRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/claim-consultancy': {
-      id: '/claim-consultancy'
-      path: '/claim-consultancy'
-      fullPath: '/claim-consultancy'
-      preLoaderRoute: typeof ClaimConsultancyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/claim-college': {
-      id: '/claim-college'
-      path: '/claim-college'
-      fullPath: '/claim-college'
-      preLoaderRoute: typeof ClaimCollegeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/careers': {
-      id: '/careers'
-      path: '/careers'
-      fullPath: '/careers'
-      preLoaderRoute: typeof CareersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/articles': {
-      id: '/articles'
-      path: '/articles'
-      fullPath: '/articles'
-      preLoaderRoute: typeof ArticlesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/admin': {
-      id: '/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AdminRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/about': {
@@ -1275,277 +1093,200 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/admin': {
+      id: '/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AdminRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/counselor/': {
-      id: '/counselor/'
-      path: '/'
-      fullPath: '/counselor/'
-      preLoaderRoute: typeof CounselorIndexRouteImport
-      parentRoute: typeof CounselorRoute
+    '/articles': {
+      id: '/articles'
+      path: '/articles'
+      fullPath: '/articles'
+      preLoaderRoute: typeof ArticlesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/claim-college': {
+      id: '/claim-college'
+      path: '/claim-college'
+      fullPath: '/claim-college'
+      preLoaderRoute: typeof ClaimCollegeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/claim-consultancy': {
+      id: '/claim-consultancy'
+      path: '/claim-consultancy'
+      fullPath: '/claim-consultancy'
+      preLoaderRoute: typeof ClaimConsultancyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/college-predictor': {
+      id: '/college-predictor'
+      path: '/college-predictor'
+      fullPath: '/college-predictor'
+      preLoaderRoute: typeof CollegePredictorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/colleges': {
+      id: '/colleges'
+      path: '/colleges'
+      fullPath: '/colleges'
+      preLoaderRoute: typeof CollegesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compare': {
+      id: '/compare'
+      path: '/compare'
+      fullPath: '/compare'
+      preLoaderRoute: typeof CompareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/consultancies': {
+      id: '/consultancies'
+      path: '/consultancies'
+      fullPath: '/consultancies'
+      preLoaderRoute: typeof ConsultanciesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/counseling': {
+      id: '/counseling'
+      path: '/counseling'
+      fullPath: '/counseling'
+      preLoaderRoute: typeof CounselingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/counselor': {
+      id: '/counselor'
+      path: '/counselor'
+      fullPath: '/counselor'
+      preLoaderRoute: typeof CounselorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/courses': {
+      id: '/courses'
+      path: '/courses'
+      fullPath: '/courses'
+      preLoaderRoute: typeof CoursesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exam-prep': {
+      id: '/exam-prep'
+      path: '/exam-prep'
+      fullPath: '/exam-prep'
+      preLoaderRoute: typeof ExamPrepRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exams': {
+      id: '/exams'
+      path: '/exams'
+      fullPath: '/exams'
+      preLoaderRoute: typeof ExamsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/join': {
+      id: '/join'
+      path: '/join'
+      fullPath: '/join'
+      preLoaderRoute: typeof JoinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mock-tests': {
+      id: '/mock-tests'
+      path: '/mock-tests'
+      fullPath: '/mock-tests'
+      preLoaderRoute: typeof MockTestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/press': {
+      id: '/press'
+      path: '/press'
+      fullPath: '/press'
+      preLoaderRoute: typeof PressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/questions': {
+      id: '/questions'
+      path: '/questions'
+      fullPath: '/questions'
+      preLoaderRoute: typeof QuestionsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reviews': {
+      id: '/reviews'
+      path: '/reviews'
+      fullPath: '/reviews'
+      preLoaderRoute: typeof ReviewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scholarships': {
+      id: '/scholarships'
+      path: '/scholarships'
+      fullPath: '/scholarships'
+      preLoaderRoute: typeof ScholarshipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/study-abroad': {
+      id: '/study-abroad'
+      path: '/study-abroad'
+      fullPath: '/study-abroad'
+      preLoaderRoute: typeof StudyAbroadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team': {
+      id: '/team'
+      path: '/team'
+      fullPath: '/team'
+      preLoaderRoute: typeof TeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/admin/': {
       id: '/admin/'
       path: '/'
       fullPath: '/admin/'
       preLoaderRoute: typeof AdminIndexRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/study-abroad/$slug': {
-      id: '/study-abroad/$slug'
-      path: '/$slug'
-      fullPath: '/study-abroad/$slug'
-      preLoaderRoute: typeof StudyAbroadSlugRouteImport
-      parentRoute: typeof StudyAbroadRoute
-    }
-    '/scholarships/$slug': {
-      id: '/scholarships/$slug'
-      path: '/$slug'
-      fullPath: '/scholarships/$slug'
-      preLoaderRoute: typeof ScholarshipsSlugRouteImport
-      parentRoute: typeof ScholarshipsRoute
-    }
-    '/portal/college': {
-      id: '/portal/college'
-      path: '/portal/college'
-      fullPath: '/portal/college'
-      preLoaderRoute: typeof PortalCollegeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/news/$slug': {
-      id: '/news/$slug'
-      path: '/$slug'
-      fullPath: '/news/$slug'
-      preLoaderRoute: typeof NewsSlugRouteImport
-      parentRoute: typeof NewsRoute
-    }
-    '/mock-tests/$slug': {
-      id: '/mock-tests/$slug'
-      path: '/$slug'
-      fullPath: '/mock-tests/$slug'
-      preLoaderRoute: typeof MockTestsSlugRouteImport
-      parentRoute: typeof MockTestsRoute
-    }
-    '/exams/$slug': {
-      id: '/exams/$slug'
-      path: '/$slug'
-      fullPath: '/exams/$slug'
-      preLoaderRoute: typeof ExamsSlugRouteImport
-      parentRoute: typeof ExamsRoute
-    }
-    '/exam-prep/$slug': {
-      id: '/exam-prep/$slug'
-      path: '/$slug'
-      fullPath: '/exam-prep/$slug'
-      preLoaderRoute: typeof ExamPrepSlugRouteImport
-      parentRoute: typeof ExamPrepRoute
-    }
-    '/dashboard/consultancy': {
-      id: '/dashboard/consultancy'
-      path: '/dashboard/consultancy'
-      fullPath: '/dashboard/consultancy'
-      preLoaderRoute: typeof DashboardConsultancyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/dashboard/college': {
-      id: '/dashboard/college'
-      path: '/dashboard/college'
-      fullPath: '/dashboard/college'
-      preLoaderRoute: typeof DashboardCollegeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/courses/$slug': {
-      id: '/courses/$slug'
-      path: '/$slug'
-      fullPath: '/courses/$slug'
-      preLoaderRoute: typeof CoursesSlugRouteImport
-      parentRoute: typeof CoursesRoute
-    }
-    '/counselor/students': {
-      id: '/counselor/students'
-      path: '/students'
-      fullPath: '/counselor/students'
-      preLoaderRoute: typeof CounselorStudentsRouteImport
-      parentRoute: typeof CounselorRoute
-    }
-    '/counselor/sessions': {
-      id: '/counselor/sessions'
-      path: '/sessions'
-      fullPath: '/counselor/sessions'
-      preLoaderRoute: typeof CounselorSessionsRouteImport
-      parentRoute: typeof CounselorRoute
-    }
-    '/counselor/reviews': {
-      id: '/counselor/reviews'
-      path: '/reviews'
-      fullPath: '/counselor/reviews'
-      preLoaderRoute: typeof CounselorReviewsRouteImport
-      parentRoute: typeof CounselorRoute
-    }
-    '/counselor/profile': {
-      id: '/counselor/profile'
-      path: '/profile'
-      fullPath: '/counselor/profile'
-      preLoaderRoute: typeof CounselorProfileRouteImport
-      parentRoute: typeof CounselorRoute
-    }
-    '/counselor/messages': {
-      id: '/counselor/messages'
-      path: '/messages'
-      fullPath: '/counselor/messages'
-      preLoaderRoute: typeof CounselorMessagesRouteImport
-      parentRoute: typeof CounselorRoute
-    }
-    '/counselor/earnings': {
-      id: '/counselor/earnings'
-      path: '/earnings'
-      fullPath: '/counselor/earnings'
-      preLoaderRoute: typeof CounselorEarningsRouteImport
-      parentRoute: typeof CounselorRoute
-    }
-    '/counselor/claim': {
-      id: '/counselor/claim'
-      path: '/claim'
-      fullPath: '/counselor/claim'
-      preLoaderRoute: typeof CounselorClaimRouteImport
-      parentRoute: typeof CounselorRoute
-    }
-    '/consultancies/$slug': {
-      id: '/consultancies/$slug'
-      path: '/$slug'
-      fullPath: '/consultancies/$slug'
-      preLoaderRoute: typeof ConsultanciesSlugRouteImport
-      parentRoute: typeof ConsultanciesRoute
-    }
-    '/colleges/$slug': {
-      id: '/colleges/$slug'
-      path: '/$slug'
-      fullPath: '/colleges/$slug'
-      preLoaderRoute: typeof CollegesSlugRouteImport
-      parentRoute: typeof CollegesRoute
-    }
-    '/articles/$slug': {
-      id: '/articles/$slug'
-      path: '/$slug'
-      fullPath: '/articles/$slug'
-      preLoaderRoute: typeof ArticlesSlugRouteImport
-      parentRoute: typeof ArticlesRoute
-    }
-    '/admin/study-abroad': {
-      id: '/admin/study-abroad'
-      path: '/study-abroad'
-      fullPath: '/admin/study-abroad'
-      preLoaderRoute: typeof AdminStudyAbroadRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/settings': {
-      id: '/admin/settings'
-      path: '/settings'
-      fullPath: '/admin/settings'
-      preLoaderRoute: typeof AdminSettingsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/scholarships': {
-      id: '/admin/scholarships'
-      path: '/scholarships'
-      fullPath: '/admin/scholarships'
-      preLoaderRoute: typeof AdminScholarshipsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/profile': {
-      id: '/admin/profile'
-      path: '/profile'
-      fullPath: '/admin/profile'
-      preLoaderRoute: typeof AdminProfileRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/notifications': {
-      id: '/admin/notifications'
-      path: '/notifications'
-      fullPath: '/admin/notifications'
-      preLoaderRoute: typeof AdminNotificationsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/news': {
-      id: '/admin/news'
-      path: '/news'
-      fullPath: '/admin/news'
-      preLoaderRoute: typeof AdminNewsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/navigation': {
-      id: '/admin/navigation'
-      path: '/navigation'
-      fullPath: '/admin/navigation'
-      preLoaderRoute: typeof AdminNavigationRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/moderation': {
-      id: '/admin/moderation'
-      path: '/moderation'
-      fullPath: '/admin/moderation'
-      preLoaderRoute: typeof AdminModerationRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/leads': {
-      id: '/admin/leads'
-      path: '/leads'
-      fullPath: '/admin/leads'
-      preLoaderRoute: typeof AdminLeadsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/footer': {
-      id: '/admin/footer'
-      path: '/footer'
-      fullPath: '/admin/footer'
-      preLoaderRoute: typeof AdminFooterRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/exams': {
-      id: '/admin/exams'
-      path: '/exams'
-      fullPath: '/admin/exams'
-      preLoaderRoute: typeof AdminExamsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/courses': {
-      id: '/admin/courses'
-      path: '/courses'
-      fullPath: '/admin/courses'
-      preLoaderRoute: typeof AdminCoursesRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/consultancies': {
-      id: '/admin/consultancies'
-      path: '/consultancies'
-      fullPath: '/admin/consultancies'
-      preLoaderRoute: typeof AdminConsultanciesRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/colleges': {
-      id: '/admin/colleges'
-      path: '/colleges'
-      fullPath: '/admin/colleges'
-      preLoaderRoute: typeof AdminCollegesRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/claims': {
-      id: '/admin/claims'
-      path: '/claims'
-      fullPath: '/admin/claims'
-      preLoaderRoute: typeof AdminClaimsRouteImport
-      parentRoute: typeof AdminRoute
-    }
-    '/admin/blogs': {
-      id: '/admin/blogs'
-      path: '/blogs'
-      fullPath: '/admin/blogs'
-      preLoaderRoute: typeof AdminBlogsRouteImport
       parentRoute: typeof AdminRoute
     }
     '/admin/analytics': {
@@ -1555,46 +1296,340 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminAnalyticsRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/blogs': {
+      id: '/admin/blogs'
+      path: '/blogs'
+      fullPath: '/admin/blogs'
+      preLoaderRoute: typeof AdminBlogsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/claims': {
+      id: '/admin/claims'
+      path: '/claims'
+      fullPath: '/admin/claims'
+      preLoaderRoute: typeof AdminClaimsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/colleges': {
+      id: '/admin/colleges'
+      path: '/colleges'
+      fullPath: '/admin/colleges'
+      preLoaderRoute: typeof AdminCollegesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/consultancies': {
+      id: '/admin/consultancies'
+      path: '/consultancies'
+      fullPath: '/admin/consultancies'
+      preLoaderRoute: typeof AdminConsultanciesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/courses': {
+      id: '/admin/courses'
+      path: '/courses'
+      fullPath: '/admin/courses'
+      preLoaderRoute: typeof AdminCoursesRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/exams': {
+      id: '/admin/exams'
+      path: '/exams'
+      fullPath: '/admin/exams'
+      preLoaderRoute: typeof AdminExamsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/footer': {
+      id: '/admin/footer'
+      path: '/footer'
+      fullPath: '/admin/footer'
+      preLoaderRoute: typeof AdminFooterRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/leads': {
+      id: '/admin/leads'
+      path: '/leads'
+      fullPath: '/admin/leads'
+      preLoaderRoute: typeof AdminLeadsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/moderation': {
+      id: '/admin/moderation'
+      path: '/moderation'
+      fullPath: '/admin/moderation'
+      preLoaderRoute: typeof AdminModerationRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/navigation': {
+      id: '/admin/navigation'
+      path: '/navigation'
+      fullPath: '/admin/navigation'
+      preLoaderRoute: typeof AdminNavigationRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/news': {
+      id: '/admin/news'
+      path: '/news'
+      fullPath: '/admin/news'
+      preLoaderRoute: typeof AdminNewsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/notifications': {
+      id: '/admin/notifications'
+      path: '/notifications'
+      fullPath: '/admin/notifications'
+      preLoaderRoute: typeof AdminNotificationsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/profile': {
+      id: '/admin/profile'
+      path: '/profile'
+      fullPath: '/admin/profile'
+      preLoaderRoute: typeof AdminProfileRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/scholarships': {
+      id: '/admin/scholarships'
+      path: '/scholarships'
+      fullPath: '/admin/scholarships'
+      preLoaderRoute: typeof AdminScholarshipsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/settings': {
+      id: '/admin/settings'
+      path: '/settings'
+      fullPath: '/admin/settings'
+      preLoaderRoute: typeof AdminSettingsRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/study-abroad': {
+      id: '/admin/study-abroad'
+      path: '/study-abroad'
+      fullPath: '/admin/study-abroad'
+      preLoaderRoute: typeof AdminStudyAbroadRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/articles/$slug': {
+      id: '/articles/$slug'
+      path: '/$slug'
+      fullPath: '/articles/$slug'
+      preLoaderRoute: typeof ArticlesSlugRouteImport
+      parentRoute: typeof ArticlesRoute
+    }
+    '/colleges/$slug': {
+      id: '/colleges/$slug'
+      path: '/$slug'
+      fullPath: '/colleges/$slug'
+      preLoaderRoute: typeof CollegesSlugRouteImport
+      parentRoute: typeof CollegesRoute
+    }
+    '/consultancies/$slug': {
+      id: '/consultancies/$slug'
+      path: '/$slug'
+      fullPath: '/consultancies/$slug'
+      preLoaderRoute: typeof ConsultanciesSlugRouteImport
+      parentRoute: typeof ConsultanciesRoute
+    }
+    '/counselor/': {
+      id: '/counselor/'
+      path: '/'
+      fullPath: '/counselor/'
+      preLoaderRoute: typeof CounselorIndexRouteImport
+      parentRoute: typeof CounselorRoute
+    }
+    '/counselor/claim': {
+      id: '/counselor/claim'
+      path: '/claim'
+      fullPath: '/counselor/claim'
+      preLoaderRoute: typeof CounselorClaimRouteImport
+      parentRoute: typeof CounselorRoute
+    }
+    '/counselor/earnings': {
+      id: '/counselor/earnings'
+      path: '/earnings'
+      fullPath: '/counselor/earnings'
+      preLoaderRoute: typeof CounselorEarningsRouteImport
+      parentRoute: typeof CounselorRoute
+    }
+    '/counselor/messages': {
+      id: '/counselor/messages'
+      path: '/messages'
+      fullPath: '/counselor/messages'
+      preLoaderRoute: typeof CounselorMessagesRouteImport
+      parentRoute: typeof CounselorRoute
+    }
+    '/counselor/profile': {
+      id: '/counselor/profile'
+      path: '/profile'
+      fullPath: '/counselor/profile'
+      preLoaderRoute: typeof CounselorProfileRouteImport
+      parentRoute: typeof CounselorRoute
+    }
+    '/counselor/reviews': {
+      id: '/counselor/reviews'
+      path: '/reviews'
+      fullPath: '/counselor/reviews'
+      preLoaderRoute: typeof CounselorReviewsRouteImport
+      parentRoute: typeof CounselorRoute
+    }
+    '/counselor/sessions': {
+      id: '/counselor/sessions'
+      path: '/sessions'
+      fullPath: '/counselor/sessions'
+      preLoaderRoute: typeof CounselorSessionsRouteImport
+      parentRoute: typeof CounselorRoute
+    }
+    '/counselor/students': {
+      id: '/counselor/students'
+      path: '/students'
+      fullPath: '/counselor/students'
+      preLoaderRoute: typeof CounselorStudentsRouteImport
+      parentRoute: typeof CounselorRoute
+    }
+    '/courses/$slug': {
+      id: '/courses/$slug'
+      path: '/$slug'
+      fullPath: '/courses/$slug'
+      preLoaderRoute: typeof CoursesSlugRouteImport
+      parentRoute: typeof CoursesRoute
+    }
+    '/dashboard/college': {
+      id: '/dashboard/college'
+      path: '/dashboard/college'
+      fullPath: '/dashboard/college'
+      preLoaderRoute: typeof DashboardCollegeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/consultancy': {
+      id: '/dashboard/consultancy'
+      path: '/dashboard/consultancy'
+      fullPath: '/dashboard/consultancy'
+      preLoaderRoute: typeof DashboardConsultancyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/exam-prep/$slug': {
+      id: '/exam-prep/$slug'
+      path: '/$slug'
+      fullPath: '/exam-prep/$slug'
+      preLoaderRoute: typeof ExamPrepSlugRouteImport
+      parentRoute: typeof ExamPrepRoute
+    }
+    '/exams/$slug': {
+      id: '/exams/$slug'
+      path: '/$slug'
+      fullPath: '/exams/$slug'
+      preLoaderRoute: typeof ExamsSlugRouteImport
+      parentRoute: typeof ExamsRoute
+    }
+    '/mock-tests/$slug': {
+      id: '/mock-tests/$slug'
+      path: '/$slug'
+      fullPath: '/mock-tests/$slug'
+      preLoaderRoute: typeof MockTestsSlugRouteImport
+      parentRoute: typeof MockTestsRoute
+    }
+    '/news/$slug': {
+      id: '/news/$slug'
+      path: '/$slug'
+      fullPath: '/news/$slug'
+      preLoaderRoute: typeof NewsSlugRouteImport
+      parentRoute: typeof NewsRoute
+    }
+    '/portal/college': {
+      id: '/portal/college'
+      path: '/portal/college'
+      fullPath: '/portal/college'
+      preLoaderRoute: typeof PortalCollegeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/scholarships/$slug': {
+      id: '/scholarships/$slug'
+      path: '/$slug'
+      fullPath: '/scholarships/$slug'
+      preLoaderRoute: typeof ScholarshipsSlugRouteImport
+      parentRoute: typeof ScholarshipsRoute
+    }
+    '/study-abroad/$slug': {
+      id: '/study-abroad/$slug'
+      path: '/$slug'
+      fullPath: '/study-abroad/$slug'
+      preLoaderRoute: typeof StudyAbroadSlugRouteImport
+      parentRoute: typeof StudyAbroadRoute
+    }
+    '/admin/blogs/$slug': {
+      id: '/admin/blogs/$slug'
+      path: '/$slug'
+      fullPath: '/admin/blogs/$slug'
+      preLoaderRoute: typeof AdminBlogsSlugRouteImport
+      parentRoute: typeof AdminBlogsRoute
+    }
+    '/admin/claims/$slug': {
+      id: '/admin/claims/$slug'
+      path: '/$slug'
+      fullPath: '/admin/claims/$slug'
+      preLoaderRoute: typeof AdminClaimsSlugRouteImport
+      parentRoute: typeof AdminClaimsRoute
+    }
+    '/admin/colleges/$slug': {
+      id: '/admin/colleges/$slug'
+      path: '/$slug'
+      fullPath: '/admin/colleges/$slug'
+      preLoaderRoute: typeof AdminCollegesSlugRouteImport
+      parentRoute: typeof AdminCollegesRoute
+    }
+    '/admin/consultancies/$slug': {
+      id: '/admin/consultancies/$slug'
+      path: '/$slug'
+      fullPath: '/admin/consultancies/$slug'
+      preLoaderRoute: typeof AdminConsultanciesSlugRouteImport
+      parentRoute: typeof AdminConsultanciesRoute
+    }
+    '/admin/courses/$slug': {
+      id: '/admin/courses/$slug'
+      path: '/$slug'
+      fullPath: '/admin/courses/$slug'
+      preLoaderRoute: typeof AdminCoursesSlugRouteImport
+      parentRoute: typeof AdminCoursesRoute
+    }
+    '/admin/exams/$slug': {
+      id: '/admin/exams/$slug'
+      path: '/$slug'
+      fullPath: '/admin/exams/$slug'
+      preLoaderRoute: typeof AdminExamsSlugRouteImport
+      parentRoute: typeof AdminExamsRoute
+    }
+    '/admin/leads/$slug': {
+      id: '/admin/leads/$slug'
+      path: '/$slug'
+      fullPath: '/admin/leads/$slug'
+      preLoaderRoute: typeof AdminLeadsSlugRouteImport
+      parentRoute: typeof AdminLeadsRoute
+    }
+    '/admin/news/$slug': {
+      id: '/admin/news/$slug'
+      path: '/$slug'
+      fullPath: '/admin/news/$slug'
+      preLoaderRoute: typeof AdminNewsSlugRouteImport
+      parentRoute: typeof AdminNewsRoute
+    }
+    '/admin/scholarships/$slug': {
+      id: '/admin/scholarships/$slug'
+      path: '/$slug'
+      fullPath: '/admin/scholarships/$slug'
+      preLoaderRoute: typeof AdminScholarshipsSlugRouteImport
+      parentRoute: typeof AdminScholarshipsRoute
+    }
+    '/admin/study-abroad/$slug': {
+      id: '/admin/study-abroad/$slug'
+      path: '/$slug'
+      fullPath: '/admin/study-abroad/$slug'
+      preLoaderRoute: typeof AdminStudyAbroadSlugRouteImport
+      parentRoute: typeof AdminStudyAbroadRoute
+    }
     '/portal/college/': {
       id: '/portal/college/'
       path: '/'
       fullPath: '/portal/college/'
       preLoaderRoute: typeof PortalCollegeIndexRouteImport
-      parentRoute: typeof PortalCollegeRoute
-    }
-    '/portal/college/scholarships': {
-      id: '/portal/college/scholarships'
-      path: '/scholarships'
-      fullPath: '/portal/college/scholarships'
-      preLoaderRoute: typeof PortalCollegeScholarshipsRouteImport
-      parentRoute: typeof PortalCollegeRoute
-    }
-    '/portal/college/reviews': {
-      id: '/portal/college/reviews'
-      path: '/reviews'
-      fullPath: '/portal/college/reviews'
-      preLoaderRoute: typeof PortalCollegeReviewsRouteImport
-      parentRoute: typeof PortalCollegeRoute
-    }
-    '/portal/college/profile': {
-      id: '/portal/college/profile'
-      path: '/profile'
-      fullPath: '/portal/college/profile'
-      preLoaderRoute: typeof PortalCollegeProfileRouteImport
-      parentRoute: typeof PortalCollegeRoute
-    }
-    '/portal/college/gallery': {
-      id: '/portal/college/gallery'
-      path: '/gallery'
-      fullPath: '/portal/college/gallery'
-      preLoaderRoute: typeof PortalCollegeGalleryRouteImport
-      parentRoute: typeof PortalCollegeRoute
-    }
-    '/portal/college/courses': {
-      id: '/portal/college/courses'
-      path: '/courses'
-      fullPath: '/portal/college/courses'
-      preLoaderRoute: typeof PortalCollegeCoursesRouteImport
       parentRoute: typeof PortalCollegeRoute
     }
     '/portal/college/analytics': {
@@ -1604,75 +1639,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PortalCollegeAnalyticsRouteImport
       parentRoute: typeof PortalCollegeRoute
     }
-    '/admin/study-abroad/$slug': {
-      id: '/admin/study-abroad/$slug'
-      path: '/$slug'
-      fullPath: '/admin/study-abroad/$slug'
-      preLoaderRoute: typeof AdminStudyAbroadSlugRouteImport
-      parentRoute: typeof AdminStudyAbroadRoute
+    '/portal/college/courses': {
+      id: '/portal/college/courses'
+      path: '/courses'
+      fullPath: '/portal/college/courses'
+      preLoaderRoute: typeof PortalCollegeCoursesRouteImport
+      parentRoute: typeof PortalCollegeRoute
     }
-    '/admin/scholarships/$slug': {
-      id: '/admin/scholarships/$slug'
-      path: '/$slug'
-      fullPath: '/admin/scholarships/$slug'
-      preLoaderRoute: typeof AdminScholarshipsSlugRouteImport
-      parentRoute: typeof AdminScholarshipsRoute
+    '/portal/college/gallery': {
+      id: '/portal/college/gallery'
+      path: '/gallery'
+      fullPath: '/portal/college/gallery'
+      preLoaderRoute: typeof PortalCollegeGalleryRouteImport
+      parentRoute: typeof PortalCollegeRoute
     }
-    '/admin/news/$slug': {
-      id: '/admin/news/$slug'
-      path: '/$slug'
-      fullPath: '/admin/news/$slug'
-      preLoaderRoute: typeof AdminNewsSlugRouteImport
-      parentRoute: typeof AdminNewsRoute
+    '/portal/college/profile': {
+      id: '/portal/college/profile'
+      path: '/profile'
+      fullPath: '/portal/college/profile'
+      preLoaderRoute: typeof PortalCollegeProfileRouteImport
+      parentRoute: typeof PortalCollegeRoute
     }
-    '/admin/leads/$slug': {
-      id: '/admin/leads/$slug'
-      path: '/$slug'
-      fullPath: '/admin/leads/$slug'
-      preLoaderRoute: typeof AdminLeadsSlugRouteImport
-      parentRoute: typeof AdminLeadsRoute
+    '/portal/college/reviews': {
+      id: '/portal/college/reviews'
+      path: '/reviews'
+      fullPath: '/portal/college/reviews'
+      preLoaderRoute: typeof PortalCollegeReviewsRouteImport
+      parentRoute: typeof PortalCollegeRoute
     }
-    '/admin/exams/$slug': {
-      id: '/admin/exams/$slug'
-      path: '/$slug'
-      fullPath: '/admin/exams/$slug'
-      preLoaderRoute: typeof AdminExamsSlugRouteImport
-      parentRoute: typeof AdminExamsRoute
-    }
-    '/admin/courses/$slug': {
-      id: '/admin/courses/$slug'
-      path: '/$slug'
-      fullPath: '/admin/courses/$slug'
-      preLoaderRoute: typeof AdminCoursesSlugRouteImport
-      parentRoute: typeof AdminCoursesRoute
-    }
-    '/admin/consultancies/$slug': {
-      id: '/admin/consultancies/$slug'
-      path: '/$slug'
-      fullPath: '/admin/consultancies/$slug'
-      preLoaderRoute: typeof AdminConsultanciesSlugRouteImport
-      parentRoute: typeof AdminConsultanciesRoute
-    }
-    '/admin/colleges/$slug': {
-      id: '/admin/colleges/$slug'
-      path: '/$slug'
-      fullPath: '/admin/colleges/$slug'
-      preLoaderRoute: typeof AdminCollegesSlugRouteImport
-      parentRoute: typeof AdminCollegesRoute
-    }
-    '/admin/claims/$slug': {
-      id: '/admin/claims/$slug'
-      path: '/$slug'
-      fullPath: '/admin/claims/$slug'
-      preLoaderRoute: typeof AdminClaimsSlugRouteImport
-      parentRoute: typeof AdminClaimsRoute
-    }
-    '/admin/blogs/$slug': {
-      id: '/admin/blogs/$slug'
-      path: '/$slug'
-      fullPath: '/admin/blogs/$slug'
-      preLoaderRoute: typeof AdminBlogsSlugRouteImport
-      parentRoute: typeof AdminBlogsRoute
+    '/portal/college/scholarships': {
+      id: '/portal/college/scholarships'
+      path: '/scholarships'
+      fullPath: '/portal/college/scholarships'
+      preLoaderRoute: typeof PortalCollegeScholarshipsRouteImport
+      parentRoute: typeof PortalCollegeRoute
     }
   }
 }
