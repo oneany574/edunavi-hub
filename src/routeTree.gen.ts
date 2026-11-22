@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as AdminRouteImport } from './routes/admin'
 import { Route as ArticlesRouteImport } from './routes/articles'
+import { Route as AssistantRouteImport } from './routes/assistant'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as ClaimCollegeRouteImport } from './routes/claim-college'
 import { Route as ClaimConsultancyRouteImport } from './routes/claim-consultancy'
@@ -57,6 +58,8 @@ import { Route as AdminScholarshipsRouteImport } from './routes/admin.scholarshi
 import { Route as AdminSettingsRouteImport } from './routes/admin.settings'
 import { Route as AdminStudyAbroadRouteImport } from './routes/admin.study-abroad'
 import { Route as ArticlesSlugRouteImport } from './routes/articles.$slug'
+import { Route as AssistantIndexRouteImport } from './routes/assistant.index'
+import { Route as AssistantThreadIdRouteImport } from './routes/assistant.$threadId'
 import { Route as CollegesSlugRouteImport } from './routes/colleges.$slug'
 import { Route as ConsultanciesSlugRouteImport } from './routes/consultancies.$slug'
 import { Route as CounselorIndexRouteImport } from './routes/counselor.index'
@@ -113,6 +116,11 @@ const AdminRoute = AdminRouteImport.update({
 const ArticlesRoute = ArticlesRouteImport.update({
   id: '/articles',
   path: '/articles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AssistantRoute = AssistantRouteImport.update({
+  id: '/assistant',
+  path: '/assistant',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CareersRoute = CareersRouteImport.update({
@@ -335,6 +343,16 @@ const ArticlesSlugRoute = ArticlesSlugRouteImport.update({
   path: '/$slug',
   getParentRoute: () => ArticlesRoute,
 } as any)
+const AssistantIndexRoute = AssistantIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AssistantRoute,
+} as any)
+const AssistantThreadIdRoute = AssistantThreadIdRouteImport.update({
+  id: '/$threadId',
+  path: '/$threadId',
+  getParentRoute: () => AssistantRoute,
+} as any)
 const CollegesSlugRoute = CollegesSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -527,6 +545,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRouteWithChildren
   '/articles': typeof ArticlesRouteWithChildren
+  '/assistant': typeof AssistantRouteWithChildren
   '/careers': typeof CareersRoute
   '/claim-college': typeof ClaimCollegeRoute
   '/claim-consultancy': typeof ClaimConsultancyRoute
@@ -570,6 +589,7 @@ export interface FileRoutesByFullPath {
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/study-abroad': typeof AdminStudyAbroadRouteWithChildren
   '/articles/$slug': typeof ArticlesSlugRoute
+  '/assistant/$threadId': typeof AssistantThreadIdRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/consultancies/$slug': typeof ConsultanciesSlugRoute
   '/counselor/claim': typeof CounselorClaimRoute
@@ -590,6 +610,7 @@ export interface FileRoutesByFullPath {
   '/scholarships/$slug': typeof ScholarshipsSlugRoute
   '/study-abroad/$slug': typeof StudyAbroadSlugRoute
   '/admin/': typeof AdminIndexRoute
+  '/assistant/': typeof AssistantIndexRoute
   '/counselor/': typeof CounselorIndexRoute
   '/admin/blogs/$slug': typeof AdminBlogsSlugRoute
   '/admin/claims/$slug': typeof AdminClaimsSlugRoute
@@ -655,6 +676,7 @@ export interface FileRoutesByTo {
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/study-abroad': typeof AdminStudyAbroadRouteWithChildren
   '/articles/$slug': typeof ArticlesSlugRoute
+  '/assistant/$threadId': typeof AssistantThreadIdRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/consultancies/$slug': typeof ConsultanciesSlugRoute
   '/counselor/claim': typeof CounselorClaimRoute
@@ -674,6 +696,7 @@ export interface FileRoutesByTo {
   '/scholarships/$slug': typeof ScholarshipsSlugRoute
   '/study-abroad/$slug': typeof StudyAbroadSlugRoute
   '/admin': typeof AdminIndexRoute
+  '/assistant': typeof AssistantIndexRoute
   '/counselor': typeof CounselorIndexRoute
   '/admin/blogs/$slug': typeof AdminBlogsSlugRoute
   '/admin/claims/$slug': typeof AdminClaimsSlugRoute
@@ -699,6 +722,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/admin': typeof AdminRouteWithChildren
   '/articles': typeof ArticlesRouteWithChildren
+  '/assistant': typeof AssistantRouteWithChildren
   '/careers': typeof CareersRoute
   '/claim-college': typeof ClaimCollegeRoute
   '/claim-consultancy': typeof ClaimConsultancyRoute
@@ -742,6 +766,7 @@ export interface FileRoutesById {
   '/admin/settings': typeof AdminSettingsRoute
   '/admin/study-abroad': typeof AdminStudyAbroadRouteWithChildren
   '/articles/$slug': typeof ArticlesSlugRoute
+  '/assistant/$threadId': typeof AssistantThreadIdRoute
   '/colleges/$slug': typeof CollegesSlugRoute
   '/consultancies/$slug': typeof ConsultanciesSlugRoute
   '/counselor/claim': typeof CounselorClaimRoute
@@ -762,6 +787,7 @@ export interface FileRoutesById {
   '/scholarships/$slug': typeof ScholarshipsSlugRoute
   '/study-abroad/$slug': typeof StudyAbroadSlugRoute
   '/admin/': typeof AdminIndexRoute
+  '/assistant/': typeof AssistantIndexRoute
   '/counselor/': typeof CounselorIndexRoute
   '/admin/blogs/$slug': typeof AdminBlogsSlugRoute
   '/admin/claims/$slug': typeof AdminClaimsSlugRoute
@@ -788,6 +814,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/articles'
+    | '/assistant'
     | '/careers'
     | '/claim-college'
     | '/claim-consultancy'
@@ -831,6 +858,7 @@ export interface FileRouteTypes {
     | '/admin/settings'
     | '/admin/study-abroad'
     | '/articles/$slug'
+    | '/assistant/$threadId'
     | '/colleges/$slug'
     | '/consultancies/$slug'
     | '/counselor/claim'
@@ -851,6 +879,7 @@ export interface FileRouteTypes {
     | '/scholarships/$slug'
     | '/study-abroad/$slug'
     | '/admin/'
+    | '/assistant/'
     | '/counselor/'
     | '/admin/blogs/$slug'
     | '/admin/claims/$slug'
@@ -916,6 +945,7 @@ export interface FileRouteTypes {
     | '/admin/settings'
     | '/admin/study-abroad'
     | '/articles/$slug'
+    | '/assistant/$threadId'
     | '/colleges/$slug'
     | '/consultancies/$slug'
     | '/counselor/claim'
@@ -935,6 +965,7 @@ export interface FileRouteTypes {
     | '/scholarships/$slug'
     | '/study-abroad/$slug'
     | '/admin'
+    | '/assistant'
     | '/counselor'
     | '/admin/blogs/$slug'
     | '/admin/claims/$slug'
@@ -959,6 +990,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/admin'
     | '/articles'
+    | '/assistant'
     | '/careers'
     | '/claim-college'
     | '/claim-consultancy'
@@ -1002,6 +1034,7 @@ export interface FileRouteTypes {
     | '/admin/settings'
     | '/admin/study-abroad'
     | '/articles/$slug'
+    | '/assistant/$threadId'
     | '/colleges/$slug'
     | '/consultancies/$slug'
     | '/counselor/claim'
@@ -1022,6 +1055,7 @@ export interface FileRouteTypes {
     | '/scholarships/$slug'
     | '/study-abroad/$slug'
     | '/admin/'
+    | '/assistant/'
     | '/counselor/'
     | '/admin/blogs/$slug'
     | '/admin/claims/$slug'
@@ -1047,6 +1081,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   AdminRoute: typeof AdminRouteWithChildren
   ArticlesRoute: typeof ArticlesRouteWithChildren
+  AssistantRoute: typeof AssistantRouteWithChildren
   CareersRoute: typeof CareersRoute
   ClaimCollegeRoute: typeof ClaimCollegeRoute
   ClaimConsultancyRoute: typeof ClaimConsultancyRoute
@@ -1105,6 +1140,13 @@ declare module '@tanstack/react-router' {
       path: '/articles'
       fullPath: '/articles'
       preLoaderRoute: typeof ArticlesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assistant': {
+      id: '/assistant'
+      path: '/assistant'
+      fullPath: '/assistant'
+      preLoaderRoute: typeof AssistantRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/careers': {
@@ -1414,6 +1456,20 @@ declare module '@tanstack/react-router' {
       fullPath: '/articles/$slug'
       preLoaderRoute: typeof ArticlesSlugRouteImport
       parentRoute: typeof ArticlesRoute
+    }
+    '/assistant/': {
+      id: '/assistant/'
+      path: '/'
+      fullPath: '/assistant/'
+      preLoaderRoute: typeof AssistantIndexRouteImport
+      parentRoute: typeof AssistantRoute
+    }
+    '/assistant/$threadId': {
+      id: '/assistant/$threadId'
+      path: '/$threadId'
+      fullPath: '/assistant/$threadId'
+      preLoaderRoute: typeof AssistantThreadIdRouteImport
+      parentRoute: typeof AssistantRoute
     }
     '/colleges/$slug': {
       id: '/colleges/$slug'
@@ -1850,6 +1906,20 @@ const ArticlesRouteWithChildren = ArticlesRoute._addFileChildren(
   ArticlesRouteChildren,
 )
 
+interface AssistantRouteChildren {
+  AssistantThreadIdRoute: typeof AssistantThreadIdRoute
+  AssistantIndexRoute: typeof AssistantIndexRoute
+}
+
+const AssistantRouteChildren: AssistantRouteChildren = {
+  AssistantThreadIdRoute: AssistantThreadIdRoute,
+  AssistantIndexRoute: AssistantIndexRoute,
+}
+
+const AssistantRouteWithChildren = AssistantRoute._addFileChildren(
+  AssistantRouteChildren,
+)
+
 interface CollegesRouteChildren {
   CollegesSlugRoute: typeof CollegesSlugRoute
 }
@@ -2008,6 +2078,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   AdminRoute: AdminRouteWithChildren,
   ArticlesRoute: ArticlesRouteWithChildren,
+  AssistantRoute: AssistantRouteWithChildren,
   CareersRoute: CareersRoute,
   ClaimCollegeRoute: ClaimCollegeRoute,
   ClaimConsultancyRoute: ClaimConsultancyRoute,

@@ -13,6 +13,7 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import type { Kpi, Row, Status } from "@/lib/panel-data";
+import { useLiveRows } from "@/lib/assistant/store";
 
 export type RowAction = { label: string; href?: string; destructive?: boolean };
 
@@ -83,7 +84,8 @@ type DataTableProps = {
   getEditHref?: (row: Row) => string | undefined;
 };
 
-export function DataTable({ rows, actions, searchable = true, primaryKey, getEditHref }: DataTableProps) {
+export function DataTable({ rows: initialRows, actions, searchable = true, primaryKey, getEditHref }: DataTableProps) {
+  const rows = useLiveRows(initialRows);
   const [q, setQ] = useState("");
   const columns = useMemo(() => (rows[0] ? Object.keys(rows[0]) : []), [rows]);
 
@@ -153,7 +155,7 @@ export function DataTable({ rows, actions, searchable = true, primaryKey, getEdi
                             size="sm"
                             className="h-7 gap-1.5 px-2 text-xs"
                           >
-                            <Link to={getEditHref(row)!}>
+                            <Link to={getEditHref(row) ?? "/admin"}>
                               <Pencil className="size-3" /> Edit
                             </Link>
                           </Button>

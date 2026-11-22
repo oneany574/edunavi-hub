@@ -1,0 +1,3 @@
+export function AtlasMark({ className = "size-10" }: { className?: string }) {
+  return <svg viewBox="0 0 48 48" className={className} aria-hidden="true"><rect width="48" height="48" rx="8" className="fill-academic" /><path d="M10 19 24 12l14 7-14 7-14-7Zm5 6v8l9 5 9-5v-8M38 20v12" className="stroke-brand" fill="none" strokeWidth="2.4" strokeLinejoin="round" /><path d="m24 17 3 6-3-1-3 1 3-6Z" className="fill-brand" /></svg>;
+}

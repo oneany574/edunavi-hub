@@ -142,7 +142,8 @@ export function describeWrite(name: string, args: Record<string, unknown>): stri
   return `Delete ${n} record(s) from ${c} where ${where}`;
 }
 
-export function runTool(name: string, args: Record<string, unknown>): unknown {
+export function runTool(name: string, args: Record<string, unknown>, confirmed = false): unknown {
+  if (WRITE_TOOLS.has(name) && !confirmed) throw new Error("Explicit confirmation is required for sample-data changes");
   if (name === "describe_collections") {
     return collectionNames.map((c) => {
       const rows = getCollection(c);

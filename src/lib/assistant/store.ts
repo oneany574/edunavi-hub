@@ -50,6 +50,12 @@ function load(): Data {
   return data;
 }
 
+export function hydrateSessionData() {
+  data = null;
+  load();
+  listeners.forEach((l) => l());
+}
+
 export function getCollection(name: CollectionName): Row[] {
   return load()[name];
 }
