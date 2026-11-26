@@ -18,7 +18,7 @@ export function saveThreads(threads: Thread[]) {
 export function getThread(id: string) { return loadThreads().find((t) => t.id === id); }
 export function upsertThread(t: Thread) { saveThreads([t, ...loadThreads().filter((x) => x.id !== t.id)]); }
 export function deleteThread(id: string) { saveThreads(loadThreads().filter((t) => t.id !== id)); }
-export function createThread(id = newId()): Thread {
+export function createThread(id: string = newId()): Thread {
   const existing = getThread(id);
   if (existing) return existing;
   const thread: Thread = { id, title: "New conversation", updatedAt: Date.now(), messages: [], items: [] };

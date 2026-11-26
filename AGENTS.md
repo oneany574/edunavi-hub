@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- AI assistant calls stay in `src/lib/assistant/agent.functions.ts`; browser tools mutate only session sample data after confirmation, because the app has no real backend data yet.
